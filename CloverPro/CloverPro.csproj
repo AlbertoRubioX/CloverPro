@@ -1,0 +1,1204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F1893A6-7456-486D-B7EA-46E7AC538B26}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloverPro</RootNamespace>
+    <AssemblyName>CloverPro</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\mxni-fs-01\Temp\wrivera\agonz0\CloverPro\Version\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationVersion>1.1.2.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>production.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>942CED33266D117D0B5C0B5D1B459342CD6B3FBB</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft Office\Office15\DCF\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.PowerPoint.15.0.4420.1017\lib\net20\Microsoft.Office.Interop.PowerPoint.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Neodynamic.SDK.ThermalLabel, Version=6.0.3500.0, Culture=neutral, PublicKeyToken=0630b9b3415848af, processorArchitecture=MSIL">
+      <HintPath>..\packages\Neodynamic.SDK.ThermalLabel.6.0.3516.1015\lib\Neodynamic.SDK.ThermalLabel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\MicrosoftOfficeCore.15.0.0\lib\net35\Office.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.Barcode, Version=1.2.5.21040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.BarCode.1.2.5\lib\net40\Spire.Barcode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cloverpro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cloverpro.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dtsBarcodes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtsBarcodes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EnviarCorreo.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Funciones\ImportaExcel.cs" />
+    <Compile Include="GlobalVar.cs" />
+    <Compile Include="Reportes\ImpCodBarEmp2.cs">
+      <DependentUpon>ImpCodBarEmp2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\ImpCodBarEmp1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImpCodBarEmp1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ImpCodBarras.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImpCodBarras.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\impCodBarRec.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>impCodBarRec.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptEmpaqueRPOprio.cs">
+      <DependentUpon>rptEmpaqueRPOprio.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptEmpaqueRPOalm.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEmpaqueRPOalm.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptEstatusOrdens.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEstatusOrdens.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptEtiquetaComp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEtiquetaComp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptEtiquetas1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEtiquetas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptEtiquetasDet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEtiquetasDet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptHistoricoPPH1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptHistoricoPPH.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptLineUpFormato.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLineUpFormato.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptLineUpResumen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLineUpResumen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptOrdenesUrgentes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptOrdenesUrgentes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptSetUpDuraRegid.cs">
+      <DependentUpon>rptSetUpDuraRegid.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptSetUpDura1.cs">
+      <DependentUpon>rptSetUpDura1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptSetUpDura.cs">
+      <DependentUpon>rptSetUpDura.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptSetUpDuraMP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSetUpDuraMP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptSetUpRegId.cs">
+      <DependentUpon>rptSetUpRegId.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptSetUpDiario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSetUpDiario.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptSuperline1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSuperline.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptTransferLine1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTransferLine.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptUsuarios.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptUsuarios.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="wfActividEstatusPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfActividEstatusPop.Designer.cs">
+      <DependentUpon>wfActividEstatusPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfActividadesPop2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfActividadesPop2.Designer.cs">
+      <DependentUpon>wfActividadesPop2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfActividadesPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfActividadesPop.Designer.cs">
+      <DependentUpon>wfActividadesPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfBusquedaPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfBusquedaPop.Designer.cs">
+      <DependentUpon>wfBusquedaPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfDashboardRPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfDashboardRPO.Designer.cs">
+      <DependentUpon>wfDashboardRPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfImpSetUpDuracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfImpSetUpDuracion.Designer.cs">
+      <DependentUpon>wfImpSetUpDuracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfGlobals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfGlobals.Designer.cs">
+      <DependentUpon>wfGlobals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfInvCiclico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfInvCiclico.Designer.cs">
+      <DependentUpon>wfInvCiclico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfLineCapacity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfLineCapacity.Designer.cs">
+      <DependentUpon>wfLineCapacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepEmpaqueProc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepEmpaqueProc.Designer.cs">
+      <DependentUpon>wfRepEmpaqueProc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepGlobalRPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepGlobalRPO.Designer.cs">
+      <DependentUpon>wfRepGlobalRPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfVersionPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfVersionPop.Designer.cs">
+      <DependentUpon>wfVersionPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCargarRPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCargarRPO.Designer.cs">
+      <DependentUpon>wfCargarRPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfEmpaqueRebox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfEmpaqueRebox.Designer.cs">
+      <DependentUpon>wfEmpaqueRebox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCodBarrasEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCodBarrasEmp.Designer.cs">
+      <DependentUpon>wfCodBarrasEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfUbicacionRpo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfUbicacionRpo.Designer.cs">
+      <DependentUpon>wfUbicacionRpo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfModelosPopGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfModelosPopGrid.Designer.cs">
+      <DependentUpon>wfModelosPopGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCapturaPopGridSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCapturaPopGridSetup.Designer.cs">
+      <DependentUpon>wfCapturaPopGridSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfComentarioPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfComentarioPop.Designer.cs">
+      <DependentUpon>wfComentarioPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCapturaPop_1t.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCapturaPop_1t.Designer.cs">
+      <DependentUpon>wfCapturaPop_1t.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCapturaPop5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCapturaPop5.Designer.cs">
+      <DependentUpon>wfCapturaPop5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCapturaPop4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCapturaPop4.Designer.cs">
+      <DependentUpon>wfCapturaPop4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCapturaPop3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCapturaPop3.Designer.cs">
+      <DependentUpon>wfCapturaPop3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCapturaPopGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCapturaPopGrid.Designer.cs">
+      <DependentUpon>wfCapturaPopGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCapturaPop2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCapturaPop2.Designer.cs">
+      <DependentUpon>wfCapturaPop2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfActualizaOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfActualizaOper.Designer.cs">
+      <DependentUpon>wfActualizaOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCodBarrasComFin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCodBarrasComFin.Designer.cs">
+      <DependentUpon>wfCodBarrasComFin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCodBarrasCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCodBarrasCompras.Designer.cs">
+      <DependentUpon>wfCodBarrasCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfAreas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfAreas.Designer.cs">
+      <DependentUpon>wfAreas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfEtiquetaFinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfEtiquetaFinal.Designer.cs">
+      <DependentUpon>wfEtiquetaFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfDefectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfDefectos.Designer.cs">
+      <DependentUpon>wfDefectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfMonitorRPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfMonitorRPO.Designer.cs">
+      <DependentUpon>wfMonitorRPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepSetUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepSetUp.Designer.cs">
+      <DependentUpon>wfRepSetUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfVisorLineSetUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfVisorLineSetUp.Designer.cs">
+      <DependentUpon>wfVisorLineSetUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfMonitorLineSetUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfMonitorLineSetUp.Designer.cs">
+      <DependentUpon>wfMonitorLineSetUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfLineSetUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfLineSetUp.Designer.cs">
+      <DependentUpon>wfLineSetUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfLineUp_1t.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfLineUp_1t.Designer.cs">
+      <DependentUpon>wfLineUp_1t.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfLineUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfLineUp.Designer.cs">
+      <DependentUpon>wfLineUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfPlantaPop_1t.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfPlantaPop_1t.Designer.cs">
+      <DependentUpon>wfPlantaPop_1t.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfPlantaPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfPlantaPop.Designer.cs">
+      <DependentUpon>wfPlantaPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCodBarrasRec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCodBarrasRec.Designer.cs">
+      <DependentUpon>wfCodBarrasRec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCodBarras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCodBarras.Designer.cs">
+      <DependentUpon>wfCodBarras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfLineasPta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfLineasPta.Designer.cs">
+      <DependentUpon>wfLineasPta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfDuplicaLineUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfDuplicaLineUp.Designer.cs">
+      <DependentUpon>wfDuplicaLineUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepEtiquetaComp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepEtiquetaComp.Designer.cs">
+      <DependentUpon>wfRepEtiquetaComp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepHistorialPPH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepHistorialPPH.Designer.cs">
+      <DependentUpon>wfRepHistorialPPH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepLineUpResumen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepLineUpResumen.Designer.cs">
+      <DependentUpon>wfRepLineUpResumen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepTransferencia.Designer.cs">
+      <DependentUpon>wfRepTransferencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepUsuarios.Designer.cs">
+      <DependentUpon>wfRepUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepSupline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepSupline.Designer.cs">
+      <DependentUpon>wfRepSupline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCoating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCoating.Designer.cs">
+      <DependentUpon>wfCoating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfSuperLinea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfSuperLinea.Designer.cs">
+      <DependentUpon>wfSuperLinea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfEstaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfEstaciones.Designer.cs">
+      <DependentUpon>wfEstaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfImpresor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfImpresor.Designer.cs">
+      <DependentUpon>wfImpresor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfHistorico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfHistorico.Designer.cs">
+      <DependentUpon>wfHistorico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfImportarRpo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfImportarRpo.Designer.cs">
+      <DependentUpon>wfImportarRpo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCodigo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCodigo.Designer.cs">
+      <DependentUpon>wfCodigo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfCapturaPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCapturaPop.Designer.cs">
+      <DependentUpon>wfCapturaPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfLogin.Designer.cs">
+      <DependentUpon>wfLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfInspeccionManual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfInspeccionManual.Designer.cs">
+      <DependentUpon>wfInspeccionManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfModelos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfModelos.Designer.cs">
+      <DependentUpon>wfModelos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepLineUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepLineUp.Designer.cs">
+      <DependentUpon>wfRepLineUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepInspeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepInspeccion.Designer.cs">
+      <DependentUpon>wfRepInspeccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfOperador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfOperador.Designer.cs">
+      <DependentUpon>wfOperador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfUsuario.Designer.cs">
+      <DependentUpon>wfUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepEtiquetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepEtiquetas.Designer.cs">
+      <DependentUpon>wfRepEtiquetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfPlantas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfPlantas.Designer.cs">
+      <DependentUpon>wfPlantas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfEnviaCorreo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfEnviaCorreo.Designer.cs">
+      <DependentUpon>wfEnviaCorreo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="wfConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfConfig.Designer.cs">
+      <DependentUpon>wfConfig.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ImpCodBarEmp2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ImpCodBarEmp2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ImpCodBarEmp1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ImpCodBarEmp1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ImpCodBarras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ImpCodBarras.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\impCodBarRec.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>impCodBarRec.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptEmpaqueRPOprio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmpaqueRPOprio.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptEmpaqueRPOalm.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmpaqueRPOalm.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptEstatusOrdens.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEstatusOrdens.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptEtiquetaComp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEtiquetaComp.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptEtiquetas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEtiquetas1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptEtiquetasDet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEtiquetasDet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptHistoricoPPH.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptHistoricoPPH1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptLineUpFormato.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLineUpFormato.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptLineUpResumen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLineUpResumen.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptOrdenesUrgentes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptOrdenesUrgentes.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSetUpDuraRegid.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSetUpDuraRegid.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSetUpDura1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSetUpDura1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSetUpDura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSetUpDura.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSetUpDuraMP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSetUpDuraMP.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSetUpRegId.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSetUpRegId.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSetUpDiario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSetUpDiario.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSuperline.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSuperline1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptTransferLine.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTransferLine1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptUsuarios.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptUsuarios.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfActividEstatusPop.resx">
+      <DependentUpon>wfActividEstatusPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfActividadesPop2.resx">
+      <DependentUpon>wfActividadesPop2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfActividadesPop.resx">
+      <DependentUpon>wfActividadesPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfBusquedaPop.resx">
+      <DependentUpon>wfBusquedaPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfDashboardRPO.resx">
+      <DependentUpon>wfDashboardRPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfImpSetUpDuracion.resx">
+      <DependentUpon>wfImpSetUpDuracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfGlobals.resx">
+      <DependentUpon>wfGlobals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfInvCiclico.resx">
+      <DependentUpon>wfInvCiclico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfLineCapacity.resx">
+      <DependentUpon>wfLineCapacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepEmpaqueProc.resx">
+      <DependentUpon>wfRepEmpaqueProc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepGlobalRPO.resx">
+      <DependentUpon>wfRepGlobalRPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfVersionPop.resx">
+      <DependentUpon>wfVersionPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCargarRPO.resx">
+      <DependentUpon>wfCargarRPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfEmpaqueRebox.resx">
+      <DependentUpon>wfEmpaqueRebox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCodBarrasEmp.resx">
+      <DependentUpon>wfCodBarrasEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfUbicacionRpo.resx">
+      <DependentUpon>wfUbicacionRpo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfModelosPopGrid.resx">
+      <DependentUpon>wfModelosPopGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCapturaPopGridSetup.resx">
+      <DependentUpon>wfCapturaPopGridSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfComentarioPop.resx">
+      <DependentUpon>wfComentarioPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCapturaPop_1t.resx">
+      <DependentUpon>wfCapturaPop_1t.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCapturaPop5.resx">
+      <DependentUpon>wfCapturaPop5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCapturaPop4.resx">
+      <DependentUpon>wfCapturaPop4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCapturaPop3.resx">
+      <DependentUpon>wfCapturaPop3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCapturaPopGrid.resx">
+      <DependentUpon>wfCapturaPopGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCapturaPop2.resx">
+      <DependentUpon>wfCapturaPop2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfActualizaOper.resx">
+      <DependentUpon>wfActualizaOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCodBarrasComFin.resx">
+      <DependentUpon>wfCodBarrasComFin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCodBarrasCompras.resx">
+      <DependentUpon>wfCodBarrasCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfAreas.resx">
+      <DependentUpon>wfAreas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfEtiquetaFinal.resx">
+      <DependentUpon>wfEtiquetaFinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfDefectos.resx">
+      <DependentUpon>wfDefectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfMonitorRPO.resx">
+      <DependentUpon>wfMonitorRPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepSetUp.resx">
+      <DependentUpon>wfRepSetUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfVisorLineSetUp.resx">
+      <DependentUpon>wfVisorLineSetUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfMonitorLineSetUp.resx">
+      <DependentUpon>wfMonitorLineSetUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfLineSetUp.resx">
+      <DependentUpon>wfLineSetUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfLineUp_1t.resx">
+      <DependentUpon>wfLineUp_1t.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfLineUp.resx">
+      <DependentUpon>wfLineUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfPlantaPop_1t.resx">
+      <DependentUpon>wfPlantaPop_1t.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfPlantaPop.resx">
+      <DependentUpon>wfPlantaPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCodBarrasRec.resx">
+      <DependentUpon>wfCodBarrasRec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCodBarras.resx">
+      <DependentUpon>wfCodBarras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfLineasPta.resx">
+      <DependentUpon>wfLineasPta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfDuplicaLineUp.resx">
+      <DependentUpon>wfDuplicaLineUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepEtiquetaComp.resx">
+      <DependentUpon>wfRepEtiquetaComp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepHistorialPPH.resx">
+      <DependentUpon>wfRepHistorialPPH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepLineUpResumen.resx">
+      <DependentUpon>wfRepLineUpResumen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepTransferencia.resx">
+      <DependentUpon>wfRepTransferencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepUsuarios.resx">
+      <DependentUpon>wfRepUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepSupline.resx">
+      <DependentUpon>wfRepSupline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCoating.resx">
+      <DependentUpon>wfCoating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfSuperLinea.resx">
+      <DependentUpon>wfSuperLinea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfEstaciones.resx">
+      <DependentUpon>wfEstaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfImpresor.resx">
+      <DependentUpon>wfImpresor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfHistorico.resx">
+      <DependentUpon>wfHistorico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfImportarRpo.resx">
+      <DependentUpon>wfImportarRpo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCodigo.resx">
+      <DependentUpon>wfCodigo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfCapturaPop.resx">
+      <DependentUpon>wfCapturaPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfLogin.resx">
+      <DependentUpon>wfLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfInspeccionManual.resx">
+      <DependentUpon>wfInspeccionManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfModelos.resx">
+      <DependentUpon>wfModelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepLineUp.resx">
+      <DependentUpon>wfRepLineUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepInspeccion.resx">
+      <DependentUpon>wfRepInspeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfOperador.resx">
+      <DependentUpon>wfOperador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfUsuario.resx">
+      <DependentUpon>wfUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepEtiquetas.resx">
+      <DependentUpon>wfRepEtiquetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfPlantas.resx">
+      <DependentUpon>wfPlantas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfEnviaCorreo.resx">
+      <DependentUpon>wfEnviaCorreo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="wfConfig.resx">
+      <DependentUpon>wfConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Cloverpro.xsc">
+      <DependentUpon>Cloverpro.xsd</DependentUpon>
+    </None>
+    <None Include="Cloverpro.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Cloverpro.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Cloverpro.xss">
+      <DependentUpon>Cloverpro.xsd</DependentUpon>
+    </None>
+    <None Include="CloverPro_TemporaryKey.pfx" />
+    <None Include="dtsBarcodes.xsc">
+      <DependentUpon>dtsBarcodes.xsd</DependentUpon>
+    </None>
+    <None Include="dtsBarcodes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtsBarcodes.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dtsBarcodes.xss">
+      <DependentUpon>dtsBarcodes.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove_line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addfrom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{58c90f46-a61c-4049-9ca4-4ef43f964204}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{2d865550-4c2c-4044-852d-a0a186bab786}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barcode_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="production.ico" />
+    <None Include="Resources\ciglogo.jpg" />
+    <None Include="Resources\if_delete_216170.png" />
+    <None Include="Resources\ALMACEN.jpg" />
+    <None Include="Resources\CAMBIO DE MODELO color.jpg" />
+    <None Include="Resources\Wallpaper_debug.jpg" />
+    <None Include="Resources\if_sort.png" />
+    <None Include="Resources\if_complete.png" />
+    <None Include="Resources\if_Process-Accept.png" />
+    <None Include="Resources\if_Process-Warning.png" />
+    <None Include="Resources\if_Process-Info.png" />
+    <None Include="Resources\Process-Warning.png" />
+    <None Include="Resources\Process-Done.png" />
+    <None Include="Resources\Process.png" />
+    <None Include="Resources\clock.png" />
+    <None Include="Resources\listo.png" />
+    <None Include="Resources\contact_list.png" />
+    <None Include="Resources\confirmar.png" />
+    <None Include="Resources\rechazar.png" />
+    <None Include="Resources\if_arrow-back-outline_216436.png" />
+    <None Include="Resources\CAMBIO DE MODELO.jpg" />
+    <None Include="Resources\red-check-mark.png" />
+    <None Include="Resources\red-check-mark-bold.png" />
+    <None Include="Resources\turquoise-check-mark.png" />
+    <None Include="Resources\blue-check-mark.png" />
+    <None Include="Resources\clock_alarm.png" />
+    <None Include="Resources\ClockAlarm.png" />
+    <None Include="Resources\text-editor.png" />
+    <None Include="Resources\if_Switch_48.png" />
+    <None Include="Resources\if_Save_48.png" />
+    <None Include="Resources\if_Close_48.png" />
+    <None Include="Resources\Save_48X48.png" />
+    <None Include="Resources\CloseX.png" />
+    <None Include="Resources\Wallpaper.jpg" />
+    <None Include="Resources\if_user-male-2-add_44139.png" />
+    <None Include="Resources\stoperr.png" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\Selected.png" />
+    <None Include="Resources\Sync.png" />
+    <None Include="Resources\go-up.png" />
+    <None Include="Resources\go-down.png" />
+    <None Include="Resources\Help_book.png" />
+    <None Include="Resources\go_Sig.png" />
+    <None Include="Resources\go_Last.png" />
+    <None Include="Resources\go_Before.png" />
+    <None Include="Resources\go_First.png" />
+    <None Include="Resources\1492140657_excel.png" />
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\Trash.png" />
+    <None Include="Resources\Manual.png" />
+    <None Include="Resources\topblue.gif" />
+    <None Include="Resources\menutop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="log4net">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
