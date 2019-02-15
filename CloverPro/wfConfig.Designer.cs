@@ -66,6 +66,7 @@
             this.txtLeyendaR = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.chbVALineup = new System.Windows.Forms.CheckBox();
             this.txtVA = new System.Windows.Forms.TextBox();
             this.label61 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -226,7 +227,7 @@
             this.chbOmiteEst = new System.Windows.Forms.CheckBox();
             this.chbSecuRPO = new System.Windows.Forms.CheckBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.chbVALineup = new System.Windows.Forms.CheckBox();
+            this.chbAlertaRPOdetenidos = new System.Windows.Forms.CheckBox();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -318,7 +319,7 @@
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Location = new System.Drawing.Point(12, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(590, 501);
+            this.panel1.Size = new System.Drawing.Size(590, 511);
             this.panel1.TabIndex = 1;
             // 
             // tabControl1
@@ -335,7 +336,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(564, 476);
+            this.tabControl1.Size = new System.Drawing.Size(564, 498);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -671,6 +672,16 @@
             this.groupBox20.TabIndex = 11;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Ayuda Visual";
+            // 
+            // chbVALineup
+            // 
+            this.chbVALineup.AutoSize = true;
+            this.chbVALineup.Location = new System.Drawing.Point(26, 48);
+            this.chbVALineup.Name = "chbVALineup";
+            this.chbVALineup.Size = new System.Drawing.Size(152, 17);
+            this.chbVALineup.TabIndex = 11;
+            this.chbVALineup.Text = "Cargar AV con LineUp";
+            this.chbVALineup.UseVisualStyleBackColor = true;
             // 
             // txtVA
             // 
@@ -2084,7 +2095,7 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(556, 450);
+            this.tabPage9.Size = new System.Drawing.Size(556, 472);
             this.tabPage9.TabIndex = 10;
             this.tabPage9.Text = "Almacén";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -2110,7 +2121,7 @@
             this.groupBox18.Controls.Add(this.label54);
             this.groupBox18.Controls.Add(this.txtAlmIni);
             this.groupBox18.Controls.Add(this.label53);
-            this.groupBox18.Location = new System.Drawing.Point(6, 166);
+            this.groupBox18.Location = new System.Drawing.Point(6, 179);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(544, 278);
             this.groupBox18.TabIndex = 28;
@@ -2349,12 +2360,13 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.chbAlertaRPOdetenidos);
             this.groupBox17.Controls.Add(this.chbOmiteLineas);
             this.groupBox17.Controls.Add(this.chbOmiteEst);
             this.groupBox17.Controls.Add(this.chbSecuRPO);
             this.groupBox17.Location = new System.Drawing.Point(6, 16);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(544, 142);
+            this.groupBox17.Size = new System.Drawing.Size(544, 157);
             this.groupBox17.TabIndex = 0;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Control de Ordenes de Trabajo";
@@ -2392,21 +2404,22 @@
             this.chbSecuRPO.Text = "Validar Armado Secuencial de RPO\'s en Almacén";
             this.chbSecuRPO.UseVisualStyleBackColor = true;
             // 
-            // chbVALineup
+            // chbAlertaRPOdetenidos
             // 
-            this.chbVALineup.AutoSize = true;
-            this.chbVALineup.Location = new System.Drawing.Point(26, 48);
-            this.chbVALineup.Name = "chbVALineup";
-            this.chbVALineup.Size = new System.Drawing.Size(152, 17);
-            this.chbVALineup.TabIndex = 11;
-            this.chbVALineup.Text = "Cargar AV con LineUp";
-            this.chbVALineup.UseVisualStyleBackColor = true;
+            this.chbAlertaRPOdetenidos.AutoSize = true;
+            this.chbAlertaRPOdetenidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbAlertaRPOdetenidos.Location = new System.Drawing.Point(24, 127);
+            this.chbAlertaRPOdetenidos.Name = "chbAlertaRPOdetenidos";
+            this.chbAlertaRPOdetenidos.Size = new System.Drawing.Size(209, 17);
+            this.chbAlertaRPOdetenidos.TabIndex = 28;
+            this.chbAlertaRPOdetenidos.Text = "Activar alerta de RPO detenidos";
+            this.chbAlertaRPOdetenidos.UseVisualStyleBackColor = true;
             // 
             // wfConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 537);
+            this.ClientSize = new System.Drawing.Size(614, 551);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "wfConfig";
@@ -2673,5 +2686,6 @@
         private System.Windows.Forms.TextBox txtVA;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.CheckBox chbVALineup;
+        private System.Windows.Forms.CheckBox chbAlertaRPOdetenidos;
     }
 }

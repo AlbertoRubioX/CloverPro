@@ -691,6 +691,10 @@ namespace CloverPro
                 dtNew.Columns.Add("prioridad", typeof(DateTime));//28
                 dtNew.Columns.Add("ind_prio", typeof(string));//29
                 dtNew.Columns.Add("tipo", typeof(string));//30 - tipo de linea [L/P]
+                dtNew.Columns.Add("u_dete", typeof(string));//31
+                dtNew.Columns.Add("f_dete", typeof(DateTime));//32
+                dtNew.Columns.Add("dete_cant", typeof(int));//33
+                dtNew.Columns.Add("f_carga", typeof(DateTime));//34
                 dgwEstaciones.DataSource = dtNew;
             }
             else
@@ -828,9 +832,14 @@ namespace CloverPro
             dgwEstaciones.Columns[28].Visible = false;
             dgwEstaciones.Columns[29].Visible = false;
             dgwEstaciones.Columns[30].Visible = false;
+            dgwEstaciones.Columns[31].Visible = false;
+            dgwEstaciones.Columns[32].Visible = false;
+            dgwEstaciones.Columns[33].Visible = false;
+            dgwEstaciones.Columns[34].Visible = false;
+
 
         }
-        
+
         //ESCANER SOBRE #OPERADOR && LINEA OP
         private void AjustaColumnas()
         {
@@ -1435,6 +1444,7 @@ namespace CloverPro
                     string sPrio = row.Cells[13].Value.ToString();
                     string sWP = row.Cells[14].Value.ToString();
                     string sEstatus = row.Cells[15].Value.ToString();
+
                     DateTime dtProceso = DateTime.Today;
                     if (!string.IsNullOrEmpty(row.Cells[22].Value.ToString()))
                         dtProceso = Convert.ToDateTime(row.Cells[22].Value.ToString());
@@ -1446,6 +1456,24 @@ namespace CloverPro
                         dtProceti = Convert.ToDateTime(row.Cells[26].Value.ToString());
                     string sTurnoProcet = row.Cells[27].Value.ToString();
                     string sHoraEti = string.Empty;
+
+                    //DETENIDOS
+                    string UsDetenido = row.Cells[31].Value.ToString();
+
+                    DateTime dtfDetenido = DateTime.Today;
+                    if (!string.IsNullOrEmpty(row.Cells[32].Value.ToString()))
+                        dtfDetenido = Convert.ToDateTime(row.Cells[32].Value.ToString());
+                    
+                        
+                    string sHoraDetenido = string.Empty;
+
+                    string contDetenido = row.Cells[33].Value.ToString();
+
+                    DateTime dtfCarga = DateTime.Today;
+                    if (!string.IsNullOrEmpty(row.Cells[34].Value.ToString()))
+                        dtfCarga = Convert.ToDateTime(row.Cells[34].Value.ToString());
+                    string sHoraCarga = string.Empty;
+
 
                     oSheet.Cells[iRow, 1] = dtIngreso;
                     oSheet.Cells[iRow, 2] = sTurno;
@@ -1483,7 +1511,36 @@ namespace CloverPro
                         oSheet.Cells[iRow, 18] = sHoraEti.TrimStart();
                     }
 
+                 
+
                     oSheet.Cells[iRow, 19] = sTurnoProcet;
+                    //DETENIDOS
+                    oSheet.Cells[iRow, 20] = UsDetenido;
+                    if (!string.IsNullOrEmpty(row.Cells[32].Value.ToString()))
+                    {
+                        sHoraDetenido = Convert.ToString(row.Cells[32].Value);
+                        int iPos1 = sHoraDetenido.IndexOf(":");
+                        sHoraDetenido = sHoraDetenido.Substring(iPos1 - 2);
+
+                        oSheet.Cells[iRow, 21] = dtfDetenido;
+                        oSheet.Cells[iRow, 22] = sHoraDetenido.TrimStart();
+                    }
+                    
+                                      
+                    oSheet.Cells[iRow, 23] = contDetenido;
+                    if (!string.IsNullOrEmpty(row.Cells[34].Value.ToString()))
+                    {
+                        sHoraCarga = Convert.ToString(row.Cells[34].Value);
+                        int iPos1 = sHoraCarga.IndexOf(":");
+                        sHoraCarga = sHoraCarga.Substring(iPos1 - 2);
+
+                        oSheet.Cells[iRow, 24] = dtfCarga;
+                        oSheet.Cells[iRow, 25] = sHoraCarga.TrimStart();
+                    }
+                    
+
+
+
 
 
                     iRow++;
@@ -1658,6 +1715,11 @@ namespace CloverPro
         {
             wfRepEmpaqueProc Report = new wfRepEmpaqueProc();
             Report.ShowDialog();
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
