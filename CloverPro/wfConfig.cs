@@ -216,6 +216,13 @@ namespace CloverPro
                         else
                             chbOmiteLineas.Checked = false;
                     }
+                    if (!string.IsNullOrEmpty(data.Rows[0]["alert_rpodetenidos"].ToString()))
+                    {
+                        if (data.Rows[0]["alert_rpodetenidos"].ToString() == "1")
+                            chbAlertaRPOdetenidos.Checked = true;
+                        else
+                            chbAlertaRPOdetenidos.Checked = false;
+                    }
 
                     //KANBAN ALMACEN
                     txtAlmIni.Text = data.Rows[0]["alm_kbhrini"].ToString();
@@ -315,7 +322,6 @@ namespace CloverPro
             cbbTipoOrb.DisplayMember = "Value";
             cbbTipoOrb.ValueMember = "Key";
             cbbTipoOrb.SelectedIndex = -1;
-
 
             cbbTipoHrTime.ResetText();
             Dictionary<string, string> Tipohr = new Dictionary<string, string>();
@@ -842,6 +848,11 @@ namespace CloverPro
                         conf.OmiteSecLinea = "1";
                     else
                         conf.OmiteSecLinea = "0";
+                    if (chbAlertaRPOdetenidos.Checked)
+                        conf.AlertRPOdet = "1";
+                    else
+                        conf.AlertRPOdet = "0";
+                    
                     int iHora;
                     if (int.TryParse(txtAlmIni.Text, out iHora))
                         conf.AlmKanHrIni = iHora;
