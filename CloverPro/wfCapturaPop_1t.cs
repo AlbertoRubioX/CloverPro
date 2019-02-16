@@ -38,6 +38,8 @@ namespace CloverPro
 
         private void wfCapturaPop_1t_Load(object sender, EventArgs e)
         {
+            this.Height = 161;
+            panel1.Height = 103;
             #region regEmpaque
 
             if (_lsProceso == "EMP050")//GLOBALS
@@ -173,6 +175,8 @@ namespace CloverPro
 
                         if (_sClave == "DETENIDO")
                         {
+                            this.Height = 510;
+
                             label1.Text = "MOTIVO :";
                             /*
                             cbbClave.Visible = false;

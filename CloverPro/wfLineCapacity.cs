@@ -473,9 +473,9 @@ namespace CloverPro
                 dtNew.Columns.Add("MODELO", typeof(string));     //1
                 dtNew.Columns.Add("STD 1T", typeof(int));        //2
                 dtNew.Columns.Add("STD 2T", typeof(int));        //3
-                dtNew.Columns.Add("STD HC", typeof(int));        //4
-                dtNew.Columns.Add("STD HC RH/1er TURNO", typeof(int));        //5
-                dtNew.Columns.Add("STD HC RH/2do TURNO", typeof(int));        //6
+                dtNew.Columns.Add("STD H.C.", typeof(int));        //4
+                dtNew.Columns.Add("H.C. ACTUAL TRESS 1T", typeof(int));        //5
+                dtNew.Columns.Add("H.C. ACTUAL TRESS 2T", typeof(int));        //6
                 dtNew.Columns.Add("TURNO 1", typeof(bool));      //7
                 dtNew.Columns.Add("TURNO 2", typeof(bool));      //8
                 dtNew.Columns.Add("linea", typeof(string));      //9
@@ -557,6 +557,7 @@ namespace CloverPro
                     
                     if (e.ColumnIndex == 7) 
                     {
+                       
                         if (sTipo == "C")
                             AgregaCoating("1", bInd, sLinea, dHc, dHct1);
 
@@ -745,24 +746,24 @@ namespace CloverPro
 
             try
             {
-                LineSetupLogica line = new LineSetupLogica();
-                line.Folio = Convert.ToInt32(txtFolio.Text.ToString());
-                System.Data.DataTable data = LineSetupLogica.Consultar(line);
-                if(data.Rows.Count != 0)
-                {
-                    cbbPlanta.SelectedValue = data.Rows[0]["planta"].ToString();
-                    dtpFecha.Value = Convert.ToDateTime(data.Rows[0]["fecha"].ToString());
-                    //_liPartida
-                    _lsFolioAnt = txtFolio.Text.ToString();
-                    CargarDetalle(Convert.ToInt32(txtFolio.Text));
-                }
-                else
-                {
-                    MessageBox.Show("El Folio no se encuentra Registrado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtFolio.Text = _lsFolioAnt;
-                    txtFolio.Focus();
-                    return;
-                }
+                //LineSetupLogica line = new LineSetupLogica();
+                //line.Folio = Convert.ToInt32(txtFolio.Text.ToString());
+                //System.Data.DataTable data = LineSetupLogica.Consultar(line);
+                //if(data.Rows.Count != 0)
+                //{
+                //    cbbPlanta.SelectedValue = data.Rows[0]["planta"].ToString();
+                //    dtpFecha.Value = Convert.ToDateTime(data.Rows[0]["fecha"].ToString());
+                //    //_liPartida
+                //    _lsFolioAnt = txtFolio.Text.ToString();
+                //    CargarDetalle(Convert.ToInt32(txtFolio.Text));
+                //}
+                //else
+                //{
+                //    MessageBox.Show("El Folio no se encuentra Registrado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    txtFolio.Text = _lsFolioAnt;
+                //    txtFolio.Focus();
+                //    return;
+                //}
             }
             catch(Exception ex)
             {
@@ -833,8 +834,11 @@ namespace CloverPro
                 ModelohcLogica line = new ModelohcLogica();
                 line.Planta = cbbPlanta.SelectedValue.ToString();
                 DataTable data = ModelohcLogica.ListarLinea(line);
-                if (data.Rows.Count > 0)
+                int iLineas = data.Rows.Count;
+                if (iLineas > 0)
                 {
+                    double dTotT1 = 0;
+                    double dTotT2 = 0;
                     for (int x = 0; x < data.Rows.Count; x++)
                     {
                         string sLinea = data.Rows[x][0].ToString();
@@ -874,7 +878,13 @@ namespace CloverPro
                         }
 
                         AgregaLinea(sLinea, null, 0, 0, 0,  dHcTress1, dHcTress2, false, false,sLine, sTipo);
+                        dTotT1 += dHcTress1;
+                        dTotT2 += dHcTress2;
                     }
+
+                    lblLines.Text = iLineas.ToString();
+                    lblTress1.Text = dTotT1.ToString();
+                    lblTress2.Text = dTotT2.ToString();
 
                     dgwEstaciones.Rows[0].Selected = true;
                     dgwEstaciones.Focus();
@@ -1257,6 +1267,7 @@ namespace CloverPro
                 _WindowStateAnt = WindowState;
                 ResizeControl(panel1, 3, ref _iWidthAnt, ref _iHeightAnt, 0);
                 ResizeControl(groupBox1, 1, ref _iWidthAnt, ref _iHeightAnt, 0);
+                ResizeControl(pnlTotal, 4, ref _iWidthAnt, ref _iHeightAnt, 0);
                 ResizeControl(panel3, 1, ref _iWidthAnt, ref _iHeightAnt, 0);
                 ResizeControl(dgwEstaciones, 1, ref _iWidthAnt, ref _iHeightAnt, 1);
 
@@ -1281,6 +1292,12 @@ namespace CloverPro
             {
                 ac_Control.Width = this.Width - _dif;
                 ac_Control.Height = this.Height - _difh;
+            }
+            if (ai_Hor == 4)
+            {
+                int iH = groupBox1.Height - groupBox1.Location.Y;
+                ac_Control.Location = new Point(ac_Control.Location.X, iH + ac_Control.Height - 10);
+                    // lblCant.Location = new Point(lblCant.Location.X, groupBox1.Height - iH);
             }
             if (ai_Retorna == 1)
             {
@@ -1461,5 +1478,7 @@ namespace CloverPro
 
             CargaStandar();
         }
+
+        
     }
 }

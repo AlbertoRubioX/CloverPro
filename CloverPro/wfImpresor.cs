@@ -56,7 +56,51 @@ namespace CloverPro
         {
             InitializeComponent();
         }
+        private void wfImpresor_Load(object sender, EventArgs e)
+        {
 
+            DataTable data = ConfigLogica.Consultar();
+            _lsDirec = data.Rows[0]["directorio"].ToString();
+
+            if (_lsProceso == "REP010")
+                ImprimeEtiquetas();
+
+            if (_lsProceso == "REP020")
+                InspeccionEtiquetas();
+
+            if (_lsProceso == "REP030" || _lsProceso == "PRO060")
+                CapturaLineUp();
+
+            if (_lsProceso == "REP040")
+                ReporteUsuarios();
+
+            if (_lsProceso == "REP050")
+                ReporteSuperLine();
+
+            if (_lsProceso == "REP060")
+                ReporteTransferencias();
+
+            if (_lsProceso == "REP070")
+                CapturaLineUpResumen();
+
+            if (_lsProceso == "REP080")
+                ReporteEmpaqueComp();
+
+            if (_lsProceso == "REP090")
+                ReporteHistorialPPH();
+
+            if ((_lsProceso == "REP100"))
+                DiarioSetup();
+
+            if ((_lsProceso == "REP110"))
+                ReporteArmadoRPO();
+
+            if ((_lsProceso == "REP120"))
+                ReporteGlobalRPO();
+
+            if (_lsProceso == "PRO090")
+                DuracionSetUp();
+        }
         private void InspeccionEtiquetas()
         {
             try
@@ -497,51 +541,7 @@ namespace CloverPro
             }
 
         }
-        private void wfImpresor_Load(object sender, EventArgs e)
-        {
-
-            DataTable data = ConfigLogica.Consultar();
-            _lsDirec = data.Rows[0]["directorio"].ToString();
-
-            if (_lsProceso == "REP010")
-                ImprimeEtiquetas();
-
-            if (_lsProceso == "REP020")
-                InspeccionEtiquetas();
-
-            if (_lsProceso == "REP030" || _lsProceso == "PRO060")
-                CapturaLineUp();
-
-            if (_lsProceso == "REP040")
-                ReporteUsuarios();
-
-            if (_lsProceso == "REP050")
-                ReporteSuperLine();
-
-            if (_lsProceso == "REP060")
-                ReporteTransferencias();
-
-            if (_lsProceso == "REP070")
-                CapturaLineUpResumen();
-
-            if (_lsProceso == "REP080")
-                ReporteEmpaqueComp();
-
-            if (_lsProceso == "REP090")
-                ReporteHistorialPPH();
-
-            if ((_lsProceso == "REP100"))
-                DiarioSetup();
-
-            if ((_lsProceso == "REP110"))
-                ReporteArmadoRPO();
-
-            if ((_lsProceso == "REP120"))
-                ReporteGlobalRPO();
-
-            if (_lsProceso == "PRO090")
-                DuracionSetUp();
-        }
+       
 
         private void ReporteGlobalRPO()
         {

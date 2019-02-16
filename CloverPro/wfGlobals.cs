@@ -220,7 +220,7 @@ namespace CloverPro
                     rpo.EnvHrEnd = sHrEnd;
                     rpo.TO = sTO;
                     rpo.Truck = sTruck;
-                    rpo.Nota = sNota;
+                    rpo.Nota = sNota.Replace("'","");
                     rpo.Usuario = GlobalVar.gsUsuario;
 
                     RpoGlobLogica.ActualizaWP(rpo);

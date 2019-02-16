@@ -1033,7 +1033,7 @@ namespace CloverPro
                         return;
                     }                   
                 }
-                
+
                 wfActividEstatusPop ActPop = new wfActividEstatusPop();
                 ActPop._lsProceso = _lsProceso;
                 ActPop._lFolio = lFolio;

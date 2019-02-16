@@ -312,6 +312,12 @@
     <Compile Include="wfBusquedaPop.Designer.cs">
       <DependentUpon>wfBusquedaPop.cs</DependentUpon>
     </Compile>
+    <Compile Include="wfCapturaPop_1det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfCapturaPop_1det.Designer.cs">
+      <DependentUpon>wfCapturaPop_1det.cs</DependentUpon>
+    </Compile>
     <Compile Include="wfDashboardRPO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -817,6 +823,9 @@
     <EmbeddedResource Include="wfBusquedaPop.resx">
       <DependentUpon>wfBusquedaPop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="wfCapturaPop_1det.resx">
+      <DependentUpon>wfCapturaPop_1det.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="wfDashboardRPO.resx">
       <DependentUpon>wfDashboardRPO.cs</DependentUpon>
     </EmbeddedResource>
@@ -1171,22 +1180,22 @@
   <ItemGroup>
     <PublishFile Include="log4net">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

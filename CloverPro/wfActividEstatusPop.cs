@@ -518,27 +518,41 @@ namespace CloverPro
                 }
                 else
                 {
-                    rpo.Almacen = "D";//detenido
-                    rpo.Usuario = GlobalVar.gsUsuario;
 
-                    wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
-                    CapPop._lsProceso = _lsProceso;
-                    CapPop._llFolio = _lFolio;
-                    CapPop._liConsec = _iConsec;
-                    CapPop._lsPlanta = "EMPN";
-                    CapPop._sClave = "DETENIDO";
-                    CapPop._lsArea = _sArea;
-                    CapPop._lsTipo = _sTipo;
-                    CapPop.ShowDialog();
-
-                    if (!string.IsNullOrEmpty(CapPop._sClave))
+                    DataTable dt = ControlRpoLogica.Consultar(rpo);
+                    string sAlmaEst = dt.Rows[0]["almacen"].ToString();
+                    if (sAlmaEst == "D")
                     {
-                        rpo.AlmNota = CapPop._sClave;
-                        rpo.Usuario = GlobalVar.gsUsuario;
-                        ControlRpoLogica.ActualizaAlma(rpo);
+                        MessageBox.Show("El RPO ya se encuentra Detenido", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
                     }
                     else
-                        MessageBox.Show("No puede Detener un RPO sin Especificar el Motivo","Error de Captura", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    {
+                        rpo.Almacen = "D";//detenido
+                        wfCapturaPop_1det CapPopD = new wfCapturaPop_1det();
+                        CapPopD._lsProceso = _lsProceso;
+                        CapPopD._sClave = "DETENIDO";
+                        CapPopD._lsArea = _sArea;
+                        CapPopD._lsTipo = _sTipo;
+                        CapPopD.ShowDialog();
+
+                        if (!string.IsNullOrEmpty(CapPopD._sClave))
+                        {
+                            if (CapPopD._sClave == "OTR")
+                            {
+                                CapPopD._sClave = CapPopD._lsParte;
+                                CapPopD._lsParte = string.Empty;
+                            }
+
+                            rpo.AlmNota = CapPopD._sClave;
+                            rpo.ParteDetenido = CapPopD._lsParte;
+                            rpo.CantDetenido = CapPopD._ldCant;
+                            rpo.Usuario = GlobalVar.gsUsuario;
+                            ControlRpoLogica.ActualizaAlma(rpo);
+                        }
+                        else
+                            MessageBox.Show("No puede Detener un RPO sin Especificar el Motivo", "Error de Captura", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
             catch (Exception ex)

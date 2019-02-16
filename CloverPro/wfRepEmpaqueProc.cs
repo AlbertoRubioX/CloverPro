@@ -80,7 +80,7 @@ namespace CloverPro
             cbbEstatus.Enabled = false;
             Dictionary<string, string> Est = new Dictionary<string, string>();
             Est.Add("L", "LISTO");
-            Est.Add("D", "DETENIDO");
+            
             Est.Add("E", "EN ESPERA");
             Est.Add("P", "EN PROCESO");
             cbbEstatus.DataSource = new BindingSource(Est, null);
