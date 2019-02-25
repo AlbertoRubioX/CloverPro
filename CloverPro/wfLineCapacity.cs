@@ -920,7 +920,7 @@ namespace CloverPro
                     DataTable dtO = new DataTable();
                     RpoLogica rpo = new RpoLogica();
                     rpo.Linea = sLineOr;
-                    rpo.Fecha = DateTime.Today;
+                    rpo.Fecha = dtpFecha.Value;
 
                     dtO = RpoLogica.ConsultarOrbisLinea(rpo);
                     if (dtO.Rows.Count != 0)
