@@ -189,6 +189,8 @@ namespace CloverPro
                 string sTurno = string.Empty;
 
                 int iSheets = xlWorkbook.Sheets.Count;
+                
+
                 string sShetName = string.Empty;
                 
                 if (cbbPlanta.SelectedValue.ToString() == "EMPF")
@@ -284,6 +286,7 @@ namespace CloverPro
                         {
                             if (string.IsNullOrEmpty(sValue))
                                 sValue = Convert.ToString(xlRange.Cells[i, 2].Value2.ToString());
+                            
                         }
 
 
@@ -314,6 +317,7 @@ namespace CloverPro
 
                         if (xlRange.Cells[i, 3].Value2 == null)
                         {
+                            
                             sValue = string.Empty;
                             continue;
                         }
