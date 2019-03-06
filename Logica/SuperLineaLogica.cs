@@ -120,6 +120,21 @@ namespace Logica
                 return false;
             }
         }
+        public static bool Actualizar_Guardar(string supervisor,string planta,string area)
+        {
+            try
+            {
+                string sQuery = "DELETE FROM t_suplinea WHERE supervisor = '" + supervisor + "' and planta = '" + planta + "' and area = '"+ area + "'";
+                if (AccesoDatos.Borrar(sQuery) != 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public static bool Borrar(SuperLineaLogica sup)
         {

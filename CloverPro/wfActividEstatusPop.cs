@@ -464,9 +464,9 @@ namespace CloverPro
                 }
                 else
                 {
-                    rpo.Almacen = "P";//en proceso
-                    rpo.Usuario = GlobalVar.gsUsuario;
-                    ControlRpoLogica.ActualizaAlma(rpo);
+                    //rpo.Almacen = "P";//en proceso
+                    //rpo.Usuario = GlobalVar.gsUsuario;
+                    //ControlRpoLogica.ActualizaAlma(rpo);
 
                     wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
                     CapPop._lsProceso = _lsProceso;
@@ -475,6 +475,9 @@ namespace CloverPro
                     CapPop._lsPlanta = "EMPN";
                     CapPop._sClave = "ALMACENISTA";
                     CapPop.ShowDialog();
+
+
+                   
                 }
             }
             catch (Exception ex)

@@ -326,7 +326,7 @@ namespace CloverPro
             try
             {
                 ControlRpoLogica crpo = new ControlRpoLogica();
-                crpo.Fecha = dtpFecha.Value;
+                crpo.Fecha = dtpFecha.Value; 
                 crpo.Planta = cbbPlanta.SelectedValue.ToString();
                 crpo.Usuario = GlobalVar.gsUsuario;
 

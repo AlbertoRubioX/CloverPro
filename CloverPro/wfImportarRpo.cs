@@ -81,6 +81,14 @@ namespace CloverPro
                 }
             }
 
+            if (cbbPlanta.SelectedIndex == -1 )
+            {
+                
+                MessageBox.Show("Favor de indicar una planta", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+                
+            }
+
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Archivos de Excel (*.xls;*.xlsx)|*.xls;*.xlsx";
 
@@ -327,11 +335,24 @@ namespace CloverPro
                         sNota = string.Empty;
                         iCant = 0;
 
+                        if (sLine == "MX1APAC15")
+                        {
+                            sLine = sLine;
+                        }
+
                         if (xlRange.Cells[i, 1].Value2 != null)
-                            sTurno = Convert.ToString(xlRange.Cells[i, 1].Value2.ToString());
+                        {
+                            if (int.TryParse(xlRange.Cells[i, 1].Value2.ToString(), out int iTurno))
+                            {
+                                sTurno = Convert.ToString(xlRange.Cells[i, 1].Value2.ToString());
+                            }
+                        }
+                            
+                        
 
                         sRPO = Convert.ToString(xlRange.Cells[i, 3].Value2.ToString());
                         sRPO = sRPO.TrimStart().TrimEnd().ToUpper();
+                        
 
                         sModelo = string.Empty;
                         if (xlRange.Cells[i, 5].Value2 != null)
@@ -346,6 +367,9 @@ namespace CloverPro
                             sNota = Convert.ToString(xlRange.Cells[i, 12].Value2.ToString());
                     }
 
+                    if (String.IsNullOrEmpty(sTurno) || sTurno=="0")
+                        sTurno = "2";
+
                     AgregaDato(sRPO, sModelo, dtFecha, sLine, iCant, sTurno, sNota);
 
                     iCont++;
@@ -359,7 +383,7 @@ namespace CloverPro
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error, Verificar el archivo o el nombre de la hoja" + Environment.NewLine + ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Error,Verificar el archivo o el nombre de la hoja." + Environment.NewLine + ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
         }
@@ -527,7 +551,7 @@ namespace CloverPro
                 catch (Exception ex)
                 {
                     //en caso de haber una excepcion que nos mande un mensaje de error
-                    MessageBox.Show("Error, Verificar el archivo o el nombre de la hoja", ex.Message);
+                    MessageBox.Show("Error,Verificar el archivo o el nombre de la hoja.", ex.Message);
                 }
             }
         }
@@ -932,6 +956,19 @@ namespace CloverPro
         private void chbParcial_CheckedChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void cbbCatalogo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbCatalogo.SelectedValue.ToString() == "R") {
+                chbEdit.Visible = false;
+                chbParcial.Visible = true;
+            }
+            else
+            {
+                chbEdit.Visible = true;
+                chbParcial.Visible = false;
+            }
         }
     }
 }
