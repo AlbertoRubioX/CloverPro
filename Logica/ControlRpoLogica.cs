@@ -49,6 +49,8 @@ namespace Logica
         public int CantGlobal { get; set; }
         public string Supervisor { get; set; }
         public string Nota { get; set; }
+        public string ParteDetenido { get; set; }
+        public double CantDetenido { get; set; }
         public string Usuario { get; set; }
         public string CargaParcial { get; set; }
 
@@ -314,7 +316,7 @@ namespace Logica
                 DateTime dt = DateTime.Now;
                 string sQuery = string.Empty;
                 if (rpo.Almacen == "D")
-                    sQuery = "UPDATE t_rpo_actdet SET almacen = '" + rpo.Almacen + "',alm_nota = '"+rpo.AlmNota+"', u_id = '" + rpo.Usuario + "', f_id = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
+                    sQuery = "UPDATE t_rpo_actdet SET almacen = '" + rpo.Almacen + "',alm_nota = '"+rpo.AlmNota+"',dete_nota = '"+rpo.ParteDetenido+"',dete_cant = "+rpo.CantDetenido+", u_dete = '" + rpo.Usuario + "', f_dete = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
                 else
                     sQuery = "UPDATE t_rpo_actdet SET almacen = '" + rpo.Almacen + "', u_id = '" + rpo.Usuario + "', f_id = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
 

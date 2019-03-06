@@ -97,7 +97,9 @@ namespace Logica
             DataTable datos = new DataTable();
             try
             {
-                datos = AccesoDatos.ConsultarMySql("SELECT * FROM rpo2 WHERE Linea = '" + rpo.Linea + "' and fechaProgramada  = CURDATE() order by Producto ");
+                string sFecha = rpo.Fecha.ToString("yyyy-MM-dd");
+                string sSql = "SELECT * FROM rpo2 WHERE Linea = '" + rpo.Linea + "' and fechaProgramada  = '"+sFecha+"' order by Producto ";
+                datos = AccesoDatos.ConsultarMySql(sSql);
             }
             catch (Exception ex)
             {
