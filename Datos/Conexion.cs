@@ -16,7 +16,7 @@ namespace Datos
         private static void Cadena()
         {
             if (string.IsNullOrEmpty(cadenaConexion))
-                cadenaConexion = "Data Source=mxni3-app-08\\MXNILOCALAPPS;Initial Catalog=cloverprod;Persist Security Info=True;User ID=Sa;Password=Admin.10";
+                cadenaConexion = "Data Source=MEXI1329\\SQLEXPRESS;Initial Catalog=cloverprod;Persist Security Info=True;User ID=sa;Password=saadmin";
         }
         public static string CadenaConexion()
         {

@@ -24,7 +24,6 @@ namespace CloverPro
         private void wfRepEtiquetas_Load(object sender, EventArgs e)
         {
             Inicio();
-            
         }
         private void wfRepEtiquetas_Activated(object sender, EventArgs e)
         {
@@ -151,11 +150,9 @@ namespace CloverPro
 
             if (rbtLineaU.Checked && cbbLineaIni.SelectedIndex == -1)
             {
-                MessageBox.Show("Favor de espeficicar la Linea", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Favor de especificar la Linea", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return bValida;
             }
-
-            
 
             if (chbRPO.Checked && string.IsNullOrEmpty(txtRPO.Text))
             {

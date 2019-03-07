@@ -217,6 +217,20 @@ namespace Logica
             return datos;
         }
 
+        public static DataTable RepEntregaRPODia(ReportesLogica rep)
+        {
+            DataTable datos = new DataTable();
+            try
+            {
+                string[] parametros = { "@FechaIni", "@Turno", "@Planta", "@LineaIni"};
+                datos = AccesoDatos.ConsultaSP("sp_rep_rpoact_entdia", parametros, rep.FechaIni, rep.Turno, rep.Planta, rep.LineaIni);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            return datos;
+        }
         public static DataTable RepGlobalRPO(ReportesLogica rep)
         {
             DataTable datos = new DataTable();

@@ -131,6 +131,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cloverpro.cs">
+      <DependentUpon>Cloverpro.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Cloverpro.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -184,6 +187,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptEmpaqueRPOalm.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptEntregaDiario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEntregaDiario.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\rptEstatusOrdens.cs">
@@ -347,6 +356,12 @@
     </Compile>
     <Compile Include="wfRepEmpaqueProc.Designer.cs">
       <DependentUpon>wfRepEmpaqueProc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepEntregaDiario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepEntregaDiario.Designer.cs">
+      <DependentUpon>wfRepEntregaDiario.cs</DependentUpon>
     </Compile>
     <Compile Include="wfRepGlobalRPO.cs">
       <SubType>Form</SubType>
@@ -737,6 +752,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptEmpaqueRPOalm.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptEntregaDiario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEntregaDiario.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptEstatusOrdens.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptEstatusOrdens.cs</LastGenOutput>
@@ -834,6 +853,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="wfRepEmpaqueProc.resx">
       <DependentUpon>wfRepEmpaqueProc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepEntregaDiario.resx">
+      <DependentUpon>wfRepEntregaDiario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="wfRepGlobalRPO.resx">
       <DependentUpon>wfRepGlobalRPO.cs</DependentUpon>
@@ -1171,22 +1193,22 @@
   <ItemGroup>
     <PublishFile Include="log4net">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

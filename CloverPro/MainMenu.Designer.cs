@@ -71,6 +71,7 @@
             this.mitPRO105 = new System.Windows.Forms.ToolStripMenuItem();
             this.capturaDeLineUpV2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mitPRO090 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mitPRO100 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEMP = new System.Windows.Forms.ToolStripMenuItem();
             this.mitEMP010 = new System.Windows.Forms.ToolStripMenuItem();
             this.mitEMP020 = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +96,7 @@
             this.mitREP100 = new System.Windows.Forms.ToolStripMenuItem();
             this.mitREP110 = new System.Windows.Forms.ToolStripMenuItem();
             this.mitREP120 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mitREP140 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSIS = new System.Windows.Forms.ToolStripMenuItem();
             this.mitSIS010 = new System.Windows.Forms.ToolStripMenuItem();
             this.mitHelp = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,7 +108,6 @@
             this.mitPLA040 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmINV = new System.Windows.Forms.ToolStripMenuItem();
             this.mitINV010 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mitPRO100 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -458,6 +459,13 @@
             this.mitPRO090.Text = "D&uración de Cambios de Modelo";
             this.mitPRO090.Click += new System.EventHandler(this.mitPRO090_Click_1);
             // 
+            // mitPRO100
+            // 
+            this.mitPRO100.Name = "mitPRO100";
+            this.mitPRO100.Size = new System.Drawing.Size(248, 22);
+            this.mitPRO100.Text = "&Simulador Head Count";
+            this.mitPRO100.Click += new System.EventHandler(this.simuladorHeadCountToolStripMenuItem_Click);
+            // 
             // tsmEMP
             // 
             this.tsmEMP.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -558,10 +566,12 @@
             this.mitREP060,
             this.mitREP100,
             this.mitREP110,
-            this.mitREP120});
+            this.mitREP120,
+            this.mitREP140});
             this.tsmREP.Name = "tsmREP";
             this.tsmREP.Size = new System.Drawing.Size(65, 20);
             this.tsmREP.Text = "&Reportes";
+            this.tsmREP.Click += new System.EventHandler(this.tsmREP_Click);
             // 
             // mitREP010
             // 
@@ -646,6 +656,13 @@
             this.mitREP120.Size = new System.Drawing.Size(306, 22);
             this.mitREP120.Text = "Reporte de Ordenes Urgentes - &Empaque";
             this.mitREP120.Click += new System.EventHandler(this.mitREP120_Click);
+            // 
+            // mitREP140
+            // 
+            this.mitREP140.Name = "reporteDeOrdenesDeTrabajoEntregadasToolStripMenuItem";
+            this.mitREP140.Size = new System.Drawing.Size(306, 22);
+            this.mitREP140.Text = "Reporte de Ordenes de Trabajo Entregadas";
+            this.mitREP140.Click += new System.EventHandler(this.mitREP140_Click);
             // 
             // tsmSIS
             // 
@@ -743,13 +760,6 @@
             this.mitINV010.Size = new System.Drawing.Size(152, 22);
             this.mitINV010.Text = "&Conteo Ciclico";
             this.mitINV010.Click += new System.EventHandler(this.mitINV010_Click);
-            // 
-            // mitPRO100
-            // 
-            this.mitPRO100.Name = "mitPRO100";
-            this.mitPRO100.Size = new System.Drawing.Size(248, 22);
-            this.mitPRO100.Text = "&Simulador Head Count";
-            this.mitPRO100.Click += new System.EventHandler(this.simuladorHeadCountToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -856,6 +866,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmINV;
         private System.Windows.Forms.ToolStripMenuItem mitINV010;
         private System.Windows.Forms.ToolStripMenuItem mitPRO100;
+        private System.Windows.Forms.ToolStripMenuItem mitREP140;
     }
 }
 

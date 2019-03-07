@@ -497,6 +497,7 @@ namespace CloverPro
             }
 
         }
+
         private void wfImpresor_Load(object sender, EventArgs e)
         {
 
@@ -539,8 +540,50 @@ namespace CloverPro
             if ((_lsProceso == "REP120"))
                 ReporteGlobalRPO();
 
+            if ((_lsProceso == "REP140"))
+                ReporteEntregaDiarioRPO();
+
             if (_lsProceso == "PRO090")
                 DuracionSetUp();
+        }
+
+        private void ReporteEntregaDiarioRPO() {
+            try
+            {
+                ReportDocument rptDoc = new ReportDocument();
+
+                rptDoc.Load(_lsDirec + @"\Reportes\rptEntregaDiario.rpt");
+
+                ReportesLogica rep = new ReportesLogica();
+
+                rep.FechaIni = _ldtInicio;
+                rep.IndPlanta = _lsIndPlanta;
+                rep.Planta = _lsPlanta;
+                rep.IndLinea = _lsIndLinea;
+                rep.LineaIni = _lsLineaIni;
+                rep.Turno = _lsTurno;
+
+                DataTable dtSource = ReportesLogica.RepEntregaRPODia(rep);
+                rptDoc.SetDataSource(dtSource);
+
+                ////PARAMETROS
+                ParameterFields paramFields = new ParameterFields();
+                ParameterField paramField = new ParameterField();
+                ParameterDiscreteValue discreteVal = new ParameterDiscreteValue();
+                paramField.Name = "pfDesde";
+                discreteVal.Value = _ldtInicio.ToString("dd/MM/yyyy");
+                paramField.CurrentValues.Add(discreteVal);
+                paramFields.Add(paramField);
+
+                
+                crystalReportViewer1.ParameterFieldInfo = paramFields;
+                crystalReportViewer1.ReportSource = rptDoc;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
+            }
         }
 
         private void ReporteGlobalRPO()
@@ -590,6 +633,7 @@ namespace CloverPro
                 Close();
             }
         }
+
         private void ReporteArmadoRPO()
         {
             try
@@ -643,6 +687,7 @@ namespace CloverPro
                 Close();
             }
         }
+
         private void DuracionSetUp()
         {
             try
@@ -694,6 +739,7 @@ namespace CloverPro
                 Close();
             }
         }
+
         private void ReporteEmpaqueComp()
         {
             try
@@ -723,6 +769,7 @@ namespace CloverPro
                 Close();
             }
         }
+
         private void ReporteTransferencias()
         {
             try
@@ -751,6 +798,7 @@ namespace CloverPro
                 Close();
             }
         }
+
         private void ReporteUsuarios()
         {
             try

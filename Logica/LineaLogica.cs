@@ -44,7 +44,24 @@ namespace Logica
             try
             {
                 string sQuery;
-                sQuery = "SELECT linea FROM t_linea order by linea";
+                sQuery = "SELECT linea_nav FROM t_linea WHERE linea_nav is not null and linea_nav > '' order by linea_nav ";
+                datos = AccesoDatos.Consultar(sQuery);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return datos;
+        }
+
+        public static DataTable ListarTodasNav()
+        {
+            DataTable datos = new DataTable();
+            try
+            {
+                string sQuery;
+                sQuery = "SELECT linea_nav FROM t_linea WHERE linea_nav is not null and linea_nav > '' order by linea_nav ";
                 datos = AccesoDatos.Consultar(sQuery);
             }
             catch (Exception ex)

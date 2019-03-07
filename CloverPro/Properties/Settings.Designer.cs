@@ -12,7 +12,7 @@ namespace CloverPro.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,8 +26,8 @@ namespace CloverPro.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=mxni3-app-08\\MXNILOCALAPPS;Initial Catalog=cloverprod;Persist Securit" +
-            "y Info=True;User ID=Sa;Password=Admin.10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MEXI1329\\SQLEXPRESS;Initial Catalog=cloverprod;Persist Security Info=" +
+            "True;User ID=sa;Password=saadmin")]
         public string Cloverprod_Connection {
             get {
                 return ((string)(this["Cloverprod_Connection"]));

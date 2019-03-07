@@ -643,7 +643,12 @@ namespace CloverPro
             wfRepGlobalRPO wfGlobals = new wfRepGlobalRPO();
             wfGlobals.Show();
         }
-
+        
+        private void mitREP140_Click(object sender, EventArgs e)
+        {
+            wfRepEntregaDiario wfRepDiario = new wfRepEntregaDiario();
+            wfRepDiario.Show();
+        }
         #endregion
 
         private void mitEMP030_Click(object sender, EventArgs e)
@@ -709,6 +714,11 @@ namespace CloverPro
         {
             wfLineCapacity wfCapacity = new wfLineCapacity();
             wfCapacity.Show();
+        }
+
+        private void tsmREP_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
