@@ -229,7 +229,7 @@ namespace CloverPro
             if (!Valida())
                 return;
 
-            string sRPO = txtRPO.Text.ToString();
+            string sRPO = txtRPO.Text.ToString().Trim();
             if (!chbNoto.Checked)
             {
                 if (sRPO.IndexOf("RPO") == -1)
@@ -263,8 +263,8 @@ namespace CloverPro
                     else
                         rpo.Linea = cbbOrigen.Text.ToString();
                     rpo.RPO = asRPO;
-                    rpo.Modelo = txtSKU.Text.ToString().ToUpper();
-                    rpo.Cantidad = int.Parse(txtCant.Text.ToString());
+                    rpo.Modelo = txtSKU.Text.ToString().ToUpper().Trim();
+                    rpo.Cantidad = int.Parse(txtCant.Text.ToString().Trim());
                     rpo.Surte = null;
                     rpo.Etiqueta = null;
                     rpo.Almacen = null;

@@ -1,6 +1,6 @@
 ﻿namespace CloverPro
 {
-    partial class wfCapturaPop_1t
+    partial class wfCapturaPop_1det
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCant = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.cbbClave = new System.Windows.Forms.ComboBox();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -43,13 +46,48 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.txtCant);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnAceptar);
             this.panel1.Controls.Add(this.cbbClave);
             this.panel1.Controls.Add(this.txtClave);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(10, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(365, 103);
+            this.panel1.Size = new System.Drawing.Size(365, 273);
             this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(30, 156);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "CANTIDAD :";
+            // 
+            // txtCant
+            // 
+            this.txtCant.BackColor = System.Drawing.Color.White;
+            this.txtCant.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCant.Location = new System.Drawing.Point(34, 179);
+            this.txtCant.MaxLength = 30;
+            this.txtCant.Name = "txtCant";
+            this.txtCant.Size = new System.Drawing.Size(288, 26);
+            this.txtCant.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(30, 92);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "No. PARTE :";
             // 
             // label1
             // 
@@ -57,9 +95,23 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(30, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 20);
+            this.label1.Size = new System.Drawing.Size(87, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Clave:";
+            this.label1.Text = "MOTIVO :";
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.Image = global::CloverPro.Properties.Resources.Selected;
+            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAceptar.Location = new System.Drawing.Point(124, 229);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(100, 30);
+            this.btnAceptar.TabIndex = 3;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // cbbClave
             // 
@@ -73,8 +125,7 @@
             this.cbbClave.Location = new System.Drawing.Point(34, 42);
             this.cbbClave.Name = "cbbClave";
             this.cbbClave.Size = new System.Drawing.Size(299, 28);
-            this.cbbClave.TabIndex = 4;
-            this.cbbClave.Visible = false;
+            this.cbbClave.TabIndex = 0;
             this.cbbClave.DropDown += new System.EventHandler(this.cbbClave_DropDown);
             this.cbbClave.SelectionChangeCommitted += new System.EventHandler(this.cbbClave_SelectionChangeCommitted);
             this.cbbClave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbbClave_KeyDown);
@@ -82,14 +133,14 @@
             // 
             // txtClave
             // 
-            this.txtClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtClave.BackColor = System.Drawing.Color.White;
             this.txtClave.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClave.Location = new System.Drawing.Point(34, 42);
+            this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClave.Location = new System.Drawing.Point(34, 115);
             this.txtClave.MaxLength = 30;
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(288, 32);
-            this.txtClave.TabIndex = 3;
+            this.txtClave.Size = new System.Drawing.Size(288, 26);
+            this.txtClave.TabIndex = 1;
             this.txtClave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClave_KeyDown);
             // 
             // statusStrip1
@@ -97,9 +148,9 @@
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 175);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 288);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(397, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(385, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -111,32 +162,18 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(125, 17);
             this.toolStripStatusLabel1.Text = "Presione ESC para Salir";
             // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptar.Image = global::CloverPro.Properties.Resources.Selected;
-            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(135, 134);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(100, 30);
-            this.btnAceptar.TabIndex = 2;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-            // 
-            // wfCapturaPop_1t
+            // wfCapturaPop_1det
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gold;
-            this.ClientSize = new System.Drawing.Size(397, 197);
+            this.BackColor = System.Drawing.Color.Red;
+            this.ClientSize = new System.Drawing.Size(385, 310);
             this.ControlBox = false;
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.panel1);
-            this.Name = "wfCapturaPop_1t";
+            this.Name = "wfCapturaPop_1det";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Activated += new System.EventHandler(this.wfCapturaPop_1det_Activated);
             this.Load += new System.EventHandler(this.wfCapturaPop_1t_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -156,5 +193,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ComboBox cbbClave;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCant;
+        private System.Windows.Forms.Label label2;
     }
 }

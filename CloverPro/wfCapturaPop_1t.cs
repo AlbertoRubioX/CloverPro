@@ -38,6 +38,8 @@ namespace CloverPro
 
         private void wfCapturaPop_1t_Load(object sender, EventArgs e)
         {
+            this.Height = 161;
+            panel1.Height = 103;
             #region regEmpaque
 
             if (_lsProceso == "EMP050")//GLOBALS
@@ -104,7 +106,7 @@ namespace CloverPro
                     op.Nivel = "MAT";
                     op.Turno = GlobalVar.gsTurno;
                     dtOper = OperadorLogica.ConsultarPuesto(op);
-                    
+
                     cbbClave.DropDownStyle = ComboBoxStyle.DropDown;
                     cbbClave.DroppedDown = true;
                     cbbClave.DataSource = dtOper;
@@ -173,6 +175,8 @@ namespace CloverPro
 
                         if (_sClave == "DETENIDO")
                         {
+                            this.Height = 510;
+
                             label1.Text = "MOTIVO :";
                             /*
                             cbbClave.Visible = false;
@@ -430,6 +434,7 @@ namespace CloverPro
             {
                 if (cbbClave.SelectedIndex == -1)
                     return;
+                
 
                 try
                 {
@@ -484,6 +489,7 @@ namespace CloverPro
                     MessageBox.Show("Favor de Notificar al Administrador" + Environment.NewLine + ex.ToString(), Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
+                
             }
             else
             {
@@ -525,6 +531,7 @@ namespace CloverPro
 
                 if (_lsProceso == "EMP040")
                 {
+                    //cbbClave.SelectedIndex = -1;
                     if(txtClave.Visible == true)
                     {
                         if (string.IsNullOrEmpty(txtClave.Text))
@@ -624,8 +631,25 @@ namespace CloverPro
 
                         if (_sClave == "ALMACENISTA")
                         {
-                            rpo.Surte = cbbClave.SelectedValue.ToString();
-                            ControlRpoLogica.ActualizaSurte(rpo);
+                            //verifica si el cbbclave esta vacio para que no guarde datos no nesesarios.
+                            if (cbbClave.Text == "")
+                                cbbClave.SelectedIndex = -1;
+
+                            if (cbbClave.SelectedIndex == -1)
+                            {
+                                return;
+                                //rpo.Surte = cbbClave.SelectedValue.ToString();
+                                //ControlRpoLogica.ActualizaSurte(rpo);
+                            }
+                            else {
+
+                                //Actualiza y guarda al almacenista asignado  
+                                rpo.Surte = cbbClave.SelectedValue.ToString();
+                                ControlRpoLogica.ActualizaSurte(rpo);
+                                rpo.Almacen = "P";//en proceso
+                                rpo.Usuario = GlobalVar.gsUsuario;
+                                ControlRpoLogica.ActualizaAlma(rpo);
+                            }
                         }
                         
                         Close();

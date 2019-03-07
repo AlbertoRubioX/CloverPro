@@ -326,7 +326,7 @@ namespace CloverPro
             try
             {
                 ControlRpoLogica crpo = new ControlRpoLogica();
-                crpo.Fecha = dtpFecha.Value;
+                crpo.Fecha = dtpFecha.Value; 
                 crpo.Planta = cbbPlanta.SelectedValue.ToString();
                 crpo.Usuario = GlobalVar.gsUsuario;
 
@@ -519,6 +519,15 @@ namespace CloverPro
                 }
 
                 CargarColumnas();
+                if(cbbPrioridad.SelectedIndex != -1 && cbbTipo.SelectedIndex != -1)
+                {
+                    if (cbbPrioridad.SelectedValue.ToString() == "L" && cbbTipo.SelectedValue.ToString() == "P")
+                    {
+                        ListSortDirection direction;
+                        direction = ListSortDirection.Ascending;
+                        dgwEstaciones.Sort(dgwEstaciones.Columns[22], direction);
+                    }
+                }
 
                 Cursor = Cursors.Default;
 
@@ -691,10 +700,11 @@ namespace CloverPro
                 dtNew.Columns.Add("prioridad", typeof(DateTime));//28
                 dtNew.Columns.Add("ind_prio", typeof(string));//29
                 dtNew.Columns.Add("tipo", typeof(string));//30 - tipo de linea [L/P]
-                dtNew.Columns.Add("u_dete", typeof(string));//31
+                dtNew.Columns.Add("f_carga", typeof(DateTime));//31
                 dtNew.Columns.Add("f_dete", typeof(DateTime));//32
-                dtNew.Columns.Add("dete_cant", typeof(int));//33
-                dtNew.Columns.Add("f_carga", typeof(DateTime));//34
+                dtNew.Columns.Add("dete_nota", typeof(string));//33
+                dtNew.Columns.Add("dete_cant", typeof(int));//34
+                dtNew.Columns.Add("u_dete", typeof(string));//35
                 dgwEstaciones.DataSource = dtNew;
             }
             else
@@ -836,8 +846,7 @@ namespace CloverPro
             dgwEstaciones.Columns[32].Visible = false;
             dgwEstaciones.Columns[33].Visible = false;
             dgwEstaciones.Columns[34].Visible = false;
-
-
+            dgwEstaciones.Columns[35].Visible = false;
         }
 
         //ESCANER SOBRE #OPERADOR && LINEA OP
@@ -1042,7 +1051,7 @@ namespace CloverPro
                         return;
                     }                   
                 }
-                
+
                 wfActividEstatusPop ActPop = new wfActividEstatusPop();
                 ActPop._lsProceso = _lsProceso;
                 ActPop._lFolio = lFolio;
@@ -1424,10 +1433,6 @@ namespace CloverPro
                 oWB = oXL.Workbooks.Open(@"\\mxni-fs-01\Temp\wrivera\agonz0\CloverPro\EMPAQUE\RPOEmpaque.xlsx");
                 oSheet = String.IsNullOrEmpty("Sheet1") ? (Microsoft.Office.Interop.Excel._Worksheet)oWB.ActiveSheet : (Microsoft.Office.Interop.Excel._Worksheet)oWB.Worksheets["Sheet1"];
 
-                /*get all record processed*/
-
-
-
                 int iRow = 2;
                 foreach (DataGridViewRow row in dgwEstaciones.Rows)
                 {
@@ -1458,23 +1463,21 @@ namespace CloverPro
                     string sHoraEti = string.Empty;
 
                     //DETENIDOS
-                    string UsDetenido = row.Cells[31].Value.ToString();
+       
+                    DateTime dtfCarga = DateTime.Today;
+                    if (!string.IsNullOrEmpty(row.Cells[31].Value.ToString()))
+                        dtfCarga = Convert.ToDateTime(row.Cells[31].Value.ToString());
+                    string sHoraCarga = string.Empty;
 
                     DateTime dtfDetenido = DateTime.Today;
                     if (!string.IsNullOrEmpty(row.Cells[32].Value.ToString()))
                         dtfDetenido = Convert.ToDateTime(row.Cells[32].Value.ToString());
-                    
-                        
                     string sHoraDetenido = string.Empty;
 
-                    string contDetenido = row.Cells[33].Value.ToString();
-
-                    DateTime dtfCarga = DateTime.Today;
-                    if (!string.IsNullOrEmpty(row.Cells[34].Value.ToString()))
-                        dtfCarga = Convert.ToDateTime(row.Cells[34].Value.ToString());
-                    string sHoraCarga = string.Empty;
-
-
+                    string sItemDetenido = row.Cells[33].Value.ToString();
+                    string contDetenido = row.Cells[34].Value.ToString();
+                    string UsDetenido = row.Cells[35].Value.ToString();
+                    
                     oSheet.Cells[iRow, 1] = dtIngreso;
                     oSheet.Cells[iRow, 2] = sTurno;
                     oSheet.Cells[iRow, 3] = sRPO;
@@ -1510,39 +1513,31 @@ namespace CloverPro
                         oSheet.Cells[iRow, 17] = dtProceti;
                         oSheet.Cells[iRow, 18] = sHoraEti.TrimStart();
                     }
-
-                 
-
                     oSheet.Cells[iRow, 19] = sTurnoProcet;
+
                     //DETENIDOS
-                    oSheet.Cells[iRow, 20] = UsDetenido;
+                    if (!string.IsNullOrEmpty(row.Cells[31].Value.ToString()))
+                    {
+                        sHoraCarga = Convert.ToString(row.Cells[31].Value);
+                        int iPos1 = sHoraCarga.IndexOf(":");
+                        sHoraCarga = sHoraCarga.Substring(iPos1 - 2);
+
+                        oSheet.Cells[iRow, 20] = dtfCarga;
+                        oSheet.Cells[iRow, 21] = sHoraCarga.TrimStart();
+                    }
                     if (!string.IsNullOrEmpty(row.Cells[32].Value.ToString()))
                     {
                         sHoraDetenido = Convert.ToString(row.Cells[32].Value);
                         int iPos1 = sHoraDetenido.IndexOf(":");
                         sHoraDetenido = sHoraDetenido.Substring(iPos1 - 2);
 
-                        oSheet.Cells[iRow, 21] = dtfDetenido;
-                        oSheet.Cells[iRow, 22] = sHoraDetenido.TrimStart();
+                        oSheet.Cells[iRow, 22] = dtfDetenido;
+                        oSheet.Cells[iRow, 23] = sHoraDetenido.TrimStart();
                     }
+                    oSheet.Cells[iRow, 24] = sItemDetenido;
+                    oSheet.Cells[iRow, 25] = contDetenido;
+                    oSheet.Cells[iRow, 26] = UsDetenido;
                     
-                                      
-                    oSheet.Cells[iRow, 23] = contDetenido;
-                    if (!string.IsNullOrEmpty(row.Cells[34].Value.ToString()))
-                    {
-                        sHoraCarga = Convert.ToString(row.Cells[34].Value);
-                        int iPos1 = sHoraCarga.IndexOf(":");
-                        sHoraCarga = sHoraCarga.Substring(iPos1 - 2);
-
-                        oSheet.Cells[iRow, 24] = dtfCarga;
-                        oSheet.Cells[iRow, 25] = sHoraCarga.TrimStart();
-                    }
-                    
-
-
-
-
-
                     iRow++;
                 }
 
@@ -1688,8 +1683,8 @@ namespace CloverPro
         private void btnSort_Click(object sender, EventArgs e)
         {
             ListSortDirection direction;
-            direction = ListSortDirection.Descending;
-            dgwEstaciones.Sort(dgwEstaciones.Columns[13], direction);
+            direction = ListSortDirection.Ascending;
+            dgwEstaciones.Sort(dgwEstaciones.Columns[22], direction);
 
             /*
             if(_lbEti)

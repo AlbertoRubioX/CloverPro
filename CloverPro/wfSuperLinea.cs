@@ -66,7 +66,7 @@ namespace CloverPro
             dgwLineas.Columns.Clear();
             //CargarLineas();
 
-            cbbPlanta.Focus();
+           cbbPlanta.Focus();
         }
 
         private void wfSuperLinea_Activated(object sender, EventArgs e)
@@ -128,19 +128,39 @@ namespace CloverPro
             if (Valida())
             {
 
+                //Verifica Si hay un cambio se resumio en una linea Adrian Was Here!!
+                //if (_lbCambio)
+                //{
+                    //Se asignan los valores de los combobox a las variables.
+                    //string sup = cbbSuper.SelectedValue.ToString();
+                    //string planta = cbbPlanta.SelectedValue.ToString();
+                    //string area = cbbArea.SelectedValue.ToString();
+
+                    //Se manda a llamar la funcion para eliminar los registros con los parametros 
+                    //que se envian
+                    //SuperLineaLogica.Actualizar_Guardar(sup, planta, area);
+
+                //}
+               
+
                 try
-                {
-                    foreach(DataGridViewRow row in dgwLineas.Rows)
+                {   //Se genera una vista de la tabla para recorrelar y poder tomar sus datos
+                    foreach (DataGridViewRow row in dgwLineas.Rows)
                     {
+
                         SuperLineaLogica sup = new SuperLineaLogica();
+
                         sup.Supervisor = cbbSuper.SelectedValue.ToString();
                         sup.Consec = Convert.ToInt16(row.Cells[1].Value.ToString());
                         sup.Planta = row.Cells[2].Value.ToString();
                         sup.Linea = row.Cells[3].Value.ToString();
                         sup.Turno = row.Cells[4].Value.ToString();
                         sup.Area = row.Cells[5].Value.ToString();
+                        // se manda a llamar la funcion para poder guardar los datos.
                         SuperLineaLogica.Guardar(sup);
+
                     }
+                    
                     return true;
                 }
                 catch (Exception ie)
@@ -165,13 +185,13 @@ namespace CloverPro
                 return bValida;
             }
 
-            if(dgwLineas.RowCount == 0)
+            if (dgwLineas.RowCount == 0)
             {
                 MessageBox.Show("No se han cargado Lineas al Supervisor", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgwLineas.Focus();
                 return bValida;
             }
-            
+
             return true;
         }
         #endregion
@@ -180,7 +200,17 @@ namespace CloverPro
         private void btSave_Click(object sender, EventArgs e)
         {
             if (Guardar())
+            {
                 CargarLineas();
+                MessageBox.Show("Su cambio ha sido guardado.",Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                //Se llama a la funcion para refrescar la tabla con los datos actuales de la base de datos.
+                cbbEstacion_SelectionChangeCommitted(cbbSuper.SelectedIndex,e);
+            }
+            else
+            {
+                MessageBox.Show("No hay cambios para guardar",Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void btExit_Click(object sender, EventArgs e)
@@ -266,7 +296,7 @@ namespace CloverPro
             }
         }
         #endregion
-       
+
         #region regCaptura
         private void cbbSuper_Enter(object sender, EventArgs e)
         {
@@ -280,7 +310,7 @@ namespace CloverPro
 
         private void cbbEstacion_KeyDown(object sender, KeyEventArgs e)
         {
-        
+
         }
 
         private void cbbEstacion_SelectionChangeCommitted(object sender, EventArgs e)
@@ -292,10 +322,10 @@ namespace CloverPro
                 dgwLineas.DataSource = datos;
             else
                 dgwLineas.Columns.Clear();
-            
+
             CargarLineas();
         }
-        
+
         private void AgregaLinea(string _asPlanta, string _asLinea, string _asTurno, string _asArea)
         {
             DataTable dt = dgwLineas.DataSource as DataTable;
@@ -315,17 +345,17 @@ namespace CloverPro
 
             wfLineasPta LineP = new wfLineasPta(cbbSuper.SelectedValue.ToString());
             LineP.ShowDialog();
-            if(LineP._dtReturn.Rows.Count > 0)
+            if (LineP._dtReturn.Rows.Count > 0)
             {
                 DataTable dtR = LineP._dtReturn;
-                for(int x = 0; x < dtR.Rows.Count; x ++)
+                for (int x = 0; x < dtR.Rows.Count; x++)
                 {
                     bool bAdd = true;
                     string sPlanta = dtR.Rows[x][2].ToString();
                     string sLinea = dtR.Rows[x][3].ToString();
                     string sTurno = dtR.Rows[x][4].ToString();
                     string sArea = dtR.Rows[x][5].ToString();
-                    foreach(DataGridViewRow row in dgwLineas.Rows)
+                    foreach (DataGridViewRow row in dgwLineas.Rows)
                     {
                         if (sPlanta == row.Cells[2].Value.ToString() && sLinea == row.Cells[3].Value.ToString() && sTurno == row.Cells[4].Value.ToString())
                         {
@@ -334,8 +364,9 @@ namespace CloverPro
                         }
                     }
 
-                    if(bAdd)
-                        AgregaLinea(sPlanta, sLinea,sTurno,sArea);
+                    if (bAdd)
+                        AgregaLinea(sPlanta, sLinea, sTurno, sArea);
+
                 }
             }
         }
@@ -366,7 +397,7 @@ namespace CloverPro
 
         private void cbbTurno_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(cbbPlanta.SelectedIndex != -1 && cbbArea.SelectedIndex != -1)
+            if (cbbPlanta.SelectedIndex != -1 && cbbArea.SelectedIndex != -1)
             {
                 cbbSuper.ResetText();
 
@@ -387,7 +418,7 @@ namespace CloverPro
 
         private void cbbArea_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(cbbPlanta.SelectedIndex != -1)
+            if (cbbPlanta.SelectedIndex != -1)
             {
                 cbbSuper.ResetText();
 
@@ -403,7 +434,7 @@ namespace CloverPro
                 cbbSuper.SelectedIndex = -1;
 
                 dgwLineas.Columns.Clear();
-                
+
             }
         }
 

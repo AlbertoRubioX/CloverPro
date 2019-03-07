@@ -208,6 +208,7 @@
             this.cbbCatalogo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cbbCatalogo.Size = new System.Drawing.Size(121, 21);
             this.cbbCatalogo.TabIndex = 0;
+            this.cbbCatalogo.SelectedIndexChanged += new System.EventHandler(this.cbbCatalogo_SelectedIndexChanged);
             this.cbbCatalogo.SelectionChangeCommitted += new System.EventHandler(this.cbbCatalogo_SelectionChangeCommitted);
             // 
             // label2
