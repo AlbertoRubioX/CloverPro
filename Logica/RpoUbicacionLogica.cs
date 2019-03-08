@@ -11,13 +11,14 @@ namespace Logica
     public class RpoUbicacionLogica
     {
         public string Planta { get; set; }
+        public string Area { get; set; }
         public string Ubicacion { get; set; }
         public string Nota { get; set; }
         public string Usuario { get; set; }
         public static int Guardar(RpoUbicacionLogica ubi)
         {
-            string[] parametros = { "@Planta", "@Ubicacion", "@Nota", "@Usuario" };
-            return AccesoDatos.Actualizar("sp_mant_rpo_ubi", parametros, ubi.Planta, ubi.Ubicacion, ubi.Nota, ubi.Usuario);
+            string[] parametros = { "@Planta", "@Ubicacion","@Area", "@Nota", "@Usuario" };
+            return AccesoDatos.Actualizar("sp_mant_rpo_ubi", parametros, ubi.Planta, ubi.Ubicacion,ubi.Area, ubi.Nota, ubi.Usuario);
         }
 
         public static DataTable Consultar(RpoUbicacionLogica ubi)

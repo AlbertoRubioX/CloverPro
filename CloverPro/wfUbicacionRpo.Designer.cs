@@ -35,6 +35,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btExit = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbbArea = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.cbbUbica = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbbPlanta = new System.Windows.Forms.ComboBox();
@@ -110,6 +112,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cbbArea);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cbbUbica);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.cbbPlanta);
@@ -120,23 +124,44 @@
             this.panel1.Size = new System.Drawing.Size(354, 455);
             this.panel1.TabIndex = 0;
             // 
+            // cbbArea
+            // 
+            this.cbbArea.DropDownWidth = 150;
+            this.cbbArea.FormattingEnabled = true;
+            this.cbbArea.Items.AddRange(new object[] {
+            "Produccion",
+            "Almacen"});
+            this.cbbArea.Location = new System.Drawing.Point(102, 58);
+            this.cbbArea.Name = "cbbArea";
+            this.cbbArea.Size = new System.Drawing.Size(159, 21);
+            this.cbbArea.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(59, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Area:";
+            // 
             // cbbUbica
             // 
             this.cbbUbica.DropDownWidth = 150;
             this.cbbUbica.FormattingEnabled = true;
-            this.cbbUbica.Location = new System.Drawing.Point(102, 62);
+            this.cbbUbica.Location = new System.Drawing.Point(102, 85);
             this.cbbUbica.Name = "cbbUbica";
             this.cbbUbica.Size = new System.Drawing.Size(159, 21);
             this.cbbUbica.TabIndex = 7;
-            this.cbbUbica.SelectionChangeCommitted += new System.EventHandler(this.cbbArea_SelectionChangeCommitted);
-            this.cbbUbica.TextChanged += new System.EventHandler(this.cbbUbica_TextChanged);
+            this.cbbUbica.SelectionChangeCommitted += new System.EventHandler(this.cbbUbica_SelectionChangeCommitted);
             this.cbbUbica.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbbUbica_KeyDown);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(33, 65);
+            this.label4.Location = new System.Drawing.Point(33, 88);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 8;
@@ -231,8 +256,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgwData;
         private System.Windows.Forms.ComboBox cbbUbica;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbbPlanta;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbbArea;
+        private System.Windows.Forms.Label label5;
     }
 }

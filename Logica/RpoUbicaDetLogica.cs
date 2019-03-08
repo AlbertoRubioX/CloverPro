@@ -11,14 +11,15 @@ namespace Logica
     public class RpoUbicaDetLogica
     {
         public string Planta { get; set; }
+        public string Area { get; set; }
         public string Ubicacion { get; set; }
         public string Celda { get; set; }
         public int Config { get; set; }
         public string Usuario { get; set; }
         public static int Guardar(RpoUbicaDetLogica ubi)
         {
-            string[] parametros = { "@Planta", "@Ubicacion", "@Celda", "@Config", "@Usuario" };
-            return AccesoDatos.Actualizar("sp_mant_rpo_ubidet", parametros, ubi.Planta, ubi.Ubicacion, ubi.Celda, ubi.Config, ubi.Usuario);
+            string[] parametros = { "@Planta", "@Ubicacion","@Area", "@Celda", "@Config", "@Usuario" };
+            return AccesoDatos.Actualizar("sp_mant_rpo_ubidet", parametros, ubi.Planta, ubi.Ubicacion,ubi.Area,ubi.Celda, ubi.Config, ubi.Usuario);
         }
 
         public static DataTable Listar(RpoUbicaDetLogica ubi)
@@ -27,7 +28,7 @@ namespace Logica
             try
             {
                 string sQuery;
-                sQuery = "SELECT planta,ubicacion,celda as CELDA,config as CONFIG FROM t_rpo_ubidet where planta = '" + ubi.Planta + "' AND ubicacion = '"+ubi.Ubicacion+"'";
+                sQuery = "SELECT planta,ubicacion,celda as CELDA,config as CONFIG FROM t_rpo_ubidet where planta = '" + ubi.Planta +"'AND area ='"+ubi.Area+ "' AND ubicacion = '"+ubi.Ubicacion+"'";
                 datos = AccesoDatos.Consultar(sQuery);
             }
             catch (Exception ex)
