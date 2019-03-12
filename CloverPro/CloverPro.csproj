@@ -243,6 +243,18 @@
       <DependentUpon>rptOrdenesUrgentes.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\rptRPOArmandoNoArmado.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptRPOArmandoNoArmado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptRPOGrafico.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptRPOGrafico.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\rptSetUpDuraRegid.cs">
       <DependentUpon>rptSetUpDuraRegid.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -374,6 +386,12 @@
     </Compile>
     <Compile Include="wfRepGlobalRPO.Designer.cs">
       <DependentUpon>wfRepGlobalRPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wfRepGraficaRPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfRepGraficaRPO.Designer.cs">
+      <DependentUpon>wfRepGraficaRPO.cs</DependentUpon>
     </Compile>
     <Compile Include="wfVersionPop.cs">
       <SubType>Form</SubType>
@@ -794,6 +812,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptOrdenesUrgentes.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptRPOArmandoNoArmado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptRPOArmandoNoArmado.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptRPOGrafico.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptRPOGrafico.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptSetUpDuraRegid.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptSetUpDuraRegid.cs</LastGenOutput>
@@ -868,6 +894,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="wfRepGlobalRPO.resx">
       <DependentUpon>wfRepGlobalRPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfRepGraficaRPO.resx">
+      <DependentUpon>wfRepGraficaRPO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="wfVersionPop.resx">
       <DependentUpon>wfVersionPop.cs</DependentUpon>
