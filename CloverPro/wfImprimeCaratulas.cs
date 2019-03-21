@@ -97,6 +97,8 @@ namespace CloverPro
             ImprimeCaratulas imprimir = new ImprimeCaratulas();
             imprimir.imprimeRotolos(sColor1, sColor2, diaesp, sRpo, sPlanta, sLinea, sAlma, sModelo, fecha, sCant,tarimas);
             Close();
+            
+            
         }
 
     }

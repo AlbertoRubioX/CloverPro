@@ -11,6 +11,7 @@ namespace Logica
 {
    public class ImprimeCaratulas
     {
+        Thread th;
         public void IESetupFooter()
         {
             string strKey = "Software\\Microsoft\\Internet Explorer\\PageSetup";
@@ -129,7 +130,7 @@ namespace Logica
         public void PrintHelpPage(string web)
         {
             var br = new WebBrowser();
-            var th = new Thread(() =>
+                th = new Thread(() =>
             {
                 br.DocumentCompleted += PrintDocument;
                 br.DocumentText = web;
@@ -147,6 +148,9 @@ namespace Logica
             browser.Print();
             // Dispose the WebBrowser now that the task is complete. 
             browser.Dispose();
+            
+
         }
+       
     }
 }

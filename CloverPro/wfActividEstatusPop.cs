@@ -51,38 +51,40 @@ namespace CloverPro
                     string sEstatus = string.Empty;
                     if (_sArea == "E")
                     {
-                        sEstatus = dt.Rows[0]["etiqueta"].ToString();
-                        if(string.IsNullOrEmpty(sEstatus))
-                        {
-                            btnProcess.Visible = true;
-                            btnProcess.Enabled = true;
-                            btnStoped.Enabled = false;
-                            btnDone.Enabled = false;
-                        }
-                        if (sEstatus == "L")
-                        {
-                            btnDone.Visible = false;
-                            btnProcess.Enabled = false;
-                            btnStoped.Enabled = false;
-                            if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, "EMP04025") == true)
-                                btnComplete.Visible = true;
-                        }
-                        else
-                        {
-                            if (sEstatus == "E")
+                        
+                            sEstatus = dt.Rows[0]["etiqueta"].ToString();
+                            if(string.IsNullOrEmpty(sEstatus))
                             {
+                                btnProcess.Visible = true;
+                                btnProcess.Enabled = true;
+                                btnStoped.Enabled = false;
                                 btnDone.Enabled = false;
+                            }
+                            if (sEstatus == "L")
+                            {
+                                btnDone.Visible = false;
                                 btnProcess.Enabled = false;
                                 btnStoped.Enabled = false;
+                                if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, "EMP04025") == true)
+                                    btnComplete.Visible = true;
                             }
-                        }
-                        if (sEstatus != "P")
-                        {
-                            if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, "EMP04090") == true)
+                            else
                             {
-                                btnProcess.Enabled = true;
+                                if (sEstatus == "E")
+                                {
+                                    btnDone.Enabled = false;
+                                    btnProcess.Enabled = false;
+                                    btnStoped.Enabled = false;
+                                }
                             }
-                        }
+                            if (sEstatus != "P")
+                            {
+                                if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, "EMP04090") == true)
+                                {
+                                    btnProcess.Enabled = true;
+                                }
+                            }
+                        
                     }
                     if(_sArea == "A")
                     {

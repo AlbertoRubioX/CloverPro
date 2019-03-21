@@ -75,7 +75,7 @@ namespace Logica
             DataTable datos = new DataTable();
             try
             {
-                datos = AccesoDatos.Consultar("SELECT planta,ubicacion,celda,ubicacion+'-'+celda as ubica FROM t_rpo_ubidet WHERE planta = '" + ubi.Planta + "'");
+                datos = AccesoDatos.Consultar("SELECT planta,ubicacion,celda,ubicacion+'-'+celda as ubica FROM t_rpo_ubidet WHERE planta = '" + ubi.Planta + "'"+" and " + " area = '" + ubi.Area + "'");
             }
             catch (Exception ex)
             {

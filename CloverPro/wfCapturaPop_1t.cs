@@ -150,6 +150,7 @@ namespace CloverPro
 
                         RpoUbicaDetLogica ubi = new RpoUbicaDetLogica();
                         ubi.Planta = _lsPlanta;
+                        ubi.Area = "PRO";
                         dt = RpoUbicaDetLogica.ConsultaPlanta(ubi);
                         cbbClave.DataSource = dt;
                         cbbClave.DisplayMember = "ubica";
@@ -164,6 +165,7 @@ namespace CloverPro
 
                         RpoUbicaDetLogica ubi = new RpoUbicaDetLogica();
                         ubi.Planta = _lsPlanta;
+                        ubi.Area = "ALM";
                         dt = RpoUbicaDetLogica.ConsultaPlanta(ubi);
                         cbbClave.DataSource = dt;
                         cbbClave.DisplayMember = "ubica";

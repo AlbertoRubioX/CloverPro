@@ -726,5 +726,10 @@ namespace CloverPro
             wfRepGraficaRPO wfGlobals = new wfRepGraficaRPO();
             wfGlobals.Show();
         }
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

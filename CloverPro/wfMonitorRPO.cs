@@ -1113,7 +1113,7 @@ namespace CloverPro
                     }
                     sValor = dgwEstaciones[10, e.RowIndex].Value.ToString();
                     string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
-                    string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString();//Cambios 13 a 15
+                    string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString().Trim();//Cambios 13 a 15
                     if (string.IsNullOrEmpty(sAlm) && string.IsNullOrEmpty(sPrio))
                     {
                         MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1141,7 +1141,7 @@ namespace CloverPro
                     }
                     sValor = dgwEstaciones[13, e.RowIndex].Value.ToString();
                     string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
-                    string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString();
+                    string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString().Trim();
                     if (string.IsNullOrEmpty(sAlm) && string.IsNullOrEmpty(sPrio))
                     {
                         MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
