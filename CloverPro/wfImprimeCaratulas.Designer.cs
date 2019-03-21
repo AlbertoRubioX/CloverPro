@@ -67,6 +67,7 @@
             0,
             0,
             0});
+            this.nud_Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nud_Cantidad_KeyPress);
             // 
             // btn_ImpTarima
             // 

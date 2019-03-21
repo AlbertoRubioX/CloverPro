@@ -101,5 +101,11 @@ namespace CloverPro
             
         }
 
+        private void nud_Cantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter) {
+                btn_ImpTarima_Click(sender, e);
+            }
+        }
     }
 }
