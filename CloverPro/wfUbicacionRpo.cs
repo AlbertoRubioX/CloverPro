@@ -38,7 +38,9 @@ namespace CloverPro
             cbbPlanta.SelectedIndex = -1;
 
             cbbUbica.ResetText();
-           
+
+            cbbArea.SelectedIndex = 0;
+
             dgwData.Columns.Clear();
             CargarLineas();
 
@@ -113,6 +115,10 @@ namespace CloverPro
                 {
                     RpoUbicacionLogica ubi = new RpoUbicacionLogica();
                     ubi.Planta = cbbPlanta.SelectedValue.ToString();
+                    if (cbbArea.SelectedIndex == 0)
+                        ubi.Area = "PRO";
+                    else
+                        ubi.Area = "ALM";
                     ubi.Ubicacion = cbbUbica.Text.ToString().ToUpper();
                     ubi.Nota = string.Empty;
                     ubi.Usuario = GlobalVar.gsUsuario;
@@ -130,6 +136,10 @@ namespace CloverPro
                             RpoUbicaDetLogica rpod = new RpoUbicaDetLogica();
                             rpod.Planta = cbbPlanta.SelectedValue.ToString();
                             rpod.Ubicacion = cbbUbica.Text.ToString().ToUpper();
+                            if (cbbArea.SelectedIndex == 0)
+                                rpod.Area = "PRO";
+                            else
+                                rpod.Area = "ALM";
                             rpod.Celda = row.Cells[2].Value.ToString().ToUpper();
                             int iCant = 0;
                             if (!int.TryParse(row.Cells[3].Value.ToString(), out iCant))
@@ -270,14 +280,16 @@ namespace CloverPro
             dgwData.Columns.Clear();
         }
 
-       
-
-        private void cbbArea_SelectionChangeCommitted(object sender, EventArgs e)
+        private void cbbUbica_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(cbbPlanta.SelectedIndex != -1)
+            if (cbbPlanta.SelectedIndex != -1)
             {
                 RpoUbicaDetLogica rpo = new RpoUbicaDetLogica();
                 rpo.Planta = cbbPlanta.SelectedValue.ToString();
+                if (cbbArea.SelectedIndex == 0)
+                    rpo.Area = "PRO";
+                else
+                    rpo.Area = "ALM";
                 rpo.Ubicacion = cbbUbica.SelectedValue.ToString();
 
                 DataTable datos = RpoUbicaDetLogica.Listar(rpo);
@@ -288,7 +300,7 @@ namespace CloverPro
                     dgwData.Columns.Clear();
 
                 CargarLineas();
-                
+
             }
         }
 
@@ -382,11 +394,6 @@ namespace CloverPro
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void cbbUbica_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

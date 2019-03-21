@@ -52,6 +52,11 @@ namespace CloverPro
         public string _lsIndRegid;
         public string _lsSupervisor;
 
+        //Variables de Reporte de grafico de Armados y no armados
+        public string _tipografico;
+        public string _lsMedido;
+        public DateTime _Fecha;
+
         public wfImpresor()
         {
             InitializeComponent();
@@ -540,6 +545,9 @@ namespace CloverPro
             if ((_lsProceso == "REP120"))
                 ReporteGlobalRPO();
 
+            if ((_lsProceso == "REP130"))
+                ReporteGraficoRPO();
+
             if ((_lsProceso == "REP140"))
                 ReporteEntregaDiarioRPO();
 
@@ -913,5 +921,140 @@ namespace CloverPro
                 Close();
             }
         }
+        private void ReporteGraficoRPO()
+        {
+            try
+            {
+
+                //Titulos que se mostraran en el reporte
+                string titulo_reporte = "";
+                string subTitulo_reporte = "";
+                //Se crea la instancia de reporte para enviar 
+                ReportDocument rptDoc = new ReportDocument();
+                string ruta = "";
+                //Se maneja una instancia de la clase ReportesLogica para manejar los datos
+                ReportesLogica rep = new ReportesLogica();
+                rep.Fecha = _Fecha;
+                rep.Turno = _lsTurno;
+                rep.Planta = _lsPlanta;
+                rep.Medido = _lsMedido;
+                DataTable dtSource = null;
+
+                //De acuerdo al tipo de gráfico se busca la ruta del reporte
+                if (_tipografico == "0")
+                {
+                    //Se busca el reporte de Armados y no Armados
+                    ruta = _lsDirec + @"\Reportes\rptRPOArmandoNoArmado.rpt";
+                    //Se manda a llamar el metodo RPOsArmadosNoArmados donde ejecuta el StoreProcedure enviando como parametro la instancia
+                    //con los datos del reporte
+                    dtSource = ReportesLogica.RPOsArmadosNoArmados(rep);
+
+                    //Si se encontraron datos el metodo devolvera la estructura de datos y se la asignara a la variable dtSource
+                    //Si no, devolvera un null, el cual se valida en la siguiente linea de codigo
+                    //Si la variable no contiene filas de datos, lanza un mensaje y no deja avanzar a la siguiente instrucción
+                    if (dtSource.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se encontró información con los datos soliticados", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.Close();
+                        return;
+                    }
+                    //Esta validación solamente es para cambiar el titulo del reporte, la validación del tipo de gráfico que traera el StoreProcedure
+                    //se realiza desde el query del mismo
+                    if (rep.Medido == "RPO")
+                    {
+                        titulo_reporte = "REPORTE DE RPO'S ARMADOS AL DIA " + rep.Fecha.ToString("dd/MM/yyyy");
+                        if (rep.Turno == "A")
+                            subTitulo_reporte = "Total de RPO's en ambos turnos:";
+                        else
+                            subTitulo_reporte = "Total de RPO's en turno " + rep.Turno + ":";
+
+                    }
+                    else
+                    {
+                        titulo_reporte = "REPORTE DE CANTIDAD DE UNIDADES ARMADAS AL DIA " + rep.Fecha.ToString("dd/MM/yyyy");
+                        if (rep.Turno == "A")
+                            subTitulo_reporte = "Total de unidades en ambos turnos:";
+                        else
+                            subTitulo_reporte = "Total de unidades en turno " + rep.Turno + ":";
+                    }
+
+
+                }
+                //Esta validacion funciona igual que la anterior, los comentarios anteriores se aplican exactamente igual con las siguientes lineas de código
+                if (_tipografico == "1")
+                {
+                    ruta = _lsDirec + @"\Reportes\rptRPOGrafico.rpt";
+                    dtSource = ReportesLogica.detenidosRPOs(rep);
+                    if (dtSource.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se encontró información con los datos soliticados", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.Close();
+                        return;
+                    }
+
+                    if (rep.Medido == "RPO")
+                    {
+                        titulo_reporte = "REPORTE DE RPO'S NO ARMADOS AL DIA " + rep.Fecha.ToString("dd/MM/yyyy");
+                        if (rep.Turno == "A")
+                            subTitulo_reporte = "Total de RPO's en ambos turnos:";
+                        else
+                            subTitulo_reporte = "Total de RPO's en turno " + rep.Turno + ":";
+
+                    }
+                    else
+                    {
+                        titulo_reporte = "REPORTE DE CANTIDAD DE UNIDADES NO ARMADAS AL DIA " + rep.Fecha.ToString("dd/MM/yyyy");
+                        if (rep.Turno == "A")
+                            subTitulo_reporte = "Total de unidades en ambos turnos:";
+                        else
+                            subTitulo_reporte = "Total de unidades en turno " + rep.Turno + ":";
+                    }
+
+                }
+
+                //Se carga la ruta del reporte 
+                rptDoc.Load(ruta);
+                //Se le envia la estructura de datos al mismo reporte
+                rptDoc.SetDataSource(dtSource);
+                //Se inician las instancias necesarias para poder enviar parametros.
+                ParameterFields paramFields = new ParameterFields();
+                ParameterField paramField = new ParameterField();
+                ParameterDiscreteValue discreteVal = new ParameterDiscreteValue();
+                //paramField.Name = "prFecha";
+                //discreteVal.Value = rep.Fecha.ToString().Substring(0, 10);
+                //paramField.CurrentValues.Add(discreteVal);
+                //paramFields.Add(paramField);
+
+                //paramFields = new ParameterFields();
+                //paramField = new ParameterField();
+                //paramField.Name = "prTurno";
+                //discreteVal.Value = rep.Turno.ToString();
+                //paramField.CurrentValues.Add(discreteVal);
+                //paramFields.Add(paramField);
+
+                //paramFields = new ParameterFields();
+                //paramField = new ParameterField();
+                //paramField.Name = "prPlanta";
+                //discreteVal.Value = rep.Planta.ToString();
+                //paramField.CurrentValues.Add(discreteVal);
+                //paramFields.Add(paramField);
+
+                //Se envían los parametros de los títulos asignados con anterioridad para mostrarlos en el reporte.
+                rptDoc.SetParameterValue("prFecha", titulo_reporte);
+                rptDoc.SetParameterValue("prTurno", subTitulo_reporte);
+                //Se mandan los parámetros al reporte
+                crystalReportViewer1.ParameterFieldInfo = paramFields;
+                //Se envía la insnacia del reporte con todos los datos.
+                crystalReportViewer1.ReportSource = rptDoc;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
+            }
+        }
+
     }
 }

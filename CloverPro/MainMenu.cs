@@ -720,5 +720,11 @@ namespace CloverPro
         {
 
         }
+
+        private void reporteDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            wfRepGraficaRPO wfGlobals = new wfRepGraficaRPO();
+            wfGlobals.Show();
+        }
     }
 }

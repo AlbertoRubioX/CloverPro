@@ -37,6 +37,10 @@ namespace Logica
         public string IndEst { get; set; }
         public string Estatus { get; set; }
 
+        //Variables para reporte con grafica
+        public string Medido { get; set; }
+        public DateTime Fecha { get; set; }
+
         public static DataTable Etiquetas(ReportesLogica rep)
         {
             DataTable datos = new DataTable();
@@ -298,6 +302,38 @@ namespace Logica
             {
                 string[] parametros = { "@FechaIni", "@FechaFin", "@IndPlanta", "@Planta", "@IndLinea", "@Linea"};
                 datos = AccesoDatos.ConsultaSP("sp_rep_setup_dura", parametros, rep.FechaIni, rep.FechaFin, rep.IndPlanta, rep.Planta, rep.IndLinea, rep.LineaIni);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return datos;
+        }
+
+        public static DataTable detenidosRPOs(ReportesLogica rep)
+        {
+            DataTable datos = new DataTable();
+            try
+            {
+                string[] parametros = { "@Fecha", "@Planta", "@Turno", "@Medido" };
+                datos = AccesoDatos.ConsultaSP("sp_rep_rpoEst", parametros, rep.Fecha, rep.Planta, rep.Turno, rep.Medido);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return datos;
+        }
+
+        public static DataTable RPOsArmadosNoArmados(ReportesLogica rep)
+        {
+            DataTable datos = new DataTable();
+            try
+            {
+                string[] parametros = { "@Fecha", "@Planta", "@Turno", "@Medido" };
+                datos = AccesoDatos.ConsultaSP("sp_rep_rpoArmaNoArma", parametros, rep.Fecha, rep.Planta, rep.Turno, rep.Medido);
             }
             catch (Exception ex)
             {
