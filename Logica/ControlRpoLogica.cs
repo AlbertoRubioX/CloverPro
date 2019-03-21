@@ -16,6 +16,8 @@ namespace Logica
         public string Surte { get; set; }
         public string Etiqueta { get; set; }
         public string Locacion { get; set; }
+        public string EtiquetaInterna { get; set; }
+        public string LocacionInterna { get; set; }
         public string Almacen { get; set; }
         public string IndPrio { get; set; }
         public string Prioridad { get; set; }
@@ -37,6 +39,7 @@ namespace Logica
         public string Area { get; set; }
         public string WP { get; set; }
         public string EtiNota { get; set; }
+        public string EtIntNota { get; set; }
         public string AlmNota { get; set; }
         public string IndFiltro { get; set; }
         public string Filtro { get; set; }
@@ -293,12 +296,49 @@ namespace Logica
                 return false;
             }
         }
+        public static bool ActualizaEtInt(ControlRpoLogica rpo)
+        {
+            try
+            {
+                DateTime dt = DateTime.Now;
+                string sQuery = string.Empty;
+                if (rpo.EtiquetaInterna == "D")
+                    sQuery = "UPDATE t_rpo_actdet SET etiqueta_interna = '" + rpo.EtiquetaInterna + "',etint_nota = '" + rpo.EtIntNota + "',u_id = '" + rpo.Usuario + "', f_id = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
+                else
+                    sQuery = "UPDATE t_rpo_actdet SET etiqueta_interna = '" + rpo.EtiquetaInterna + "',entrega = '" + rpo.Entrega + "',nombre_oper = '" + rpo.NombreOper + "', u_id = '" + rpo.Usuario + "', f_id = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
+
+                if (AccesoDatos.Borrar(sQuery) != 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public static bool ActualizaLocal(ControlRpoLogica rpo)
         {
             try
             {
                 DateTime dt = DateTime.Now;
                 string sQuery = "UPDATE t_rpo_actdet SET locacion = '" + rpo.Locacion + "' ,u_id = '" + rpo.Usuario + "', f_id = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
+                if (AccesoDatos.Borrar(sQuery) != 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static bool ActualizaLocalInt(ControlRpoLogica rpo)
+        {
+            try
+            {
+                DateTime dt = DateTime.Now;
+                string sQuery = "UPDATE t_rpo_actdet SET locacion_etint = '" + rpo.LocacionInterna + "' ,u_id = '" + rpo.Usuario + "', f_id = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
                 if (AccesoDatos.Borrar(sQuery) != 0)
                     return true;
                 else

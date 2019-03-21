@@ -136,6 +136,7 @@ namespace CloverPro
             Data.Add("P", "Prioridad");
             Data.Add("E", "Etiqueta");
             Data.Add("M", "Almacén");
+            Data.Add("EI", "Etiqueta Interna");// Agregada el dia 13-Marzo-2019
             Data.Add("L", "Tipo Linea");
             Data.Add("A", "Almacenista");
             Data.Add("W", "W.P.");
@@ -449,8 +450,12 @@ namespace CloverPro
                     {
                         rpo.ValorFiltro = cbbTipo.SelectedValue.ToString();
                     }
+                    //rpo.Filtro = sFiltro;
+                    if (sFiltro == "EI")
+                    {
+                        rpo.ValorFiltro = cbbTipo.SelectedValue.ToString();
+                    }
                     rpo.Filtro = sFiltro;
-
                 }
                 else
                 {
@@ -550,9 +555,9 @@ namespace CloverPro
             
             if(e.ColumnIndex >= 4 && e.ColumnIndex <= 15)
             {
-                sValue = dgwEstaciones[29, e.RowIndex].Value.ToString();
-                string sValue2 = dgwEstaciones[19, e.RowIndex].Value.ToString();
-                string sValue3 = dgwEstaciones[18, e.RowIndex].Value.ToString();
+                sValue = dgwEstaciones[31, e.RowIndex].Value.ToString();
+                string sValue2 = dgwEstaciones[21, e.RowIndex].Value.ToString();
+                string sValue3 = dgwEstaciones[20, e.RowIndex].Value.ToString();
                 if (!string.IsNullOrEmpty(sValue) && (sValue == "10" || sValue == "5") && (sValue2 == "E" || sValue2 == "P" || (string.IsNullOrEmpty(sValue3) || sValue3 == "P" || sValue3 == "D" )))
                 {
                     e.CellStyle.BackColor = Color.Red;
@@ -568,9 +573,9 @@ namespace CloverPro
             }
 
             sValue = e.Value.ToString();
-            if (e.ColumnIndex == 10)
+            if (e.ColumnIndex == 10)//ETIQUETAS
             {
-                sValue = dgwEstaciones[17, e.RowIndex].Value.ToString();
+                sValue = dgwEstaciones[19, e.RowIndex].Value.ToString();
                 e.CellStyle.ForeColor = Color.Black;
                 switch (sValue)
                 {
@@ -594,7 +599,7 @@ namespace CloverPro
                 }
                 
             }
-            if (e.ColumnIndex == 11)
+            if (e.ColumnIndex == 11)//UBICACION
             {
                 if (!string.IsNullOrEmpty(sValue))
                 {
@@ -606,9 +611,9 @@ namespace CloverPro
                 }
             }
 
-            if(e.ColumnIndex == 12)
+            if(e.ColumnIndex == 12)//ALMACEN
             {
-                sValue = dgwEstaciones[18, e.RowIndex].Value.ToString();
+                sValue = dgwEstaciones[20, e.RowIndex].Value.ToString();
                 e.CellStyle.ForeColor = Color.Black;
                 switch (sValue)
                 {
@@ -632,7 +637,46 @@ namespace CloverPro
                 }
             }
 
-            if (e.ColumnIndex == 13)
+            if (e.ColumnIndex == 13)//ETIQUETAS INTERNAS
+            {
+                sValue = dgwEstaciones[42, e.RowIndex].Value.ToString();
+                e.CellStyle.ForeColor = Color.Black;
+                switch (sValue)
+                {
+                    case "L":
+                        e.CellStyle.BackColor = Color.LightGreen;
+                        break;
+                    case "P":
+                        e.CellStyle.BackColor = Color.DodgerBlue;
+                        break;
+                    case "D":
+                        e.CellStyle.BackColor = Color.DarkRed;
+                        e.CellStyle.ForeColor = Color.White;
+                        break;
+                    case "E":
+                        e.CellStyle.BackColor = Color.LightGray;
+                        e.CellStyle.ForeColor = Color.Blue;
+                        break;
+                    default:
+                        e.CellStyle.BackColor = Color.WhiteSmoke;
+                        break;
+                }
+
+            }
+
+            if (e.ColumnIndex == 14)//UBICACION INTERNA
+            {
+                if (!string.IsNullOrEmpty(sValue))
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    if (sValue.IndexOf("-") == -1)
+                        e.CellStyle.BackColor = Color.WhiteSmoke;
+                    else
+                        e.CellStyle.BackColor = Color.Yellow;
+                }
+            }
+
+            if (e.ColumnIndex == 15)//Cambio 03-12-2019
             {
                 sValue = dgwEstaciones[29, e.RowIndex].Value.ToString();
                 if (!string.IsNullOrEmpty(sValue) && (sValue == "10" || sValue == "5"))
@@ -682,29 +726,37 @@ namespace CloverPro
                 dtNew.Columns.Add("ETIQUETAS", typeof(string));//10
                 dtNew.Columns.Add("UBICACION", typeof(string));//11
                 dtNew.Columns.Add("ALMACEN", typeof(string));//12
-                dtNew.Columns.Add("PRIORIDAD", typeof(string));//13
-                dtNew.Columns.Add("WP", typeof(string));//14
-                dtNew.Columns.Add("ESTATUS", typeof(string));//15
-                dtNew.Columns.Add("surte", typeof(string));//16
-                dtNew.Columns.Add("etiqueta", typeof(string));//17
-                dtNew.Columns.Add("almacen", typeof(string));//18
-                dtNew.Columns.Add("estatus", typeof(string));//19
-                dtNew.Columns.Add("eti_nota", typeof(string));//20
-                dtNew.Columns.Add("alm_nota", typeof(string));//21
-                dtNew.Columns.Add("f_pro", typeof(DateTime));//22
-                dtNew.Columns.Add("turno_proc", typeof(string));//23
-                dtNew.Columns.Add("entrega", typeof(string));//24
-                dtNew.Columns.Add("nombre_oper", typeof(string));//25
-                dtNew.Columns.Add("f_proceti", typeof(DateTime));//26
-                dtNew.Columns.Add("turno_procet", typeof(string));//27
-                dtNew.Columns.Add("prioridad", typeof(DateTime));//28
-                dtNew.Columns.Add("ind_prio", typeof(string));//29
-                dtNew.Columns.Add("tipo", typeof(string));//30 - tipo de linea [L/P]
-                dtNew.Columns.Add("f_carga", typeof(DateTime));//31
-                dtNew.Columns.Add("f_dete", typeof(DateTime));//32
-                dtNew.Columns.Add("dete_nota", typeof(string));//33
-                dtNew.Columns.Add("dete_cant", typeof(int));//34
-                dtNew.Columns.Add("u_dete", typeof(string));//35
+                dtNew.Columns.Add("ETIQUETA INTERNA", typeof(string));//13 Agregadas Etint
+                dtNew.Columns.Add("UBI INTERNA", typeof(string));//14 Agregadas Etint
+                dtNew.Columns.Add("PRIORIDAD", typeof(string));//15
+                dtNew.Columns.Add("WP", typeof(string));//16
+                dtNew.Columns.Add("ESTATUS", typeof(string));//17
+                dtNew.Columns.Add("surte", typeof(string));//18
+                dtNew.Columns.Add("etiqueta", typeof(string));//19
+                dtNew.Columns.Add("almacen", typeof(string));//20
+                dtNew.Columns.Add("estatus", typeof(string));//21
+                dtNew.Columns.Add("eti_nota", typeof(string));//22
+                dtNew.Columns.Add("alm_nota", typeof(string));//23
+                dtNew.Columns.Add("f_pro", typeof(DateTime));//24
+                dtNew.Columns.Add("turno_proc", typeof(string));//25
+                dtNew.Columns.Add("entrega", typeof(string));//26
+                dtNew.Columns.Add("nombre_oper", typeof(string));//27
+                dtNew.Columns.Add("f_proceti", typeof(DateTime));//28
+                dtNew.Columns.Add("turno_procet", typeof(string));//29
+                dtNew.Columns.Add("prioridad", typeof(DateTime));//30
+                dtNew.Columns.Add("ind_prio", typeof(string));//31
+                dtNew.Columns.Add("tipo", typeof(string));//32 - tipo de linea [L/P]
+                dtNew.Columns.Add("f_carga", typeof(DateTime));//33
+                dtNew.Columns.Add("f_dete", typeof(DateTime));//34
+                dtNew.Columns.Add("dete_nota", typeof(string));//35
+                dtNew.Columns.Add("dete_cant", typeof(int));//36
+                dtNew.Columns.Add("u_dete", typeof(string));//37
+                dtNew.Columns.Add("turno_etint", typeof(string));//38
+                dtNew.Columns.Add("f_pro_etint", typeof(DateTime));//39
+                dtNew.Columns.Add("etint_nota", typeof(string));//40
+                dtNew.Columns.Add("f_entrega_etint", typeof(DateTime));//41
+                dtNew.Columns.Add("etiqueta_interna", typeof(DateTime));//42
+
                 dgwEstaciones.DataSource = dtNew;
             }
             else
@@ -727,23 +779,23 @@ namespace CloverPro
                         //cbbTurno.Enabled = false;
                     }
 
-                    if (row.Cells[0].Value != null && row.Cells[24].Value != null)
+                    if (row.Cells[0].Value != null && row.Cells[26].Value != null)// CAMBIO DE CELDA 24 A CELDA 26
                     {
-                        string sInd = Convert.ToString(row.Cells[24].Value);
+                        string sInd = Convert.ToString(row.Cells[26].Value);
                         if (!string.IsNullOrEmpty(sInd))
                         {
-                            string sEntrega = Convert.ToString(row.Cells[25].Value);
+                            string sEntrega = Convert.ToString(row.Cells[27].Value);//CAMBIO CELDA 25 A 27
                             row.Cells[11].Value = sEntrega;
                         }
                     }
 
-                    if (row.Cells[0].Value != null && row.Cells[20].Value != null)
+                    if (row.Cells[0].Value != null && row.Cells[24].Value != null)// cambio 22 a 24
                     {
                         //NOTA DEL ESTATUS DETENIDO DE ETIQUETAS
                         string sInd = Convert.ToString(row.Cells[10].Value);
                         if (sInd == "DETENIDO")
                         {
-                            string sNota = Convert.ToString(row.Cells[20].Value);
+                            string sNota = Convert.ToString(row.Cells[24].Value);//22 a 24
                             if(!string.IsNullOrEmpty(sNota))
                             {
                                 switch(sNota)
@@ -778,13 +830,13 @@ namespace CloverPro
                         }
                     }
 
-                    if (row.Cells[0].Value != null && row.Cells[21].Value != null)
+                    if (row.Cells[0].Value != null && row.Cells[25].Value != null)//23 a 25
                     {
                         //NOTA DEL ESTATUS DETENIDO DE ETIQUETAS
                         string sInd = Convert.ToString(row.Cells[12].Value);
                         if (sInd == "DETENIDO")
                         {
-                            string sNota = Convert.ToString(row.Cells[21].Value);
+                            string sNota = Convert.ToString(row.Cells[25].Value);//23 a 25
                             if (!string.IsNullOrEmpty(sNota))
                             {
                                 switch (sNota)
@@ -828,7 +880,6 @@ namespace CloverPro
             dgwEstaciones.Columns[2].Visible = false;
             dgwEstaciones.Columns[3].Visible = false;
             dgwEstaciones.Columns[16].Visible = false;
-            dgwEstaciones.Columns[17].Visible = false;
             dgwEstaciones.Columns[18].Visible = false;
             dgwEstaciones.Columns[19].Visible = false;
             dgwEstaciones.Columns[20].Visible = false;
@@ -847,6 +898,14 @@ namespace CloverPro
             dgwEstaciones.Columns[33].Visible = false;
             dgwEstaciones.Columns[34].Visible = false;
             dgwEstaciones.Columns[35].Visible = false;
+            dgwEstaciones.Columns[36].Visible = false;
+            dgwEstaciones.Columns[37].Visible = false;
+            dgwEstaciones.Columns[38].Visible = false;
+            dgwEstaciones.Columns[39].Visible = false;
+            dgwEstaciones.Columns[40].Visible = false;
+            dgwEstaciones.Columns[41].Visible = false;
+            dgwEstaciones.Columns[42].Visible = false;
+
         }
 
         //ESCANER SOBRE #OPERADOR && LINEA OP
@@ -855,7 +914,7 @@ namespace CloverPro
             dgwEstaciones.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgwEstaciones.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
 
-            dgwEstaciones.Columns[4].Width = ColumnWith(dgwEstaciones, 3);//TURNO
+            dgwEstaciones.Columns[4].Width = ColumnWith(dgwEstaciones, 4);//TURNO
             dgwEstaciones.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[4].ReadOnly = true;
@@ -899,20 +958,26 @@ namespace CloverPro
             dgwEstaciones.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[12].ReadOnly = true;
 
-            dgwEstaciones.Columns[13].Width = ColumnWith(dgwEstaciones, 6);//PRIORIDAD
+            dgwEstaciones.Columns[13].Width = ColumnWith(dgwEstaciones, 6);//ETIQUETA INTERNA
             dgwEstaciones.Columns[13].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[13].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[13].ReadOnly = true;
 
-            dgwEstaciones.Columns[14].Width = ColumnWith(dgwEstaciones, 6);//WP
+            dgwEstaciones.Columns[14].Width = ColumnWith(dgwEstaciones, 8);//LOCACION INTERNA
             dgwEstaciones.Columns[14].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[14].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[14].ReadOnly = true;
 
-            dgwEstaciones.Columns[15].Width = ColumnWith(dgwEstaciones, 8);//ESTATUS
+            dgwEstaciones.Columns[15].Width = ColumnWith(dgwEstaciones, 6);//PRIORIDAD
             dgwEstaciones.Columns[15].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[15].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[15].ReadOnly = true;
+
+
+            dgwEstaciones.Columns[17].Width = ColumnWith(dgwEstaciones, 8);//ESTATUS
+            dgwEstaciones.Columns[17].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgwEstaciones.Columns[17].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgwEstaciones.Columns[17].ReadOnly = true;
         }
         private void dgwEstaciones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -921,6 +986,27 @@ namespace CloverPro
 
             if (e.RowIndex == -1)
                 return;
+
+            if(e.ColumnIndex == 5)
+            {
+                //string sRpo = dgwEstaciones[5, e.RowIndex].Value.ToString();
+                //string sPlanta = cbbPlanta.SelectedValue.ToString();
+                //string sLinea = dgwEstaciones[6, e.RowIndex].Value.ToString();
+                //string sAlma = dgwEstaciones[9, e.RowIndex].Value.ToString();
+                //string sModelo = dgwEstaciones[8, e.RowIndex].Value.ToString();
+                //string sCant = dgwEstaciones[7, e.RowIndex].Value.ToString();
+
+                wfImprimeCaratulas ImpCaratula = new wfImprimeCaratulas();
+                ImpCaratula.sRpo = dgwEstaciones[5, e.RowIndex].Value.ToString();
+                ImpCaratula.sPlanta = cbbPlanta.SelectedValue.ToString();
+                ImpCaratula.sLinea = dgwEstaciones[6, e.RowIndex].Value.ToString();
+                ImpCaratula.sAlma = dgwEstaciones[9, e.RowIndex].Value.ToString();
+                ImpCaratula.sModelo = dgwEstaciones[8, e.RowIndex].Value.ToString();
+                ImpCaratula.sCant= dgwEstaciones[7, e.RowIndex].Value.ToString();
+                ImpCaratula.sPrioridad = dgwEstaciones[15, e.RowIndex].Value.ToString();
+
+                ImpCaratula.ShowDialog();
+            }
 
             if (e.ColumnIndex == 9) //ALMACENISTA
             {
@@ -970,7 +1056,7 @@ namespace CloverPro
                 int iCons = int.Parse(dgwEstaciones[1, e.RowIndex].Value.ToString());
                 string sArea = string.Empty;
 
-                string sEti = dgwEstaciones[17, e.RowIndex].Value.ToString();
+                string sEti = dgwEstaciones[19, e.RowIndex].Value.ToString();
                 if (string.IsNullOrEmpty(sEti) || sEti != "L")
                     return;
                 
@@ -982,13 +1068,38 @@ namespace CloverPro
                 CapPop._sClave = "UBICACION";
                 CapPop.ShowDialog();
             }
-            
-            if (e.ColumnIndex == 10 || e.ColumnIndex == 12) //actividades-PRIORIDAD
+
+            if (e.ColumnIndex == 14)//UBICACION INTERNA
+            {
+                if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "70") == false)
+                {
+                    MessageBox.Show("Se requieren permisos para realizar la acción", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                long lFolio = long.Parse(dgwEstaciones[0, e.RowIndex].Value.ToString());
+                int iCons = int.Parse(dgwEstaciones[1, e.RowIndex].Value.ToString());
+                string sArea = string.Empty;
+
+                string sEtInt = dgwEstaciones[42, e.RowIndex].Value.ToString();
+                if (string.IsNullOrEmpty(sEtInt) || sEtInt != "L")
+                    return;
+
+                wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
+                CapPop._lsProceso = _lsProceso;
+                CapPop._llFolio = lFolio;
+                CapPop._liConsec = iCons;
+                CapPop._lsPlanta = "EMPN";
+                CapPop._sClave = "UBICACION INTERNA";
+                CapPop.ShowDialog();
+            }
+
+            if (e.ColumnIndex == 10 || e.ColumnIndex == 12 || e.ColumnIndex == 13) //actividades-PRIORIDAD
             {
                 long lFolio = long.Parse(dgwEstaciones[0, e.RowIndex].Value.ToString());
                 int iCons = int.Parse(dgwEstaciones[1, e.RowIndex].Value.ToString());
                 string sLinea = dgwEstaciones[6, e.RowIndex].Value.ToString();
-                string sPrioridad = dgwEstaciones[28, e.RowIndex].Value.ToString();
+                string sPrioridad = dgwEstaciones[30, e.RowIndex].Value.ToString();
                 
                 string sArea = string.Empty;
                 string sValor = string.Empty;
@@ -1002,7 +1113,7 @@ namespace CloverPro
                     }
                     sValor = dgwEstaciones[10, e.RowIndex].Value.ToString();
                     string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
-                    string sPrio = dgwEstaciones[13, e.RowIndex].Value.ToString();
+                    string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString();//Cambios 13 a 15
                     if (string.IsNullOrEmpty(sAlm) && string.IsNullOrEmpty(sPrio))
                     {
                         MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1021,11 +1132,31 @@ namespace CloverPro
                     sValor = dgwEstaciones[12, e.RowIndex].Value.ToString();
                     
                 }
+                if (e.ColumnIndex == 13)//ETIQUETAS INTERNAS
+                {
+                    if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "33") == false && GlobalVar.gsArea != "L" && GlobalVar.gsArea != "P")
+                    {
+                        MessageBox.Show("Se requieren permisos para realizar la acción", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                    sValor = dgwEstaciones[13, e.RowIndex].Value.ToString();
+                    string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
+                    string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString();
+                    if (string.IsNullOrEmpty(sAlm) && string.IsNullOrEmpty(sPrio))
+                    {
+                        MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                }
+
+               
 
                 if (e.ColumnIndex == 10)
                     sArea = "ETI";
                 if (e.ColumnIndex == 12)
                     sArea = "ALM";
+                if (e.ColumnIndex == 13)
+                    sArea = "ETINT";
 
                 /*VALIDA LA SECUENCIA DE RPO PARA ARMAR POR TURNO*/
                 ControlRpoLogica rpo = new ControlRpoLogica();
@@ -1060,14 +1191,17 @@ namespace CloverPro
                 
                 if (e.ColumnIndex == 10)
                     ActPop._sArea = "E";
-                else
+                if (e.ColumnIndex==12)
                     ActPop._sArea = "A";
+                if (e.ColumnIndex == 13)
+                    ActPop._sArea = "EI";
+
                 ActPop.ShowDialog();
 
                
             }
 
-            if (e.ColumnIndex == 13) //prioridad
+            if (e.ColumnIndex == 15) //prioridad
             {
                 
                 if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "40") == false)
@@ -1095,7 +1229,7 @@ namespace CloverPro
                     MessageBox.Show("Favor de Notificar al Administrador" + Environment.NewLine + ex.ToString(), "ERROR en " + Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            if (e.ColumnIndex == 14)//WP
+           /* if (e.ColumnIndex == 14)//WP
             {
 
                 //string sEst = dgwEstaciones[16, e.RowIndex].Value.ToString();
@@ -1135,7 +1269,7 @@ namespace CloverPro
                 {
                     MessageBox.Show("Favor de Notificar al Administrador" + Environment.NewLine + ex.ToString(), "ERROR en " + Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-            }
+            }*/
             if (e.ColumnIndex >= 9 || e.ColumnIndex <= 14)
             {
                 CargarDetalle("0");
@@ -1653,6 +1787,19 @@ namespace CloverPro
                 Dictionary<string, string> Data2 = new Dictionary<string, string>();
                 Data2.Add("1", "1");
                 Data2.Add("2", "2");
+                cbbTipo.DataSource = new BindingSource(Data2, null);
+                cbbTipo.DisplayMember = "Value";
+                cbbTipo.ValueMember = "Key";
+                cbbTipo.SelectedIndex = -1;
+            }
+
+            if (cbbPrioridad.SelectedValue.ToString() == "EI")
+            {
+                Dictionary<string, string> Data2 = new Dictionary<string, string>();
+                Data2.Add("P", "Proceso");
+                Data2.Add("D", "Detenido");
+                Data2.Add("L", "Listo");
+                Data2.Add("E", "Entregado");
                 cbbTipo.DataSource = new BindingSource(Data2, null);
                 cbbTipo.DisplayMember = "Value";
                 cbbTipo.ValueMember = "Key";

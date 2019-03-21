@@ -84,7 +84,7 @@ namespace CloverPro
                             }
                         }
                     }
-                    else
+                    if(_sArea == "A")
                     {
                         sEstatus = dt.Rows[0]["almacen"].ToString(); //almacen
                         if (string.IsNullOrEmpty(sEstatus))
@@ -112,7 +112,44 @@ namespace CloverPro
                             }
                         }
                     }
-                        
+
+                    if (_sArea == "EI") // ETIQUETAS INTERNAS
+                    {
+                        sEstatus = dt.Rows[0]["etiqueta_interna"].ToString();
+                        if (string.IsNullOrEmpty(sEstatus))
+                        {
+                            btnProcess.Visible = true;
+                            btnProcess.Enabled = true;
+                            btnStoped.Enabled = false;
+                            btnDone.Enabled = false;
+                        }
+                        if (sEstatus == "L")
+                        {
+                            btnDone.Visible = false;
+                            btnProcess.Enabled = false;
+                            btnStoped.Enabled = false;
+                            if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, "EMP04034") == true)
+                                btnComplete.Visible = true;
+                        }
+                        else
+                        {
+                            if (sEstatus == "E")
+                            {
+                                btnDone.Enabled = false;
+                                btnProcess.Enabled = false;
+                                btnStoped.Enabled = false;
+                            }
+                        }
+                        if (sEstatus != "P")
+                        {
+                            if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, "EMP040100") == true)
+                            {
+                                btnProcess.Enabled = true;
+                            }
+                        }
+                    }//FIN ETIQUETAS INTERNAS
+
+
 
                     if (sEstatus == "C")
                         Close();
@@ -429,8 +466,15 @@ namespace CloverPro
                     ControlRpoLogica.ActualizaEti(rpo);
 
                 }
-                else
+                if (_sArea == "EI")
                 {
+                    rpo.EtiquetaInterna = "L";//LISTO
+                    rpo.Usuario = GlobalVar.gsUsuario;
+                    ControlRpoLogica.ActualizaEtInt(rpo);
+                }
+
+                if (_sArea == "A")
+                    {
                     rpo.Almacen = "L";
                     rpo.Usuario = GlobalVar.gsUsuario;
                     ControlRpoLogica.ActualizaAlma(rpo);
@@ -462,7 +506,13 @@ namespace CloverPro
                     rpo.Usuario = GlobalVar.gsUsuario;
                     ControlRpoLogica.ActualizaEti(rpo);
                 }
-                else
+                if (_sArea == "EI")
+                {
+                    rpo.EtiquetaInterna = "P";//en proceso
+                    rpo.Usuario = GlobalVar.gsUsuario;
+                    ControlRpoLogica.ActualizaEtInt(rpo);
+                }
+                if (_sArea == "A")
                 {
                     //rpo.Almacen = "P";//en proceso
                     //rpo.Usuario = GlobalVar.gsUsuario;
@@ -519,7 +569,26 @@ namespace CloverPro
 
                     ControlRpoLogica.ActualizaEti(rpo);
                 }
-                else
+                if (_sArea == "EI")
+                {
+                    rpo.EtiquetaInterna = "D";//detenido
+
+                    wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
+                    CapPop._lsProceso = _lsProceso;
+                    CapPop._llFolio = _lFolio;
+                    CapPop._liConsec = _iConsec;
+                    CapPop._lsPlanta = "EMPN";
+                    CapPop._sClave = "DETENIDO";
+                    CapPop._lsArea = _sArea;
+                    CapPop._lsTipo = _sTipo;
+                    CapPop.ShowDialog();
+
+                    if (!string.IsNullOrEmpty(CapPop._sClave))
+                        rpo.EtIntNota = CapPop._sClave;
+
+                    ControlRpoLogica.ActualizaEtInt(rpo);
+                }
+                if (_sArea == "A")
                 {
 
                     DataTable dt = ControlRpoLogica.Consultar(rpo);
@@ -617,7 +686,47 @@ namespace CloverPro
                     //1.1.1.74 GGUILLEN
                     ControlRpoLogica.ActualizaAlma(rpo);
                 }
-               
+                if (_sArea == "EI")
+                {
+                    //DataTable dt = ControlRpoLogica.Consultar(rpo);
+                    //string sAlm = dt.Rows[0]["almacen"].ToString();
+                    //if (sAlm != "L")
+                    //{
+                    //    MessageBox.Show("No puede entregar etiquetas debido a que Almacen tiene estatus LISTO", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    return;
+                    //}
+
+                    wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
+                    CapPop._lsProceso = _lsProceso;
+                    CapPop._llFolio = _lFolio;
+                    CapPop._liConsec = _iConsec;
+                    CapPop._lsPlanta = "EMPN";
+                    CapPop._sClave = "ENTREGA";
+                    CapPop.ShowDialog();
+
+                    if (string.IsNullOrEmpty(CapPop._sClave))
+                    {
+                        MessageBox.Show("Favor de registrar el materialista que recibe las etiquetas", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                    rpo.EtiquetaInterna = "E";//ENTREGADO -> LIBERA LOCACION
+                    rpo.Almacen = "L";
+                    int iPos = CapPop._sClave.IndexOf(":");
+                    if (iPos == -1)//TRIGGER GET NAME
+                        rpo.Entrega = CapPop._sClave; // MATERIALISTA QUE RECIBE LA ETIQUETA
+                    else
+                    {//GET DATA FROM TRESS
+                        string sClave = CapPop._sClave.Substring(0, iPos);
+                        string sNombre = CapPop._sClave.Substring(iPos + 1);
+                        rpo.Entrega = sClave;
+                        rpo.NombreOper = sNombre;
+                    }
+                    ControlRpoLogica.ActualizaEtInt(rpo);
+                    //1.1.1.74 GGUILLEN
+                    ControlRpoLogica.ActualizaAlma(rpo);
+                }
+
             }
             catch (Exception ex)
             {

@@ -156,6 +156,20 @@ namespace CloverPro
                         cbbClave.ValueMember = "ubica";
                         cbbClave.SelectedIndex = -1;
                     }
+                    if (_sClave == "UBICACION INTERNA")//pRUEBA
+                    {
+                        txtClave.Visible = false;
+                        cbbClave.Visible = true;
+                        label1.Text = "UBICACION :";
+
+                        RpoUbicaDetLogica ubi = new RpoUbicaDetLogica();
+                        ubi.Planta = _lsPlanta;
+                        dt = RpoUbicaDetLogica.ConsultaPlanta(ubi);
+                        cbbClave.DataSource = dt;
+                        cbbClave.DisplayMember = "ubica";
+                        cbbClave.ValueMember = "ubica";
+                        cbbClave.SelectedIndex = -1;
+                    }//
                     else
                     {
                         if (_sClave == "WP")
@@ -482,7 +496,41 @@ namespace CloverPro
                         ControlRpoLogica.ActualizaLocal(rpo);
                         Close();
                     }
-                    
+
+                    if (_sClave == "UBICACION INTERNA")
+                    {
+                        string sUbi = cbbClave.SelectedValue.ToString();
+                        string sCelda = sUbi.Substring(3);//01-G
+                        sUbi = sUbi.Substring(0, 2);
+
+                        RpoUbicaDetLogica ubi = new RpoUbicaDetLogica();
+                        ubi.Planta = _lsPlanta;
+                        ubi.Ubicacion = sUbi;
+                        ubi.Celda = sCelda;
+
+                        ControlRpoLogica rpo = new ControlRpoLogica();
+                        rpo.Folio = _llFolio;
+                        rpo.Planta = _lsPlanta;
+                        rpo.Locacion = cbbClave.SelectedValue.ToString();
+                        DataTable dt = ControlRpoLogica.ConsultarDisp(rpo);
+                        if (dt.Rows.Count != 0)
+                        {
+                            DialogResult Result = MessageBox.Show("La ubicación seleccionada no cuenta con espacion disponible en el sistema" + Environment.NewLine + "Desea agregarla a la Ubicación?", Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (Result == DialogResult.No)
+                            {
+                                cbbClave.SelectedIndex = -1;
+                                cbbClave.Focus();
+                                return;
+                            }
+                        }
+
+                        rpo.Consec = _liConsec;
+                        rpo.LocacionInterna = cbbClave.SelectedValue.ToString();
+                        rpo.Usuario = GlobalVar.gsUsuario;
+                        ControlRpoLogica.ActualizaLocalInt(rpo);
+                        Close();
+                    }
+
                 }
                 catch(Exception ex)
                 {

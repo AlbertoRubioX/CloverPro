@@ -34,12 +34,12 @@
             this.txtNota = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnEspera = new System.Windows.Forms.Button();
-            this.btnDone = new System.Windows.Forms.Button();
-            this.btnFinish = new System.Windows.Forms.Button();
-            this.btnAsignar = new System.Windows.Forms.Button();
             this.btnProcess = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnComplete = new System.Windows.Forms.Button();
+            this.btnDone = new System.Windows.Forms.Button();
+            this.btnFinish = new System.Windows.Forms.Button();
+            this.btnAsignar = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
@@ -161,6 +161,74 @@
             this.btnEspera.Visible = false;
             this.btnEspera.Click += new System.EventHandler(this.btnEspera_Click);
             // 
+            // btnProcess
+            // 
+            this.btnProcess.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnProcess.BackgroundImage = global::CloverPro.Properties.Resources.if_Process_Info;
+            this.btnProcess.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnProcess.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProcess.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnProcess.FlatAppearance.BorderSize = 2;
+            this.btnProcess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProcess.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcess.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProcess.Location = new System.Drawing.Point(27, 35);
+            this.btnProcess.Name = "btnProcess";
+            this.btnProcess.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.btnProcess.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnProcess.Size = new System.Drawing.Size(185, 113);
+            this.btnProcess.TabIndex = 12;
+            this.btnProcess.Text = "EN PROCESO";
+            this.btnProcess.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnProcess.UseVisualStyleBackColor = false;
+            this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnExit.FlatAppearance.BorderSize = 2;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Calibri", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExit.Location = new System.Drawing.Point(27, 35);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnExit.Size = new System.Drawing.Size(185, 113);
+            this.btnExit.TabIndex = 2;
+            this.btnExit.Text = "N / A";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnComplete
+            // 
+            this.btnComplete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnComplete.BackgroundImage = global::CloverPro.Properties.Resources.if_complete;
+            this.btnComplete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnComplete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnComplete.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnComplete.FlatAppearance.BorderSize = 2;
+            this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComplete.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComplete.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnComplete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnComplete.Location = new System.Drawing.Point(433, 34);
+            this.btnComplete.Name = "btnComplete";
+            this.btnComplete.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.btnComplete.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnComplete.Size = new System.Drawing.Size(185, 113);
+            this.btnComplete.TabIndex = 14;
+            this.btnComplete.Text = "ENTREGADO";
+            this.btnComplete.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnComplete.UseVisualStyleBackColor = false;
+            this.btnComplete.Visible = false;
+            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
+            // 
             // btnDone
             // 
             this.btnDone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -230,74 +298,6 @@
             this.btnAsignar.UseVisualStyleBackColor = false;
             this.btnAsignar.Visible = false;
             this.btnAsignar.Click += new System.EventHandler(this.btnAsignar_Click);
-            // 
-            // btnProcess
-            // 
-            this.btnProcess.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnProcess.BackgroundImage = global::CloverPro.Properties.Resources.if_Process_Info;
-            this.btnProcess.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnProcess.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnProcess.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnProcess.FlatAppearance.BorderSize = 2;
-            this.btnProcess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProcess.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcess.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProcess.Location = new System.Drawing.Point(27, 35);
-            this.btnProcess.Name = "btnProcess";
-            this.btnProcess.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.btnProcess.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnProcess.Size = new System.Drawing.Size(185, 113);
-            this.btnProcess.TabIndex = 12;
-            this.btnProcess.Text = "EN PROCESO";
-            this.btnProcess.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnProcess.UseVisualStyleBackColor = false;
-            this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnExit.FlatAppearance.BorderSize = 2;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Calibri", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExit.Location = new System.Drawing.Point(27, 35);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnExit.Size = new System.Drawing.Size(185, 113);
-            this.btnExit.TabIndex = 2;
-            this.btnExit.Text = "N / A";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnComplete
-            // 
-            this.btnComplete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnComplete.BackgroundImage = global::CloverPro.Properties.Resources.if_complete;
-            this.btnComplete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnComplete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnComplete.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.btnComplete.FlatAppearance.BorderSize = 2;
-            this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnComplete.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComplete.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnComplete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnComplete.Location = new System.Drawing.Point(433, 35);
-            this.btnComplete.Name = "btnComplete";
-            this.btnComplete.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.btnComplete.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnComplete.Size = new System.Drawing.Size(185, 113);
-            this.btnComplete.TabIndex = 14;
-            this.btnComplete.Text = "ENTREGADO";
-            this.btnComplete.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnComplete.UseVisualStyleBackColor = false;
-            this.btnComplete.Visible = false;
-            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
             // 
             // statusStrip1
             // 

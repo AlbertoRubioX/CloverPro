@@ -333,6 +333,12 @@
     <Compile Include="wfDashboardRPO.Designer.cs">
       <DependentUpon>wfDashboardRPO.cs</DependentUpon>
     </Compile>
+    <Compile Include="wfImprimeCaratulas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfImprimeCaratulas.Designer.cs">
+      <DependentUpon>wfImprimeCaratulas.cs</DependentUpon>
+    </Compile>
     <Compile Include="wfImpSetUpDuracion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -847,6 +853,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="wfDashboardRPO.resx">
       <DependentUpon>wfDashboardRPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wfImprimeCaratulas.resx">
+      <DependentUpon>wfImprimeCaratulas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="wfImpSetUpDuracion.resx">
       <DependentUpon>wfImpSetUpDuracion.cs</DependentUpon>
