@@ -31,7 +31,10 @@
             this.lbl_Tarimas = new System.Windows.Forms.Label();
             this.nud_Cantidad = new System.Windows.Forms.NumericUpDown();
             this.btn_ImpTarima = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Cantidad)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_Tarimas
@@ -49,7 +52,7 @@
             this.nud_Cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nud_Cantidad.Location = new System.Drawing.Point(60, 45);
             this.nud_Cantidad.Maximum = new decimal(new int[] {
-            2000,
+            30,
             0,
             0,
             0});
@@ -80,12 +83,31 @@
             this.btn_ImpTarima.UseVisualStyleBackColor = true;
             this.btn_ImpTarima.Click += new System.EventHandler(this.btn_ImpTarima_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 118);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(243, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Blue;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(131, 17);
+            this.toolStripStatusLabel1.Text = "Presione Esc Para Salir.";
+            // 
             // wfImprimeCaratulas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(242, 124);
+            this.ClientSize = new System.Drawing.Size(243, 140);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btn_ImpTarima);
             this.Controls.Add(this.nud_Cantidad);
             this.Controls.Add(this.lbl_Tarimas);
@@ -95,6 +117,8 @@
             this.Text = "Caratulas";
             this.Load += new System.EventHandler(this.wfImprimeCaratulas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nud_Cantidad)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,5 +129,7 @@
         private System.Windows.Forms.Label lbl_Tarimas;
         private System.Windows.Forms.NumericUpDown nud_Cantidad;
         private System.Windows.Forms.Button btn_ImpTarima;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
