@@ -33,6 +33,8 @@ namespace CloverPro
 
         private void wfImprimeCaratulas_Load(object sender, EventArgs e)
         {
+            nud_Cantidad.Select(0, nud_Cantidad.Value.ToString().Length);
+
             CultureInfo dia = new CultureInfo("es-Es");
             diaesp = dia.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek).ToUpper();
             
@@ -99,6 +101,20 @@ namespace CloverPro
             Close();
             
             
+        }
+
+        private void nud_Cantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+     
+                if ((int)e.KeyChar == (int)Keys.Enter)
+                {
+                    btn_ImpTarima_Click(sender, e);
+                }
+
+                if(e.KeyChar == (Char)Keys.Escape)
+                this.Close();
+
+
         }
 
     }

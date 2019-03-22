@@ -989,12 +989,11 @@ namespace CloverPro
 
             if(e.ColumnIndex == 5)
             {
-                //string sRpo = dgwEstaciones[5, e.RowIndex].Value.ToString();
-                //string sPlanta = cbbPlanta.SelectedValue.ToString();
-                //string sLinea = dgwEstaciones[6, e.RowIndex].Value.ToString();
-                //string sAlma = dgwEstaciones[9, e.RowIndex].Value.ToString();
-                //string sModelo = dgwEstaciones[8, e.RowIndex].Value.ToString();
-                //string sCant = dgwEstaciones[7, e.RowIndex].Value.ToString();
+                if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "34") == false)
+                {
+                    MessageBox.Show("Se requieren permisos para realizar la acción", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
 
                 wfImprimeCaratulas ImpCaratula = new wfImprimeCaratulas();
                 ImpCaratula.sRpo = dgwEstaciones[5, e.RowIndex].Value.ToString();
