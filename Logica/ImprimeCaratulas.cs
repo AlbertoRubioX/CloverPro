@@ -52,7 +52,7 @@ namespace Logica
                                             "position: relative;" +
                                             "top:-10px;" +
                                         "}" +
-                                        "#text>p{" +
+                                        "#text>p{" +//p solo afecta al dia de impresion de la caratula
                                             "font-size:120px;" +
                                             "margin-top:-110px" +
                                         "}" +
@@ -65,18 +65,18 @@ namespace Logica
                                             "font-family: 'calibri', bold;" +
                                             "" +
                                         "}" +
-                                        "h1{" +
+                                        "h1{" +//h1 afecta al texto: RPO
                                             "font-size:155px;" +
                                             "text-align:center;" +
                                         "}" +
-                                        "h2{" +
+                                        "h2{" +//h2 afecta a la planta,,modelo,tarimas,fecha y cantidad
                                             "font-size:60px;" +
                                         "}" +
-                                        "h3{" +
+                                        "h3{" +//h3 afecta al div de texto : Palet
                                             "font-size:30px;" +
                                             "text-align:center;" +
                                         "}" +
-                                        "h4{" +
+                                        "h4{" + //h4 solo afecta al nombre del almacenista, por cuestion de no desfazar la imprecion al ser un nombre muy largo
                                             "font-size:54px;" +
                                         "}" +
                                     "</style>" +
