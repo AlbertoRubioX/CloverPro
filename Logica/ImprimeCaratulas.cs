@@ -76,6 +76,9 @@ namespace Logica
                                             "font-size:30px;" +
                                             "text-align:center;" +
                                         "}" +
+                                        "h4{" +
+                                            "font-size:54px;" +
+                                        "}" +
                                     "</style>" +
                                 "</head>" +
                                 "<body>";
@@ -99,7 +102,7 @@ namespace Logica
                                     "<div style='width:980px;'><h1>" + linea + "</h1></div>" +
                                 "</div>" +
                                 "<div style='padding-top: 10px;'>" +
-                                    "<div style='width:980px position:relative;z-index:2;margin-left:-20px;margin-right:-20px!important;border-width:20px!important; border-right:solid " + color1 + " !important; border-left:solid " + color1 + " !important;;text-align:center;'><h2>" + almac + "</h2></div>" +
+                                    "<div style='width:980px position:relative;z-index:2;margin-left:-20px;margin-right:-20px!important;border-width:20px!important; border-right:solid " + color1 + " !important; border-left:solid " + color1 + " !important;;text-align:center;'><h4>" + almac + "</h4></div>" +
                                 "</div>" +
                                 "<div style='padding-top: 10px;'>" +
                                     "<div style='width:980px;text-align:center;'><h2>MODELO</h2></div>" +
