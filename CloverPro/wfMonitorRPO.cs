@@ -1070,7 +1070,7 @@ namespace CloverPro
 
             if (e.ColumnIndex == 14)//UBICACION INTERNA
             {
-                if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "70") == false)
+                if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "75") == false)
                 {
                     MessageBox.Show("Se requieren permisos para realizar la acción", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
