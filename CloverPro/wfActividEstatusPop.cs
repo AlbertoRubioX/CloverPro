@@ -698,6 +698,8 @@ namespace CloverPro
                     //    return;
                     //}
 
+                    // Desed Aqui Para abajo haz pruebas Aaron 
+
                     //wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
                     //CapPop._lsProceso = _lsProceso;
                     //CapPop._llFolio = _lFolio;

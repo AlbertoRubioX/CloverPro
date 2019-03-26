@@ -989,7 +989,7 @@ namespace CloverPro
 
             if(e.ColumnIndex == 5)
             {
-                if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "34") == false)
+                if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "35") == false)
                 {
                     MessageBox.Show("Se requieren permisos para realizar la acción", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
