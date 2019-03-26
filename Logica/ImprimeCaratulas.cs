@@ -12,6 +12,8 @@ namespace Logica
    public class ImprimeCaratulas
     {
         Thread th;
+
+        /*Funcion para configurar la forma de impresion del web browser y eliminar cabezera y pie de pagina*/
         public void IESetupFooter()
         {
             string strKey = "Software\\Microsoft\\Internet Explorer\\PageSetup";
@@ -34,7 +36,7 @@ namespace Logica
         {
             IESetupFooter();
             if (tarimas > 0)
-            {
+            {   /*Crea la parte superior del documento y los estilos del html a imprimir*/
                 string html = "<!DOCTYPE html> <html>" +
                                 "<head>" +
                                     "<meta charset='utf-8'/>" +
@@ -77,7 +79,7 @@ namespace Logica
                                     "</style>" +
                                 "</head>" +
                                 "<body>";
-                for (int i = 1; i <= tarimas; i++)
+                for (int i = 1; i <= tarimas; i++) /*Recorre de 1 hasta la cantidad de etiquetas a imprimir, para crear las hojas necesarias*/
                 {
                     html += "<div style='border-width:20px !important; border-top:120px !important; border:solid " + color1 + ";'>" +
                                 "<div id='header' style='text-align:center;'>" +
@@ -119,14 +121,14 @@ namespace Logica
                                 "<div style='padding-top: 10px;'>" +
                                 "</div>" +
                            "</div>";
-                }
+                }       /*Cierra el cuerpo de HTML*/
                 html += "</body>" +
                            "</html>";
                 PrintHelpPage(html);
             }
         }
 
-
+        /*Esta funcion recibe el documento creado en html a imprimir, posterior mente crea un webbrowser al cual se le agrega la propiedad de imprimir, tambien crea un hilo el cual ejecutara la impresion del documento*/
         public void PrintHelpPage(string web)
         {
             var br = new WebBrowser();
@@ -148,8 +150,6 @@ namespace Logica
             browser.Print();
             // Dispose the WebBrowser now that the task is complete. 
             browser.Dispose();
-            
-
         }
        
     }
