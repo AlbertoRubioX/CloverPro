@@ -700,32 +700,32 @@ namespace CloverPro
 
                     // Desed Aqui Para abajo haz pruebas Aaron 
 
-                    //wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
-                    //CapPop._lsProceso = _lsProceso;
-                    //CapPop._llFolio = _lFolio;
-                    //CapPop._liConsec = _iConsec;
-                    //CapPop._lsPlanta = "EMPN";
-                    //CapPop._sClave = "ENTREGA";
-                    //CapPop.ShowDialog();
+                    wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
+                    CapPop._lsProceso = _lsProceso;
+                    CapPop._llFolio = _lFolio;
+                    CapPop._liConsec = _iConsec;
+                    CapPop._lsPlanta = "EMPN";
+                    CapPop._sClave = "ENTREGA";
+                    CapPop.ShowDialog();
 
-                    //if (string.IsNullOrEmpty(CapPop._sClave))
-                    //{
-                    //    MessageBox.Show("Favor de registrar el materialista que recibe las etiquetas", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    //    return;
-                    //}
+                    if (string.IsNullOrEmpty(CapPop._sClave))
+                    {
+                        MessageBox.Show("Favor de registrar el materialista que recibe las etiquetas", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
 
                     rpo.EtiquetaInterna = "E";//ENTREGADO -> LIBERA LOCACION
                     rpo.Almacen = "L";
-                    //int iPos = CapPop._sClave.IndexOf(":");
-                    //if (iPos == -1)//TRIGGER GET NAME
-                    //    rpo.Entrega = CapPop._sClave; // MATERIALISTA QUE RECIBE LA ETIQUETA
-                    //else
-                    //{//GET DATA FROM TRESS
-                    //    string sClave = CapPop._sClave.Substring(0, iPos);
-                    //    string sNombre = CapPop._sClave.Substring(iPos + 1);
-                    //    rpo.Entrega = sClave;
-                    //    rpo.NombreOper = sNombre;
-                    //}
+                    int iPos = CapPop._sClave.IndexOf(":");
+                    if (iPos == -1)//TRIGGER GET NAME
+                        rpo.Entrega = CapPop._sClave; // MATERIALISTA QUE RECIBE LA ETIQUETA
+                    else
+                    {//GET DATA FROM TRESS
+                        string sClave = CapPop._sClave.Substring(0, iPos);
+                        string sNombre = CapPop._sClave.Substring(iPos + 1);
+                        rpo.Entrega = sClave;
+                        rpo.NombreOper = sNombre;
+                    }
                     ControlRpoLogica.ActualizaEtInt(rpo);
                     //1.1.1.74 GGUILLEN
                     ControlRpoLogica.ActualizaAlma(rpo);

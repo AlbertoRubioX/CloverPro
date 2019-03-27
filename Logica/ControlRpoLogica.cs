@@ -305,8 +305,8 @@ namespace Logica
                 if (rpo.EtiquetaInterna == "D")
                     sQuery = "UPDATE t_rpo_actdet SET etiqueta_interna = '" + rpo.EtiquetaInterna + "',etint_nota = '" + rpo.EtIntNota + "',u_id = '" + rpo.Usuario + "', f_id = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
                 else
-                    // sQuery = "UPDATE t_rpo_actdet SET etiqueta_interna = '" + rpo.EtiquetaInterna + "',entrega = '" + rpo.Entrega + "',nombre_oper = '" + rpo.NombreOper + "', u_id = '" + rpo.Usuario + "', f_id = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
-                    sQuery = "UPDATE t_rpo_actdet SET etiqueta_interna = '" + rpo.EtiquetaInterna + "',u_id = '" + rpo.Usuario + "', f_entrega_etint = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
+                    sQuery = "UPDATE t_rpo_actdet SET etiqueta_interna = '" + rpo.EtiquetaInterna + "',entrega_etint = '" + rpo.Entrega + "',oper_etint = '" + rpo.NombreOper + "', u_id = '" + rpo.Usuario + "', f_id = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
+                //sQuery = "UPDATE t_rpo_actdet SET etiqueta_interna = '" + rpo.EtiquetaInterna + "',u_id = '" + rpo.Usuario + "', f_entrega_etint = '" + dt.ToString() + "' WHERE folio = " + rpo.Folio + " and consec = " + rpo.Consec + "";
 
                 if (AccesoDatos.Borrar(sQuery) != 0)
                     return true;
