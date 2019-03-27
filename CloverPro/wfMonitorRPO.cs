@@ -939,7 +939,7 @@ namespace CloverPro
             dgwEstaciones.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[5].ReadOnly = true;
 
-            dgwEstaciones.Columns[6].Width = ColumnWith(dgwEstaciones, 10);//LINEA
+            dgwEstaciones.Columns[6].Width = ColumnWith(dgwEstaciones, 8);//LINEA
             dgwEstaciones.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -973,7 +973,7 @@ namespace CloverPro
             dgwEstaciones.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[12].ReadOnly = true;
 
-            dgwEstaciones.Columns[13].Width = ColumnWith(dgwEstaciones, 6);//ETIQUETA INTERNA
+            dgwEstaciones.Columns[13].Width = ColumnWith(dgwEstaciones, 8);//ETIQUETA INTERNA
             dgwEstaciones.Columns[13].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[13].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgwEstaciones.Columns[13].ReadOnly = true;
