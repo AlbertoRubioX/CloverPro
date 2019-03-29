@@ -44,7 +44,7 @@ namespace Logica
             try
             {
                 string sQuery;
-                sQuery = "SELECT linea_nav FROM t_linea WHERE linea_nav is not null and linea_nav > '' order by linea_nav ";
+                sQuery = "SELECT * FROM t_linea WHERE linea_nav is not null and linea_nav > '' order by linea_nav ";
                 datos = AccesoDatos.Consultar(sQuery);
             }
             catch (Exception ex)
