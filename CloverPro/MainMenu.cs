@@ -10,19 +10,53 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Logica;
 using Datos;
+using System.IO;
 
 namespace CloverPro
 {
     public partial class MainMenu : Form
+
     {
-        private string _lsVersion = "1.1.2.16";
+        
+
+        private string _lsVersion = "";
         [DllImport("user32.dll")]
         private static extern int GetSystemMetrics(int nIdex);
         private const int SM_TABLETPC = 86;
         private readonly bool tabletEnabled;
+        private DateTime ultimafecha;
+        private int pos;
+        private string sVersion;
+
+
         public MainMenu()
         {
             InitializeComponent();
+            //Codigo para obtener la version del programa de manera automatica en base a las carpetas generadas por el publish.
+            string path = "T:/wrivera/agonz0/CloverPro/Version/Application Files";
+            string[] array_s_version = Directory.GetDirectories(path);
+
+            Array.Sort(array_s_version);
+            for (int i = 0; i < array_s_version.Length; i++)
+            {
+                string sversion = array_s_version[i];
+
+                DateTime fecha = Directory.GetLastWriteTime(sversion);
+
+                if (fecha > ultimafecha)
+                {
+                    ultimafecha = fecha;
+                    pos = i;
+
+                } 
+            }
+
+            sVersion = array_s_version[pos];
+            sVersion = sVersion.Replace("T:/wrivera/agonz0/CloverPro/Version/Application Files\\CloverPro_", "").Replace("_",".");
+
+            _lsVersion = sVersion;
+
+
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)

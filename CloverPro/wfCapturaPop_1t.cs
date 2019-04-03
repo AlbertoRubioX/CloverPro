@@ -437,15 +437,19 @@ namespace CloverPro
                 _sClave = null;
                 Close();
             }
-            
-            if(e.KeyCode == Keys.Enter)
-                bChange = true;
+
+
+
+            if (e.KeyCode == Keys.Enter)
+                btnAceptar_Click(sender, e);
+                 bChange = true;
 
 
         }
 
         private void cbbClave_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            
             if(_lsProceso == "EMP040")
             {
                 if (cbbClave.SelectedIndex == -1)
@@ -462,6 +466,7 @@ namespace CloverPro
                         rpo.Surte = cbbClave.SelectedValue.ToString();
                         rpo.Usuario = GlobalVar.gsUsuario;
                         ControlRpoLogica.ActualizaSurte(rpo);
+                        
                         Close();
                     }
 
@@ -783,6 +788,7 @@ namespace CloverPro
                 cbbClave.SelectedIndex = -1;
                 cbbClave.Text = sFilter;
                 cbbClave.SelectionStart = cbbClave.Text.Length;
+
                 
 
             }
@@ -795,6 +801,7 @@ namespace CloverPro
         private void cbbClave_DropDown(object sender, EventArgs e)
         {
             cbbClave.AutoCompleteMode = AutoCompleteMode.None;
+            
         }
     }
 }
