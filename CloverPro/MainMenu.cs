@@ -19,7 +19,7 @@ namespace CloverPro
     {
         
 
-        private string _lsVersion = "1.1.2.25";
+        private string _lsVersion = "1.1.2.27";
         [DllImport("user32.dll")]
         private static extern int GetSystemMetrics(int nIdex);
         private const int SM_TABLETPC = 86;

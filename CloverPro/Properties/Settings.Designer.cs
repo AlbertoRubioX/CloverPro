@@ -26,7 +26,7 @@ namespace CloverPro.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=mxni3-app-08\\mxnilocalapps;Initial Catalog=cloverprod;Persist Securit" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=mxni3-app-08\\MXNILOCALAPPS;Initial Catalog=cloverprod;Persist Securit" +
             "y Info=True;User ID=Sa;Password=Admin.10")]
         public string Cloverprod_Connection {
             get {
