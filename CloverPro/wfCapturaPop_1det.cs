@@ -19,7 +19,7 @@ namespace CloverPro
         public string _lsArea;
         public string _lsParte;
         public double _ldCant;
-        private bool bChange;
+        private bool bChange = false;
 
         public wfCapturaPop_1det()
         {

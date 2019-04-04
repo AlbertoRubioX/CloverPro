@@ -441,8 +441,10 @@ namespace CloverPro
 
 
             if (e.KeyCode == Keys.Enter)
+            {
                 btnAceptar_Click(sender, e);
-                 bChange = true;
+                bChange = true;
+            }
 
 
         }
@@ -466,7 +468,8 @@ namespace CloverPro
                         rpo.Surte = cbbClave.SelectedValue.ToString();
                         rpo.Usuario = GlobalVar.gsUsuario;
                         ControlRpoLogica.ActualizaSurte(rpo);
-                        
+                        //btnAceptar_Click(sender, e);
+
                         Close();
                     }
 
