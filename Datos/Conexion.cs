@@ -11,7 +11,7 @@ namespace Datos
     public class Conexion
     {
         
-        public static string cadenaConexion = ConfigurationManager.ConnectionStrings["Cloverprod_Connection"].ToString();
+        public static string cadenaConexion = ConfigurationManager.ConnectionStrings["Cloverprod_ConnectionDebug"].ToString();
         
         private static void Cadena()
         {
