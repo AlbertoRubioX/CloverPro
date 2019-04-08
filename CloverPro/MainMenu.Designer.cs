@@ -97,7 +97,7 @@
             this.mitREP110 = new System.Windows.Forms.ToolStripMenuItem();
             this.mitREP120 = new System.Windows.Forms.ToolStripMenuItem();
             this.mitREP140 = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mitREP130 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSIS = new System.Windows.Forms.ToolStripMenuItem();
             this.mitSIS010 = new System.Windows.Forms.ToolStripMenuItem();
             this.mitHelp = new System.Windows.Forms.ToolStripMenuItem();
@@ -569,7 +569,7 @@
             this.mitREP110,
             this.mitREP120,
             this.mitREP140,
-            this.reporteDeToolStripMenuItem});
+            this.mitREP130});
             this.tsmREP.Name = "tsmREP";
             this.tsmREP.Size = new System.Drawing.Size(65, 20);
             this.tsmREP.Text = "&Reportes";
@@ -666,12 +666,12 @@
             this.mitREP140.Text = "Reporte de Ordenes de Trabajo Entregadas";
             this.mitREP140.Click += new System.EventHandler(this.mitREP140_Click);
             // 
-            // reporteDeToolStripMenuItem
+            // mitREP130
             // 
-            this.reporteDeToolStripMenuItem.Name = "reporteDeToolStripMenuItem";
-            this.reporteDeToolStripMenuItem.Size = new System.Drawing.Size(306, 22);
-            this.reporteDeToolStripMenuItem.Text = "Reporte de RPO\'s (Grafico)";
-            this.reporteDeToolStripMenuItem.Click += new System.EventHandler(this.reporteDeToolStripMenuItem_Click);
+            this.mitREP130.Name = "mitREP130";
+            this.mitREP130.Size = new System.Drawing.Size(306, 22);
+            this.mitREP130.Text = "Reporte de RPO\'s Entregados (Grafica)";
+            this.mitREP130.Click += new System.EventHandler(this.reporteDeToolStripMenuItem_Click);
             // 
             // tsmSIS
             // 
@@ -877,7 +877,7 @@
         private System.Windows.Forms.ToolStripMenuItem mitINV010;
         private System.Windows.Forms.ToolStripMenuItem mitPRO100;
         private System.Windows.Forms.ToolStripMenuItem mitREP140;
-        private System.Windows.Forms.ToolStripMenuItem reporteDeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mitREP130;
     }
 }
 

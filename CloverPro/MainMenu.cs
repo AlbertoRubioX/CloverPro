@@ -19,7 +19,7 @@ namespace CloverPro
     {
         
 
-        private string _lsVersion = "1.1.2.24";
+        private string _lsVersion = "1.1.2.27";
         [DllImport("user32.dll")]
         private static extern int GetSystemMetrics(int nIdex);
         private const int SM_TABLETPC = 86;
@@ -32,7 +32,6 @@ namespace CloverPro
         public MainMenu()
         {
             InitializeComponent();
-            //Codigo para obtener la version del programa de manera automatica en base a las carpetas generadas por el publish.
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
