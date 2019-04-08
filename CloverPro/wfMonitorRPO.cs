@@ -1594,37 +1594,38 @@ namespace CloverPro
                     string sEtiqueta = row.Cells[10].Value.ToString();
                     string sLocacion = row.Cells[11].Value.ToString();
                     string sAlmacen = row.Cells[12].Value.ToString();
-                    string sPrio = row.Cells[13].Value.ToString();
-                    string sWP = row.Cells[14].Value.ToString();
-                    string sEstatus = row.Cells[15].Value.ToString();
+                    string sEtiquetaInt = row.Cells[13].Value.ToString();
+                    string sLocacionInt = row.Cells[14].Value.ToString();
+                    string sPrio = row.Cells[15].Value.ToString();
+                    string sEstatus = row.Cells[17].Value.ToString();
 
                     DateTime dtProceso = DateTime.Today;
-                    if (!string.IsNullOrEmpty(row.Cells[22].Value.ToString()))
-                        dtProceso = Convert.ToDateTime(row.Cells[22].Value.ToString());
-                    string sTurnoPro = row.Cells[23].Value.ToString();
+                    if (!string.IsNullOrEmpty(row.Cells[24].Value.ToString()))
+                        dtProceso = Convert.ToDateTime(row.Cells[24].Value.ToString());
+                    string sTurnoPro = row.Cells[25].Value.ToString();
                     string sHora = string.Empty;
 
                     DateTime dtProceti = DateTime.Today;
-                    if (!string.IsNullOrEmpty(row.Cells[26].Value.ToString()))
-                        dtProceti = Convert.ToDateTime(row.Cells[26].Value.ToString());
-                    string sTurnoProcet = row.Cells[27].Value.ToString();
+                    if (!string.IsNullOrEmpty(row.Cells[28].Value.ToString()))
+                        dtProceti = Convert.ToDateTime(row.Cells[28].Value.ToString());
+                    string sTurnoProcet = row.Cells[29].Value.ToString();
                     string sHoraEti = string.Empty;
 
                     //DETENIDOS
        
                     DateTime dtfCarga = DateTime.Today;
-                    if (!string.IsNullOrEmpty(row.Cells[31].Value.ToString()))
-                        dtfCarga = Convert.ToDateTime(row.Cells[31].Value.ToString());
+                    if (!string.IsNullOrEmpty(row.Cells[33].Value.ToString()))
+                        dtfCarga = Convert.ToDateTime(row.Cells[33].Value.ToString());
                     string sHoraCarga = string.Empty;
 
                     DateTime dtfDetenido = DateTime.Today;
-                    if (!string.IsNullOrEmpty(row.Cells[32].Value.ToString()))
-                        dtfDetenido = Convert.ToDateTime(row.Cells[32].Value.ToString());
+                    if (!string.IsNullOrEmpty(row.Cells[34].Value.ToString()))
+                        dtfDetenido = Convert.ToDateTime(row.Cells[34].Value.ToString());
                     string sHoraDetenido = string.Empty;
 
-                    string sItemDetenido = row.Cells[33].Value.ToString();
-                    string contDetenido = row.Cells[34].Value.ToString();
-                    string UsDetenido = row.Cells[35].Value.ToString();
+                    string sItemDetenido = row.Cells[35].Value.ToString();
+                    string contDetenido = row.Cells[36].Value.ToString();
+                    string UsDetenido = row.Cells[37].Value.ToString();
                     
                     oSheet.Cells[iRow, 1] = dtIngreso;
                     oSheet.Cells[iRow, 2] = sTurno;
@@ -1636,55 +1637,56 @@ namespace CloverPro
                     oSheet.Cells[iRow, 8] = sEtiqueta;
                     oSheet.Cells[iRow, 9] = sLocacion;
                     oSheet.Cells[iRow, 10] = sAlmacen;
-                    oSheet.Cells[iRow, 11] = sPrio;
-                    oSheet.Cells[iRow, 12] = sWP;
-                    oSheet.Cells[iRow, 13] = sEstatus;
+                    oSheet.Cells[iRow, 11] = sEtiquetaInt;
+                    oSheet.Cells[iRow, 12] = sLocacionInt;
+                    oSheet.Cells[iRow, 13] = sPrio;
+                    oSheet.Cells[iRow, 14] = sEstatus;
 
-                    if (!string.IsNullOrEmpty(row.Cells[22].Value.ToString()))
+                    if (!string.IsNullOrEmpty(row.Cells[24].Value.ToString()))
                     {
-                        sHora = Convert.ToString(row.Cells[22].Value);
+                        sHora = Convert.ToString(row.Cells[24].Value);
                         int iPos = sHora.IndexOf(":");
                         sHora = sHora.Substring(iPos - 2);
 
-                        oSheet.Cells[iRow, 14] = dtProceso;
-                        oSheet.Cells[iRow, 15] = sHora.TrimStart();
+                        oSheet.Cells[iRow, 15] = dtProceso;
+                        oSheet.Cells[iRow, 16] = sHora.TrimStart();
                     }
                     
-                    oSheet.Cells[iRow, 16] = sTurnoPro;
+                    oSheet.Cells[iRow, 17] = sTurnoPro;
 
-                    if (!string.IsNullOrEmpty(row.Cells[26].Value.ToString()))
+                    if (!string.IsNullOrEmpty(row.Cells[28].Value.ToString()))
                     {
-                        sHoraEti = Convert.ToString(row.Cells[26].Value);
+                        sHoraEti = Convert.ToString(row.Cells[28].Value);
                         int iPos1 = sHoraEti.IndexOf(":");
                         sHoraEti = sHoraEti.Substring(iPos1 - 2);
                         
-                        oSheet.Cells[iRow, 17] = dtProceti;
-                        oSheet.Cells[iRow, 18] = sHoraEti.TrimStart();
+                        oSheet.Cells[iRow, 18] = dtProceti;
+                        oSheet.Cells[iRow, 19] = sHoraEti.TrimStart();
                     }
-                    oSheet.Cells[iRow, 19] = sTurnoProcet;
+                    oSheet.Cells[iRow, 20] = sTurnoProcet;
 
                     //DETENIDOS
-                    if (!string.IsNullOrEmpty(row.Cells[31].Value.ToString()))
+                    if (!string.IsNullOrEmpty(row.Cells[33].Value.ToString()))
                     {
-                        sHoraCarga = Convert.ToString(row.Cells[31].Value);
+                        sHoraCarga = Convert.ToString(row.Cells[33].Value);
                         int iPos1 = sHoraCarga.IndexOf(":");
                         sHoraCarga = sHoraCarga.Substring(iPos1 - 2);
 
-                        oSheet.Cells[iRow, 20] = dtfCarga;
-                        oSheet.Cells[iRow, 21] = sHoraCarga.TrimStart();
+                        oSheet.Cells[iRow, 21] = dtfCarga;
+                        oSheet.Cells[iRow, 22] = sHoraCarga.TrimStart();
                     }
-                    if (!string.IsNullOrEmpty(row.Cells[32].Value.ToString()))
+                    if (!string.IsNullOrEmpty(row.Cells[34].Value.ToString()))
                     {
-                        sHoraDetenido = Convert.ToString(row.Cells[32].Value);
+                        sHoraDetenido = Convert.ToString(row.Cells[34].Value);
                         int iPos1 = sHoraDetenido.IndexOf(":");
                         sHoraDetenido = sHoraDetenido.Substring(iPos1 - 2);
 
-                        oSheet.Cells[iRow, 22] = dtfDetenido;
-                        oSheet.Cells[iRow, 23] = sHoraDetenido.TrimStart();
+                        oSheet.Cells[iRow, 23] = dtfDetenido;
+                        oSheet.Cells[iRow, 24] = sHoraDetenido.TrimStart();
                     }
-                    oSheet.Cells[iRow, 24] = sItemDetenido;
-                    oSheet.Cells[iRow, 25] = contDetenido;
-                    oSheet.Cells[iRow, 26] = UsDetenido;
+                    oSheet.Cells[iRow, 25] = sItemDetenido;
+                    oSheet.Cells[iRow, 26] = contDetenido;
+                    oSheet.Cells[iRow, 27] = UsDetenido;
                     
                     iRow++;
                 }
