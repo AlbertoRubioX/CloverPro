@@ -1692,8 +1692,12 @@ namespace CloverPro
                 }
 
                 oXL.DisplayAlerts = false;
-                oWB.SaveAs(@"C:\CloverPRO\Formatos\RPOEmpaque.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlShared);
+                if (!System.IO.Directory.Exists(@"C:\CloverPRO\Formatos"))
+                    System.IO.Directory.CreateDirectory(@"C:\CloverPRO\Formatos");
 
+                oWB.SaveAs(@"C:\CloverPRO\Formatos\RPOEmpaque.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlShared);
+                
+                
                 DialogResult Result = MessageBox.Show("Se ha exportado la consulta." + Environment.NewLine + "Desea abrir el reporte en excel?", Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (Result == DialogResult.Yes)
                 {
