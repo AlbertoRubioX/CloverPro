@@ -11,15 +11,17 @@ using System.Runtime.InteropServices;
 using Logica;
 using Datos;
 using System.IO;
+using System.Deployment.Application;
+using System.Reflection;
 
 namespace CloverPro
 {
     public partial class MainMenu : Form
 
     {
-        
 
-        private string _lsVersion = "1.1.2.27";
+
+        private string _lsVersion ="" ;
         [DllImport("user32.dll")]
         private static extern int GetSystemMetrics(int nIdex);
         private const int SM_TABLETPC = 86;
@@ -32,7 +34,20 @@ namespace CloverPro
         public MainMenu()
         {
             InitializeComponent();
-        }
+            try { 
+                 if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+                    {
+
+                     System.Deployment.Application.ApplicationDeployment version = System.Deployment.Application.ApplicationDeployment.CurrentDeployment;
+
+                    _lsVersion = version.CurrentVersion.ToString();
+
+                 }
+            }
+            catch (Exception e) {
+                _lsVersion = "1.1.2.X";
+            }
+    }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {

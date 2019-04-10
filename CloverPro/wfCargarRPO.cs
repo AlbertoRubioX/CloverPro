@@ -721,7 +721,7 @@ namespace CloverPro
                         rpo.Prioridad = sNota;
                         rpo.CargaInd = "1";
                         rpo.Usuario = GlobalVar.gsUsuario;
-                        if (rpo.Prioridad == "GLO")
+                        if (rpo.Prioridad.Substring(0,3)=="GLO" && rpo.Prioridad.Length < 7)
                         {
                             rpo.FechaGlob = dtGlobal;
                             rpo.HoraComp = sHrComp;
