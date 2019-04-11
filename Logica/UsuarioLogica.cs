@@ -69,7 +69,7 @@ namespace Logica
             DataTable datos = new DataTable();
             try
             {
-                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where usuario <> 'ADMINP'");
+                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where usuario <> 'ADMINPRO'");
             }
             catch (Exception ex)
             {
@@ -84,7 +84,7 @@ namespace Logica
             DataTable datos = new DataTable();
             try
             {
-                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where area = 'SUP' and usuario <> 'ADMINP' ORDER BY nombre");
+                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where area = 'SUP' and usuario <> 'ADMINPRO' ORDER BY nombre");
             }
             catch (Exception ex)
             {
@@ -114,7 +114,7 @@ namespace Logica
             DataTable datos = new DataTable();
             try
             {
-                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where planta = '"+user.Planta+"' and turno = '"+user.Turno+"' and area = '"+user.Area+"' and usuario <> 'ADMINP' and activo = '1' ORDER BY nombre");
+                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where planta = '"+user.Planta+"' and turno = '"+user.Turno+"' and area = '"+user.Area+"' and usuario <> 'ADMINPRO' and activo = '1' ORDER BY nombre");
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace Logica
             DataTable datos = new DataTable();
             try
             {
-                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where turno = '" + user.Turno + "' and area = 'PLA' and usuario <> 'ADMINP' and activo = '1' ORDER BY nombre");
+                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where turno = '" + user.Turno + "' and area = 'PLA' and usuario <> 'ADMINPRO' and activo = '1' ORDER BY nombre");
             }
             catch (Exception ex)
             {
@@ -144,7 +144,7 @@ namespace Logica
             DataTable datos = new DataTable();
             try
             {
-                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where area = '"+user.Area+"' and usuario <> 'ADMINP'");
+                datos = AccesoDatos.Consultar("SELECT * FROM t_usuario where area = '"+user.Area+"' and usuario <> 'ADMINPRO'");
             }
             catch (Exception ex)
             {
@@ -217,7 +217,7 @@ namespace Logica
         }
         public static bool VerificarPermiso(string asUsuario, string asOperacion)
         {
-            if (asUsuario == "ADMINP")
+            if (asUsuario == "ADMINPRO")
                 return true;
 
             try

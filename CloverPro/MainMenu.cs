@@ -369,7 +369,7 @@ namespace CloverPro
                 if (sMenuItem == "Inicio")
                     mitem.Visible = true;
 
-                if (sMod.Contains(sMenuItem) || GlobalVar.gsUsuario == "ADMINP")
+                if (sMod.Contains(sMenuItem) || GlobalVar.gsUsuario == "ADMINPRO")
                     mitem.Visible = true;
 
                 foreach (ToolStripMenuItem subitem in mitem.DropDownItems)
@@ -380,7 +380,7 @@ namespace CloverPro
                     if (sSubItem == "Help")
                         subitem.Visible = true;
 
-                    if (sPer.Contains(sSubItem) || GlobalVar.gsUsuario == "ADMINP")
+                    if (sPer.Contains(sSubItem) || GlobalVar.gsUsuario == "ADMINPRO")
                         subitem.Visible = true;
                 }
             }
@@ -489,7 +489,7 @@ namespace CloverPro
 
         private void mitPRO070_Click(object sender, EventArgs e)
         {
-            if(GlobalVar.gsUsuario != "ADMINP")
+            if(GlobalVar.gsUsuario != "ADMINPRO")
             {
                 DataTable dtConf = ConfigLogica.Consultar();
                 string sItCod = dtConf.Rows[0]["codigo_bloq"].ToString();

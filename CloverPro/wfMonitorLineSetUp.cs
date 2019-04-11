@@ -657,7 +657,7 @@ namespace CloverPro
                 if (_lsArea == "CTDOC")
                     _lsArea = "CAL";
 
-                if (sArea != _lsArea && GlobalVar.gsUsuario != "ADMINP")
+                if (sArea != _lsArea && GlobalVar.gsUsuario != "ADMINPRO")
                 {
                     MessageBox.Show("La Actividad " + sArea + " no pertenece a su Departamento", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;

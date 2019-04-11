@@ -1479,6 +1479,9 @@ namespace CloverPro
             CargaStandar();
         }
 
-        
+        private void cbbPlanta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

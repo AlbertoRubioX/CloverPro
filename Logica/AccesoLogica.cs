@@ -13,7 +13,7 @@ namespace Logica
     {
         public static bool verificaAdmin(string as_usuario)
         {
-            if (as_usuario == "ADMINP")
+            if (as_usuario == "ADMINPRO")
                 return true;
             else
                 return false;
@@ -53,7 +53,7 @@ namespace Logica
 
         public static bool verificaAcceso(string as_Usuario)
         {
-            if (as_Usuario == "ADMINP")
+            if (as_Usuario == "ADMINPRO")
                 return true;
 
             string sQuery;
