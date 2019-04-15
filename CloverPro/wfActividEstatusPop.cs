@@ -516,17 +516,17 @@ namespace CloverPro
                 }
                 if (_sArea == "A")
                 {
-                    //rpo.Almacen = "P";//en proceso
-                    //rpo.Usuario = GlobalVar.gsUsuario;
-                    //ControlRpoLogica.ActualizaAlma(rpo);
+                    rpo.Almacen = "P";//en proceso
+                    rpo.Usuario = GlobalVar.gsUsuario;
+                    ControlRpoLogica.ActualizaAlma(rpo);
 
-                    wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
-                    CapPop._lsProceso = _lsProceso;
-                    CapPop._llFolio = _lFolio;
-                    CapPop._liConsec = _iConsec;
-                    CapPop._lsPlanta = "EMPN";
-                    CapPop._sClave = "ALMACENISTA";
-                    CapPop.ShowDialog();
+                    //wfCapturaPop_1t CapPop = new wfCapturaPop_1t("");
+                    //CapPop._lsProceso = _lsProceso;
+                    //CapPop._llFolio = _lFolio;
+                    //CapPop._liConsec = _iConsec;
+                    //CapPop._lsPlanta = "EMPN";
+                    //CapPop._sClave = "ALMACENISTA";
+                    //CapPop.ShowDialog();
 
 
                    

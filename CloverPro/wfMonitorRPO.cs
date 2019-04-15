@@ -573,6 +573,16 @@ namespace CloverPro
             }
 
             sValue = e.Value.ToString();
+
+            if (e.ColumnIndex == 9)//Almacenista
+            {
+                if (!string.IsNullOrEmpty(sValue))
+                {
+                   
+                        e.CellStyle.BackColor = Color.DarkOrange;
+                }
+            }
+
             if (e.ColumnIndex == 10)//ETIQUETAS
             {
                 sValue = dgwEstaciones[19, e.RowIndex].Value.ToString();
@@ -1031,12 +1041,12 @@ namespace CloverPro
                     return;
                 }
 
-                string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
-                if (string.IsNullOrEmpty(sAlm) )
-                {
-                    MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                //string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
+                //if (string.IsNullOrEmpty(sAlm) )
+                //{
+                //    MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    return;
+                //}
 
                 try
                 {
@@ -1144,7 +1154,13 @@ namespace CloverPro
                     }
 
                     sValor = dgwEstaciones[12, e.RowIndex].Value.ToString();
-                    
+                    string sAlmacenista = dgwEstaciones[9, e.RowIndex].Value.ToString();
+                    if (string.IsNullOrEmpty(sAlmacenista) )
+                    {
+                        MessageBox.Show("No puede iniciar el proceso de almacen sin antes asignar un almacenista al rpo", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
                 }
                 if (e.ColumnIndex == 13)//ETIQUETAS INTERNAS
                 {
