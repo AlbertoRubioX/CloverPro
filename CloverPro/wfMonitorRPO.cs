@@ -124,7 +124,7 @@ namespace CloverPro
             Est.Add("E", "ESPERA");
             Est.Add("P", "PROCESO");
             Est.Add("C", "COMPLETADO");
-            Est.Add("T", "ENTREGADO");
+            Est.Add("A", "ASIGNADO");
             cbbEstatus.DataSource = new BindingSource(Est, null);
             cbbEstatus.DisplayMember = "Value";
             cbbEstatus.ValueMember = "Key";

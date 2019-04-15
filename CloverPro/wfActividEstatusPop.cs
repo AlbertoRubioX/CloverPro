@@ -673,7 +673,7 @@ namespace CloverPro
                     }
 
                     rpo.Etiqueta = "E";//ENTREGADO -> LIBERA LOCACION
-                    rpo.Almacen = "L";
+                    //rpo.Almacen = "L";
                     int iPos = CapPop._sClave.IndexOf(":");
                     if (iPos == -1)//TRIGGER GET NAME
                         rpo.Entrega = CapPop._sClave; // MATERIALISTA QUE RECIBE LA ETIQUETA
@@ -686,7 +686,7 @@ namespace CloverPro
                     }
                     ControlRpoLogica.ActualizaEti(rpo);
                     //1.1.1.74 GGUILLEN
-                    ControlRpoLogica.ActualizaAlma(rpo);
+                    //ControlRpoLogica.ActualizaAlma(rpo);
                 }
                 if (_sArea == "EI")
                 {
@@ -715,7 +715,7 @@ namespace CloverPro
                     }
 
                     rpo.EtiquetaInterna = "E";//ENTREGADO -> LIBERA LOCACION
-                    rpo.Almacen = "L";
+                    //rpo.Almacen = "L";
                     int iPos = CapPop._sClave.IndexOf(":");
                     if (iPos == -1)//TRIGGER GET NAME
                         rpo.Entrega = CapPop._sClave; // MATERIALISTA QUE RECIBE LA ETIQUETA
@@ -728,7 +728,7 @@ namespace CloverPro
                     }
                     ControlRpoLogica.ActualizaEtInt(rpo);
                     //1.1.1.74 GGUILLEN
-                    ControlRpoLogica.ActualizaAlma(rpo);
+                    //ControlRpoLogica.ActualizaAlma(rpo);
                 }
 
             }
