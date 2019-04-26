@@ -1017,7 +1017,7 @@ namespace CloverPro
             if (e.RowIndex == -1)
                 return;
 
-            if(e.ColumnIndex == 5)
+            if(e.ColumnIndex == 5 && cbbPlanta.SelectedValue.ToString()== "EMPN")
             {
                 if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "35") == false)
                 {
@@ -1605,6 +1605,7 @@ namespace CloverPro
                 int iRow = 2;
                 foreach (DataGridViewRow row in dgwEstaciones.Rows)
                 {
+
                     DateTime dtIngreso = Convert.ToDateTime(row.Cells[2].Value.ToString());
                     string sTurno = row.Cells[4].Value.ToString();
                     string sRPO = row.Cells[5].Value.ToString();
