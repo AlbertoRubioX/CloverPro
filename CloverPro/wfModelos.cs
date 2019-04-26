@@ -103,7 +103,7 @@ namespace CloverPro
             chbRevStd.Checked = false;
             txtUltRev.Clear();
 
-            if(GlobalVar.gsUsuario == "ADMINP")
+            if(GlobalVar.gsUsuario == "ADMINPRO")
             {
                 chbRevStd.Enabled = true;
                 txtUltRev.Enabled = true;

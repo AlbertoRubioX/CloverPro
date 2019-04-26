@@ -124,7 +124,7 @@ namespace CloverPro
             Est.Add("E", "ESPERA");
             Est.Add("P", "PROCESO");
             Est.Add("C", "COMPLETADO");
-            Est.Add("T", "ENTREGADO");
+            Est.Add("A", "ASIGNADO");
             cbbEstatus.DataSource = new BindingSource(Est, null);
             cbbEstatus.DisplayMember = "Value";
             cbbEstatus.ValueMember = "Key";
@@ -573,6 +573,16 @@ namespace CloverPro
             }
 
             sValue = e.Value.ToString();
+
+            if (e.ColumnIndex == 9)//Almacenista
+            {
+                if (!string.IsNullOrEmpty(sValue))
+                {
+                   
+                        e.CellStyle.BackColor = Color.DarkOrange;
+                }
+            }
+
             if (e.ColumnIndex == 10)//ETIQUETAS
             {
                 sValue = dgwEstaciones[19, e.RowIndex].Value.ToString();
@@ -758,6 +768,9 @@ namespace CloverPro
                 dtNew.Columns.Add("etiqueta_interna", typeof(DateTime));//42
                 dtNew.Columns.Add("entrega_etint", typeof(string));//43
                 dtNew.Columns.Add("oper_etint", typeof(string));//44
+                dtNew.Columns.Add("f_asignacion", typeof(DateTime));//45
+                dtNew.Columns.Add("tiempo_rpo", typeof(string));//46
+
 
 
                 dgwEstaciones.DataSource = dtNew;
@@ -920,6 +933,8 @@ namespace CloverPro
             dgwEstaciones.Columns[42].Visible = false;
             dgwEstaciones.Columns[43].Visible = false;
             dgwEstaciones.Columns[44].Visible = false;
+            dgwEstaciones.Columns[45].Visible = false;
+            dgwEstaciones.Columns[46].Visible = false;
 
         }
 
@@ -1002,7 +1017,7 @@ namespace CloverPro
             if (e.RowIndex == -1)
                 return;
 
-            if(e.ColumnIndex == 5)
+            if(e.ColumnIndex == 5 && cbbPlanta.SelectedValue.ToString()== "EMPN")
             {
                 if (UsuarioLogica.VerificarPermiso(GlobalVar.gsUsuario, _lsProceso + "35") == false)
                 {
@@ -1031,12 +1046,12 @@ namespace CloverPro
                     return;
                 }
 
-                string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
-                if (string.IsNullOrEmpty(sAlm) )
-                {
-                    MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                //string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
+                //if (string.IsNullOrEmpty(sAlm) )
+                //{
+                //    MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    return;
+                //}
 
                 try
                 {
@@ -1128,7 +1143,7 @@ namespace CloverPro
                     sValor = dgwEstaciones[10, e.RowIndex].Value.ToString();
                     string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
                     string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString().Trim();//Cambios 13 a 15
-                    if (string.IsNullOrEmpty(sAlm) && string.IsNullOrEmpty(sPrio))
+                    if (string.IsNullOrEmpty(sAlm) /*&& string.IsNullOrEmpty(sPrio)*/)
                     {
                         MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
@@ -1144,7 +1159,13 @@ namespace CloverPro
                     }
 
                     sValor = dgwEstaciones[12, e.RowIndex].Value.ToString();
-                    
+                    string sAlmacenista = dgwEstaciones[9, e.RowIndex].Value.ToString();
+                    if (string.IsNullOrEmpty(sAlmacenista) )
+                    {
+                        MessageBox.Show("No puede iniciar el proceso de almacen sin antes asignar un almacenista al rpo", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
                 }
                 if (e.ColumnIndex == 13)//ETIQUETAS INTERNAS
                 {
@@ -1156,7 +1177,7 @@ namespace CloverPro
                     sValor = dgwEstaciones[13, e.RowIndex].Value.ToString();
                     string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
                     string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString().Trim();
-                    if (string.IsNullOrEmpty(sAlm) && string.IsNullOrEmpty(sPrio))
+                    if (string.IsNullOrEmpty(sAlm) /*&& string.IsNullOrEmpty(sPrio)*/)
                     {
                         MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
@@ -1584,6 +1605,7 @@ namespace CloverPro
                 int iRow = 2;
                 foreach (DataGridViewRow row in dgwEstaciones.Rows)
                 {
+
                     DateTime dtIngreso = Convert.ToDateTime(row.Cells[2].Value.ToString());
                     string sTurno = row.Cells[4].Value.ToString();
                     string sRPO = row.Cells[5].Value.ToString();
@@ -1611,8 +1633,13 @@ namespace CloverPro
                     string sTurnoProcet = row.Cells[29].Value.ToString();
                     string sHoraEti = string.Empty;
 
+                    DateTime dtProcEtint = DateTime.Today;
+                    if (!string.IsNullOrEmpty(row.Cells[39].Value.ToString()))
+                        dtProcEtint = Convert.ToDateTime(row.Cells[39].Value.ToString());
+                    string sTurnoProcEtint = row.Cells[38].Value.ToString();
+
                     //DETENIDOS
-       
+
                     DateTime dtfCarga = DateTime.Today;
                     if (!string.IsNullOrEmpty(row.Cells[33].Value.ToString()))
                         dtfCarga = Convert.ToDateTime(row.Cells[33].Value.ToString());
@@ -1626,7 +1653,9 @@ namespace CloverPro
                     string sItemDetenido = row.Cells[35].Value.ToString();
                     string contDetenido = row.Cells[36].Value.ToString();
                     string UsDetenido = row.Cells[37].Value.ToString();
-                    
+                    string fAsignacion = row.Cells[45].Value.ToString();
+                    string tiemporpo = row.Cells[46].Value.ToString();
+
                     oSheet.Cells[iRow, 1] = dtIngreso;
                     oSheet.Cells[iRow, 2] = sTurno;
                     oSheet.Cells[iRow, 3] = sRPO;
@@ -1649,10 +1678,10 @@ namespace CloverPro
                         sHora = sHora.Substring(iPos - 2);
 
                         oSheet.Cells[iRow, 15] = dtProceso;
-                        oSheet.Cells[iRow, 16] = sHora.TrimStart();
+                        //oSheet.Cells[iRow, 16] = sHora.TrimStart();
                     }
                     
-                    oSheet.Cells[iRow, 17] = sTurnoPro;
+                    oSheet.Cells[iRow, 16] = sTurnoPro;
 
                     if (!string.IsNullOrEmpty(row.Cells[28].Value.ToString()))
                     {
@@ -1660,10 +1689,21 @@ namespace CloverPro
                         int iPos1 = sHoraEti.IndexOf(":");
                         sHoraEti = sHoraEti.Substring(iPos1 - 2);
                         
-                        oSheet.Cells[iRow, 18] = dtProceti;
-                        oSheet.Cells[iRow, 19] = sHoraEti.TrimStart();
+                        oSheet.Cells[iRow, 17] = dtProceti;
+                        //oSheet.Cells[iRow, 19] = sHoraEti.TrimStart();
                     }
-                    oSheet.Cells[iRow, 20] = sTurnoProcet;
+                    oSheet.Cells[iRow, 18] = sTurnoProcet;
+
+                    if (!string.IsNullOrEmpty(row.Cells[39].Value.ToString()))
+                    {
+                        sHoraEti = Convert.ToString(row.Cells[39].Value);
+                        int iPos1 = sHoraEti.IndexOf(":");
+                        sHoraEti = sHoraEti.Substring(iPos1 - 2);
+
+                        oSheet.Cells[iRow, 19] = dtProceti;
+                        //oSheet.Cells[iRow, 19] = sHoraEti.TrimStart();
+                    }
+                    oSheet.Cells[iRow, 20] = sTurnoProcEtint;
 
                     //DETENIDOS
                     if (!string.IsNullOrEmpty(row.Cells[33].Value.ToString()))
@@ -1673,7 +1713,7 @@ namespace CloverPro
                         sHoraCarga = sHoraCarga.Substring(iPos1 - 2);
 
                         oSheet.Cells[iRow, 21] = dtfCarga;
-                        oSheet.Cells[iRow, 22] = sHoraCarga.TrimStart();
+                        //oSheet.Cells[iRow, 20] = sHoraCarga.TrimStart();
                     }
                     if (!string.IsNullOrEmpty(row.Cells[34].Value.ToString()))
                     {
@@ -1681,13 +1721,15 @@ namespace CloverPro
                         int iPos1 = sHoraDetenido.IndexOf(":");
                         sHoraDetenido = sHoraDetenido.Substring(iPos1 - 2);
 
-                        oSheet.Cells[iRow, 23] = dtfDetenido;
-                        oSheet.Cells[iRow, 24] = sHoraDetenido.TrimStart();
+                        oSheet.Cells[iRow,22] = dtfDetenido;
+                        //oSheet.Cells[iRow, 24] = sHoraDetenido.TrimStart();
                     }
-                    oSheet.Cells[iRow, 25] = sItemDetenido;
-                    oSheet.Cells[iRow, 26] = contDetenido;
-                    oSheet.Cells[iRow, 27] = UsDetenido;
-                    
+                    oSheet.Cells[iRow, 23] = sItemDetenido;
+                    oSheet.Cells[iRow, 24] = contDetenido;
+                    oSheet.Cells[iRow, 25] = UsDetenido;
+                    oSheet.Cells[iRow, 26] = fAsignacion;
+                    oSheet.Cells[iRow, 27] = tiemporpo;
+
                     iRow++;
                 }
 

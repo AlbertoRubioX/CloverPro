@@ -2535,7 +2535,7 @@ namespace CloverPro
         }
         private void btnF1_Click(object sender, EventArgs e)
         {
-            if (GlobalVar.gsUsuario == "ADMINP" && !string.IsNullOrEmpty(txtFolio.Text.ToString()))
+            if (GlobalVar.gsUsuario == "ADMINPRO" && !string.IsNullOrEmpty(txtFolio.Text.ToString()))
             {
                 DialogResult Result = MessageBox.Show("Desea Modificar la Linea del LineUp?", Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (Result == DialogResult.Yes)

@@ -138,7 +138,7 @@ namespace CloverPro
                 if(cbbArea.SelectedValue.ToString() != "SPG")
                 {
                     string sUsuario = cbbUsuario.Text.ToUpper().Trim().ToString();
-                    if (sUsuario.Length > 6)
+                    if (sUsuario.Length > 6 && sUsuario!="ADMINPRO")
                     {
                         MessageBox.Show("La clave del Usuario no coincide con el número de empleado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cbbUsuario.Focus();

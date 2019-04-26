@@ -11,6 +11,7 @@ using System.Globalization;
 using Logica;
 using CrystalDecisions.Shared;
 using CrystalDecisions.CrystalReports.Engine;
+using System.Collections;
 
 namespace CloverPro
 {
@@ -925,7 +926,6 @@ namespace CloverPro
         {
             try
             {
-
                 //Titulos que se mostraran en el reporte
                 string titulo_reporte = "";
                 string subTitulo_reporte = "";
@@ -949,6 +949,8 @@ namespace CloverPro
                     //con los datos del reporte
                     dtSource = ReportesLogica.RPOsArmadosNoArmados(rep);
 
+                    //se envia lo obtenido de la base de datos a una funcion para eliminar duplicados
+                    dtSource = RemoveDuplicateRows(dtSource, "RPO",rep.Medido);
                     //Si se encontraron datos el metodo devolvera la estructura de datos y se la asignara a la variable dtSource
                     //Si no, devolvera un null, el cual se valida en la siguiente linea de codigo
                     //Si la variable no contiene filas de datos, lanza un mensaje y no deja avanzar a la siguiente instrucción
@@ -985,6 +987,9 @@ namespace CloverPro
                 {
                     ruta = _lsDirec + @"\Reportes\rptRPOGrafico.rpt";
                     dtSource = ReportesLogica.detenidosRPOs(rep);
+                    
+                    //se envia lo obtenido de la base de datos a una funcion para eliminar duplicados
+                    dtSource = RemoveDuplicateDetalleRows(dtSource, "RPO",rep.Medido);
                     if (dtSource.Rows.Count == 0)
                     {
                         MessageBox.Show("No se encontró información con los datos soliticados", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1024,24 +1029,14 @@ namespace CloverPro
                 //discreteVal.Value = rep.Fecha.ToString().Substring(0, 10);
                 //paramField.CurrentValues.Add(discreteVal);
                 //paramFields.Add(paramField);
-
-                //paramFields = new ParameterFields();
-                //paramField = new ParameterField();
-                //paramField.Name = "prTurno";
-                //discreteVal.Value = rep.Turno.ToString();
-                //paramField.CurrentValues.Add(discreteVal);
-                //paramFields.Add(paramField);
-
-                //paramFields = new ParameterFields();
-                //paramField = new ParameterField();
-                //paramField.Name = "prPlanta";
-                //discreteVal.Value = rep.Planta.ToString();
-                //paramField.CurrentValues.Add(discreteVal);
-                //paramFields.Add(paramField);
-
                 //Se envían los parametros de los títulos asignados con anterioridad para mostrarlos en el reporte.
                 rptDoc.SetParameterValue("prFecha", titulo_reporte);
                 rptDoc.SetParameterValue("prTurno", subTitulo_reporte);
+                //rptDoc.SetParameterValue("prDArmados", dtSource.Rows[0]["Descripcion"]);
+                //rptDoc.SetParameterValue("prDNArmados", dtSource.Rows[1]["Descripcion"]);
+                //rptDoc.SetParameterValue("prCArmados",  dtSource.Rows[0]["Cantidad"]);
+                //rptDoc.SetParameterValue("prCNArmados", dtSource.Rows[1]["Cantidad"]);
+                //rptDoc.SetDataSource(dtSource);
                 //Se mandan los parámetros al reporte
                 crystalReportViewer1.ParameterFieldInfo = paramFields;
                 //Se envía la insnacia del reporte con todos los datos.
@@ -1055,6 +1050,215 @@ namespace CloverPro
                 Close();
             }
         }
+        //Funcion para eliminar duplicados Armados y No Armados
+        public DataTable RemoveDuplicateRows(DataTable table, string DistinctColumn, string medido)
+        {   //Variables para conteo de armados y no armados
+            int armados = 0,noArmados=0;
+            try
+            {   //Arreglos para separar duplicados
+                ArrayList UniqueRecords = new ArrayList();
+                ArrayList DuplicateRecords = new ArrayList();
 
+                // Check if records is already added to UniqueRecords otherwise,
+                // Add the records to DuplicateRecords
+                foreach (DataRow dRow in table.Rows)
+                {   //si el registro ya existe en el erreglo de Unique se agrega al arreglo de Duplicate
+                    if (UniqueRecords.Contains(dRow[DistinctColumn]))
+                        DuplicateRecords.Add(dRow);
+                    else //si no existe en el arreglo unique, se agrega
+                        UniqueRecords.Add(dRow[DistinctColumn]);
+                }
+
+                // Remueve los registros de duplicate de la tabla
+                foreach (DataRow dRow in DuplicateRecords)
+                {
+                    table.Rows.Remove(dRow);
+                }
+                //Valida si el conteo es por RPO'S o Cantidad
+                if (medido.Equals("RPO"))
+                {
+                    foreach (DataRow dRow in table.Rows)
+                    {   //Valida si esta armado o no armado en la columna descripcion e incrementa el contador
+                        if ((dRow["Descripcion"]).Equals("Armados"))
+                        {
+                            armados++;
+                        }
+                        else
+                        {
+                            noArmados++;
+                        }
+                    }
+                }
+                else {
+                    foreach (DataRow dRow in table.Rows)
+                    {   //Valida si esta armado o no armado en la columna descripcion e incrementa el contador
+                        if ((dRow["Descripcion"]).Equals("Armados"))
+                        {
+                            armados += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                        else
+                        {
+                            noArmados += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                    }
+                }
+                //Crea nueva tabla
+                DataTable dt = new DataTable();
+                //Agrega las columnas y les da un tipo de dato para enviar al reporte
+                dt.Columns.Add("Descrip").DataType=Type.GetType("System.String");
+                dt.Columns.Add("Cantidad").DataType= Type.GetType("System.Int32");
+                //Agrega renglones a la tabla
+                dt.Rows.Add("Armados", armados);
+                dt.Rows.Add("No Armados", noArmados);
+                // Return the clean DataTable which contains unique records.
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        //Funcion que elimina duplicados de Espera y Detenidos
+        public DataTable RemoveDuplicateDetalleRows(DataTable table, string DistinctColumn,string medido)
+        {   //Variables para conteo
+            int ins = 0, cal = 0, inv=0, doc=0, cap=0, can=0, est=0, pro=0;
+            try
+            {   //Arreglos para separar duplicados
+                ArrayList UniqueRecords = new ArrayList();
+                ArrayList DuplicateRecords = new ArrayList();
+
+                // Check if records is already added to UniqueRecords otherwise,
+                // Add the records to DuplicateRecords
+                foreach (DataRow dRow in table.Rows)
+                {    //si el registro ya existe en el erreglo de Unique se agrega al arreglo de Duplicate
+                    if (UniqueRecords.Contains(dRow[DistinctColumn]))
+                        DuplicateRecords.Add(dRow);
+                    else //si no existe en el arreglo unique, se agrega
+                        UniqueRecords.Add(dRow[DistinctColumn]);
+                    //Agrega los armados al arreglo de duplicados
+                    if ((dRow["Descripcion"]).Equals("Armados"))
+                        DuplicateRecords.Add(dRow);
+                }
+
+                // Remueve los registros de duplicate de la tabla
+                foreach (DataRow dRow in DuplicateRecords)
+                {
+                    table.Rows.Remove(dRow);
+                }
+                //Valida si el conteo es por RPO'S o Cantidad
+                if (medido.Equals("RPO"))
+                {
+                    foreach (DataRow dRow in table.Rows)
+                    {   //Valida que tipo de Descripcion tiene el renglon e incrementa el contador correspondiente
+                        if ((dRow["Descripcion"]).Equals("INSUFICIENTE"))
+                        {
+                            ins++;
+                        }
+                        if ((dRow["Descripcion"]).Equals("CALIDAD"))
+                        {
+                            cal++;
+                        }
+                        if ((dRow["Descripcion"]).Equals("INVENTARIO"))
+                        {
+                            inv++;
+                        }
+                        if ((dRow["Descripcion"]).Equals("DOCUMENTACION"))
+                        {
+                            doc++;
+                        }
+                        if ((dRow["Descripcion"]).Equals("CAPACIDAD"))
+                        {
+                            cap++;
+                        }
+                        if ((dRow["Descripcion"]).Equals("CANCELADOS"))
+                        {
+                            can++;
+                        }
+                        if ((dRow["Descripcion"]).Equals("ESTRUCTURA DE RPO"))
+                        {
+                            est++;
+                        }
+                        if ((dRow["Descripcion"]).Equals("EN PROCESO"))
+                        {
+                            pro++;
+                        }
+                    }
+
+                }
+                else { 
+                    foreach (DataRow dRow in table.Rows)
+                    {   //Valida que tipo de Descripcion tiene el renglon y contabiliza las cantidades
+                        if ((dRow["Descripcion"]).Equals("INSUFICIENTE"))
+                        {
+                            ins += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                        if ((dRow["Descripcion"]).Equals("CALIDAD"))
+                        {
+                            cal += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                        if ((dRow["Descripcion"]).Equals("INVENTARIO"))
+                        {
+                            inv += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                        if ((dRow["Descripcion"]).Equals("DOCUMENTACION"))
+                        {
+                            doc += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                        if ((dRow["Descripcion"]).Equals("CAPACIDAD"))
+                        {
+                            cap += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                        if ((dRow["Descripcion"]).Equals("CANCELADOS"))
+                        {
+                            can += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                        if ((dRow["Descripcion"]).Equals("ESTRUCTURA DE RPO"))
+                        {
+                            est += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                        if ((dRow["Descripcion"]).Equals("EN PROCESO"))
+                        {
+                            pro += Int32.Parse(dRow["Cantidad"].ToString());
+                        }
+                    }
+                }
+                //Crea nueva tabla
+                DataTable dt = new DataTable();
+                //Agrega columnas y tipos de dato a las columnas
+                dt.Columns.Add("Descripcion").DataType = Type.GetType("System.String");
+                dt.Columns.Add("Cantidad").DataType = Type.GetType("System.Int32");
+                //Verifica que las cantidades sean mayor a 0 y las agrega a la tabla
+                if (ins > 0) { 
+                    dt.Rows.Add("INSUFICIENTE", ins);
+                }
+                if(cal > 0) { 
+                    dt.Rows.Add("CALIDAD", cal);
+                }
+                if (inv > 0) { 
+                    dt.Rows.Add("INVENTARIO", inv);
+                }
+                if (cap > 0) { 
+                    dt.Rows.Add("CAPACIDAD", cap);
+                }
+                if(doc > 0) { 
+                    dt.Rows.Add("DOCUMENTACION", doc);
+                }
+                if (can > 0) { 
+                    dt.Rows.Add("CANCELADOS", can);
+                }
+                if(est > 0) { 
+                    dt.Rows.Add("ESTRUCTURA DE RPO", est);
+                }
+                if (pro > 0) { 
+                    dt.Rows.Add("EN PROCESO", pro);
+                }
+                // Return the clean DataTable which contains unique records.
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

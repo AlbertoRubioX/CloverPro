@@ -34,7 +34,7 @@ namespace CloverPro
                 return;
 
             _sUsuario = txtClave.Text.ToString().Trim();
-            if (_sUsuario != "ADMINP" && _sUsuario.IndexOf("A") > 0) //029621A
+            if (_sUsuario != "ADMINPRO" && _sUsuario.IndexOf("A") > 0) //029621A
                 _sUsuario = _sUsuario.Substring(0, 6);
 
             if (_sUsuario.Length < 6)

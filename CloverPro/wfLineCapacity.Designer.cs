@@ -685,6 +685,7 @@
             this.cbbPlanta.Name = "cbbPlanta";
             this.cbbPlanta.Size = new System.Drawing.Size(284, 28);
             this.cbbPlanta.TabIndex = 1;
+            this.cbbPlanta.SelectedIndexChanged += new System.EventHandler(this.cbbPlanta_SelectedIndexChanged);
             this.cbbPlanta.SelectionChangeCommitted += new System.EventHandler(this.cbbPlanta_SelectionChangeCommitted);
             // 
             // dtpFecha

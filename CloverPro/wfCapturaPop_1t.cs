@@ -704,9 +704,9 @@ namespace CloverPro
                                 //Actualiza y guarda al almacenista asignado  
                                 rpo.Surte = cbbClave.SelectedValue.ToString();
                                 ControlRpoLogica.ActualizaSurte(rpo);
-                                rpo.Almacen = "P";//en proceso
-                                rpo.Usuario = GlobalVar.gsUsuario;
-                                ControlRpoLogica.ActualizaAlma(rpo);
+                                //rpo.Almacen = "P";//en proceso
+                                //rpo.Usuario = GlobalVar.gsUsuario;
+                                //ControlRpoLogica.ActualizaAlma(rpo);
                             }
                         }
                         
