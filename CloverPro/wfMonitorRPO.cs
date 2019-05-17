@@ -193,6 +193,18 @@ namespace CloverPro
                 timer1.Start();
             }
             */
+            if(GlobalVar.gsUsuario == "ROTULO")
+            {
+                chbPlanta.Checked = false;
+                chbPlanta.Enabled = false;
+                chbLinea.Enabled = false;
+                chbTurno.Enabled = false;
+                chbEstatus.Enabled = false;
+                chbPrioridad.Enabled = false;
+                chbRPO.Checked = true;
+                chbRPO.Enabled = false;
+                timer1.Stop();
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -1142,10 +1154,18 @@ namespace CloverPro
                     }
                     sValor = dgwEstaciones[10, e.RowIndex].Value.ToString();
                     string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
-                    string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString().Trim();//Cambios 13 a 15
+                    string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString().Trim();
+                    string sAlmacenista = dgwEstaciones[9, e.RowIndex].Value.ToString();//Cambios 13 a 15
                     if (string.IsNullOrEmpty(sAlm) /*&& string.IsNullOrEmpty(sPrio)*/)
                     {
                         MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    if (sAlm.CompareTo("DETENIDO") == 0 && string.IsNullOrEmpty(sAlmacenista))
+
+                    {
+                        MessageBox.Show("No puede iniciar etiquetas internas si almacen tiene detenido el rpo", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
                 }
@@ -1160,11 +1180,11 @@ namespace CloverPro
 
                     sValor = dgwEstaciones[12, e.RowIndex].Value.ToString();
                     string sAlmacenista = dgwEstaciones[9, e.RowIndex].Value.ToString();
-                    if (string.IsNullOrEmpty(sAlmacenista) )
-                    {
-                        MessageBox.Show("No puede iniciar el proceso de almacen sin antes asignar un almacenista al rpo", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
+                    //if (string.IsNullOrEmpty(sAlmacenista))
+                    //{
+                    //    MessageBox.Show("No puede iniciar el proceso de almacen sin antes asignar un almacenista al rpo", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    return;
+                    //}
 
                 }
                 if (e.ColumnIndex == 13)//ETIQUETAS INTERNAS
@@ -1177,11 +1197,22 @@ namespace CloverPro
                     sValor = dgwEstaciones[13, e.RowIndex].Value.ToString();
                     string sAlm = dgwEstaciones[12, e.RowIndex].Value.ToString();
                     string sPrio = dgwEstaciones[15, e.RowIndex].Value.ToString().Trim();
+                    string sAlmacenista = dgwEstaciones[9, e.RowIndex].Value.ToString();
                     if (string.IsNullOrEmpty(sAlm) /*&& string.IsNullOrEmpty(sPrio)*/)
+            
                     {
-                        MessageBox.Show("No puede iniciar etiquetas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("No puede iniciar etiquetas internas que almacen no ha solicitado", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
+
+                    if (sAlm.CompareTo("DETENIDO") == 0 && string.IsNullOrEmpty(sAlmacenista))
+
+                    {
+                        MessageBox.Show("No puede iniciar etiquetas internas si almacen tiene detenido el rpo", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                   
+
                 }
 
                

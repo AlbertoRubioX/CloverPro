@@ -232,7 +232,7 @@ namespace Logica
             DataTable datos = new DataTable();
             try
             {
-                string sSql = "SELECT COUNT(ac.consec),ub.config FROM t_rpo_actdet ac inner join t_rpo_ubidet ub on ac.planta = ub.planta and SUBSTRING(ac.locacion,1,2) = ub.ubicacion and SUBSTRING(ac.locacion,4,1) = ub.celda where ac.folio = "+rpo.Folio+" and ac.locacion = '"+rpo.Locacion+"' group by ub.config having COUNT(ac.consec) >= ub.config";
+                string sSql = "SELECT COUNT(ac.consec),ub.config FROM t_rpo_actdet ac inner join t_rpo_ubidet ub on ac.planta = ub.planta and SUBSTRING(ac.locacion_etint,1,2) = ub.ubicacion and SUBSTRING(ac.locacion_etint,4,1) = ub.celda where ac.folio = " + rpo.Folio+ " and ac.locacion_etint = '" + rpo.LocacionInterna + "' group by ub.config having COUNT(ac.consec) >= ub.config";
                 datos = AccesoDatos.Consultar(sSql);
             }
             catch (Exception ex)

@@ -91,10 +91,21 @@ namespace CloverPro
                         sEstatus = dt.Rows[0]["almacen"].ToString(); //almacen
                         if (string.IsNullOrEmpty(sEstatus))
                         {
-                            btnProcess.Visible = true;
-                            btnProcess.Enabled = true;
-                            btnStoped.Enabled = true;
-                            btnDone.Enabled = false;
+                            if(string.IsNullOrEmpty(dt.Rows[0]["surte"].ToString()))
+                            {
+                                btnProcess.Visible = true;
+                                btnProcess.Enabled = false;
+                                btnStoped.Enabled = true;
+                                btnDone.Enabled = false;
+                            }
+                            else
+                            {
+                                btnProcess.Visible = true;
+                                btnProcess.Enabled = true;
+                                btnStoped.Enabled = true;
+                                btnDone.Enabled = false;
+                            }
+                            
                         }
                         else
                         {
