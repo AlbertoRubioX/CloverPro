@@ -46,7 +46,7 @@ namespace Logica
             DataTable datos = new DataTable();
             try
             {
-                datos = AccesoDatos.Consultar("select pl.nombre as Planta,et.usuario as Usuario,et.folio as Folio,et.fecha as Fecha,et.cantidad as Cantidad,et.f_ini as Inicio,et.f_fin as Fin,et.modelo from t_etiqueta et inner join t_plantas pl on et.planta = pl.planta where et.rpo = '" + eti.RPO + "'");
+                datos = AccesoDatos.Consultar("select pl.nombre as Planta as Usuario,et.folio as Folio,et.fecha as Fecha,et.cantidad as Cantidad,et.f_ini as Inicio,et.f_fin as Fin,et.modelo from t_etiqueta et inner join t_plantas pl on et.planta = pl.planta where et.rpo = '" + eti.RPO + "'");
             }
             catch (Exception ex)
             {

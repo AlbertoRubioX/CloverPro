@@ -172,7 +172,7 @@ namespace CloverPro
                     //* ESTACIONES *//
                     exHoja = exLibro.Sheets[_asModelo];
                     exHoja.Select();
-                    exRango = exHoja.get_Range("B5", "J60");
+                    exRango = exHoja.get_Range("B5", "J100");
 
                     int iRows = exRango.Rows.Count;
                     int iCols = exRango.Columns.Count;
