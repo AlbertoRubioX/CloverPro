@@ -191,7 +191,7 @@ namespace CloverPro
 
                         if (_sClave == "DETENIDO")
                         {
-                            this.Height = 510;
+                            this.Height = 210;
 
                             label1.Text = "MOTIVO :";
                             /*
@@ -521,7 +521,7 @@ namespace CloverPro
                         ControlRpoLogica rpo = new ControlRpoLogica();
                         rpo.Folio = _llFolio;
                         rpo.Planta = _lsPlanta;
-                        rpo.Locacion = cbbClave.SelectedValue.ToString();
+                        rpo.LocacionInterna = cbbClave.SelectedValue.ToString();
                         DataTable dt = ControlRpoLogica.ConsultarDisp(rpo);
                         if (dt.Rows.Count != 0)
                         {
