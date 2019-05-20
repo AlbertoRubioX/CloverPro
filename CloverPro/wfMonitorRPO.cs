@@ -204,6 +204,7 @@ namespace CloverPro
                 chbRPO.Checked = true;
                 chbRPO.Enabled = false;
                 timer1.Stop();
+                timer2.Stop();
             }
         }
 
