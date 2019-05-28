@@ -138,6 +138,7 @@ namespace CloverPro
             Data.Add("M", "Almacén");
             Data.Add("EI", "Etiqueta Interna");// Agregada el dia 13-Marzo-2019
             Data.Add("L", "Tipo Linea");
+            Data.Add("LI", "Tipo Linea Interna");
             Data.Add("A", "Almacenista");
             Data.Add("W", "W.P.");
             Data.Add("T", "Turno Procesado");
@@ -464,6 +465,10 @@ namespace CloverPro
                     }
                     //rpo.Filtro = sFiltro;
                     if (sFiltro == "EI")
+                    {
+                        rpo.ValorFiltro = cbbTipo.SelectedValue.ToString();
+                    }
+                    if (sFiltro == "LI")
                     {
                         rpo.ValorFiltro = cbbTipo.SelectedValue.ToString();
                     }
@@ -1836,7 +1841,18 @@ namespace CloverPro
                 cbbTipo.SelectedIndex = -1;
             }
 
-            if(cbbPrioridad.SelectedValue.ToString() == "A")
+            if (cbbPrioridad.SelectedValue.ToString() == "LI")
+            {
+                Dictionary<string, string> Data2 = new Dictionary<string, string>();
+                Data2.Add("L", "Largos");
+                Data2.Add("P", "Pony");
+                cbbTipo.DataSource = new BindingSource(Data2, null);
+                cbbTipo.DisplayMember = "Value";
+                cbbTipo.ValueMember = "Key";
+                cbbTipo.SelectedIndex = -1;
+            }
+
+            if (cbbPrioridad.SelectedValue.ToString() == "A")
             {
                 OperadorLogica op = new OperadorLogica();
                 op.Planta = cbbPlanta.SelectedValue.ToString();
